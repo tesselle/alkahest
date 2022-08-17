@@ -103,3 +103,42 @@ setGeneric(
 #   def = function(x, y, ...) standardGeneric("baseline_peakfilling"),
 #   valueClass = "list"
 # )
+
+# Signal =======================================================================
+#' Subset
+#'
+#' @description
+#'  * `signal_select()` allows to subset by values of `x`.
+#'  * `signal_slice()` allows to subset by position along `x`.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param subset An [`integer`] vector giving either positive values to keep,
+#'  or negative values to drop. The values provided must be either all
+#'  positive or all negative (coerced to integer as by [as.integer()]).
+#' @param from,to A [`numeric`] value giving the first and last value (in `x`
+#'  unit) to be selected.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-subset.R
+#' @docType methods
+#' @family signal processing methods
+#' @name subset
+#' @rdname subset
+NULL
+
+#' @rdname subset
+#' @aliases signal_select-method
+setGeneric(
+  name = "signal_select",
+  def = function(x, y, ...) standardGeneric("signal_select"),
+  valueClass = "list"
+)
+
+#' @rdname subset
+#' @aliases signal_slice-method
+setGeneric(
+  name = "signal_slice",
+  def = function(x, y, ...) standardGeneric("signal_slice"),
+  valueClass = "list"
+)

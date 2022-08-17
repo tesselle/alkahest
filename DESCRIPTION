@@ -28,4 +28,5 @@ Collate:
     'data.R'
     'helpers.R'
     'kirke-package.R'
+    'signal.R'
 LazyData: true
