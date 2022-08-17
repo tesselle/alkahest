@@ -29,3 +29,8 @@
 #' @docType package
 #' @keywords internal
 "_PACKAGE"
+
+#' @importFrom grDevices chull xy.coords
+#' @importFrom methods .valueClassTest callGeneric setGeneric setMethod
+#' @importFrom stats approx lm predict smooth.spline spline
+NULL
