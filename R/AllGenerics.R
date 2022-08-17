@@ -142,3 +142,27 @@ setGeneric(
   def = function(x, y, ...) standardGeneric("signal_slice"),
   valueClass = "list"
 )
+
+#' Transform Intensities
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param f A [`function`] that takes a `numeric` vector of intensities as
+#'  argument and returns a `numeric` vector.
+#' @param ... Extra arguments to be passed to `f`.
+#' @details
+#'  The stabilization step aims at improving the identification of peaks with a
+#'  low signal-to-noise ratio. This particularly targets higher energy peaks.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family signal processing methods
+#' @rdname transform
+#' @aliases signal_transform-method
+setGeneric(
+  name = "signal_transform",
+  def = function(x, y, ...) standardGeneric("signal_transform"),
+  valueClass = "list"
+)
+
