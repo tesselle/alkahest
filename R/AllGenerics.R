@@ -104,6 +104,84 @@ setGeneric(
 #   valueClass = "list"
 # )
 
+# Scale ========================================================================
+#' Normalize Intensities
+#'
+#' @description
+#'  * `rescale_total()` rescales intensities to sum to a specified value.
+#'  * `rescale_range()`, `rescale_min()` and`rescale_max()` rescales intensities
+#'  to have specified minimum and maximum.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param total A legnth-one [`numeric`] vector specifying the output total.
+#' @param min A legnth-one [`numeric`] vector specifying the output minimum.
+#' @param max A legnth-one [`numeric`] vector specifying the output maximum.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-rescale.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family normalizing methods
+#' @name rescale
+#' @rdname rescale
+NULL
+
+#' @rdname rescale
+#' @aliases rescale_total-method
+setGeneric(
+  name = "rescale_total",
+  def = function(x, y, ...) standardGeneric("rescale_total"),
+  valueClass = "list"
+)
+
+#' @rdname rescale
+#' @aliases rescale_range-method
+setGeneric(
+  name = "rescale_range",
+  def = function(x, y, ...) standardGeneric("rescale_range"),
+  valueClass = "list"
+)
+
+#' @rdname rescale
+#' @aliases rescale_min-method
+setGeneric(
+  name = "rescale_min",
+  def = function(x, y, ...) standardGeneric("rescale_min"),
+  valueClass = "list"
+)
+
+#' @rdname rescale
+#' @aliases rescale_max-method
+setGeneric(
+  name = "rescale_max",
+  def = function(x, y, ...) standardGeneric("rescale_max"),
+  valueClass = "list"
+)
+
+#' Transform Intensities
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param f A [`function`] that takes a `numeric` vector of intensities as
+#'  argument and returns a `numeric` vector.
+#' @param ... Extra arguments to be passed to `f`.
+#' @details
+#'  The stabilization step aims at improving the identification of peaks with a
+#'  low signal-to-noise ratio. This particularly targets higher energy peaks.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family signal processing methods
+#' @rdname transform
+#' @aliases signal_transform-method
+setGeneric(
+  name = "signal_transform",
+  def = function(x, y, ...) standardGeneric("signal_transform"),
+  valueClass = "list"
+)
+
 # Signal =======================================================================
 #' Subset
 #'
@@ -141,29 +219,6 @@ setGeneric(
 setGeneric(
   name = "signal_slice",
   def = function(x, y, ...) standardGeneric("signal_slice"),
-  valueClass = "list"
-)
-
-#' Transform Intensities
-#'
-#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
-#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param f A [`function`] that takes a `numeric` vector of intensities as
-#'  argument and returns a `numeric` vector.
-#' @param ... Extra arguments to be passed to `f`.
-#' @details
-#'  The stabilization step aims at improving the identification of peaks with a
-#'  low signal-to-noise ratio. This particularly targets higher energy peaks.
-#' @return
-#'  Returns a [`list`] with two components `x` and `y`.
-#' @author N. Frerebeau
-#' @docType methods
-#' @family signal processing methods
-#' @rdname transform
-#' @aliases signal_transform-method
-setGeneric(
-  name = "signal_transform",
-  def = function(x, y, ...) standardGeneric("signal_transform"),
   valueClass = "list"
 )
 

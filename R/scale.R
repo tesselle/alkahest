@@ -1,0 +1,99 @@
+# NORMALIZING
+#' @include AllGenerics.R
+NULL
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_total,numeric,numeric-method
+setMethod(
+  f = "rescale_total",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, total = 1) {
+    y <- (y * total) / sum(y)
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_total,ANY,missing-method
+setMethod(
+  f = "rescale_total",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, total = 1) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, total = total)
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_range,numeric,numeric-method
+setMethod(
+  f = "rescale_range",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, min = 0, max = 1) {
+    y <- (y - min(y)) / (max(y) - min(y)) * (max - min) + min
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_range,ANY,missing-method
+setMethod(
+  f = "rescale_range",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, min = 0, max = 1) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, min = min, max = max)
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_min,numeric,numeric-method
+setMethod(
+  f = "rescale_min",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, min = 0) {
+    rescale_range(x, y, min = min, max = max(y))
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_min,ANY,missing-method
+setMethod(
+  f = "rescale_min",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, min = 0) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, min = min)
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_max,numeric,numeric-method
+setMethod(
+  f = "rescale_max",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, max = 1) {
+    rescale_range(x, y, min = min(y), max = max)
+  }
+)
+
+#' @export
+#' @rdname rescale
+#' @aliases rescale_max,ANY,missing-method
+setMethod(
+  f = "rescale_max",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, max = 1) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, max = max)
+  }
+)
