@@ -1,0 +1,18 @@
+url: https://packages.tesselle.org/kirke
+
+template:
+  package: tekton
+  opengraph:
+    twitter:
+      creator: "@nfrerebeau"
+
+reference:
+- title: Signal Processing
+  contents:
+  - has_concept("signal processing methods")
+- title: Baseline Estimation
+  contents:
+  - has_concept("baseline estimation methods")
+- title: Datasets
+  contents:
+  - has_concept("datasets")

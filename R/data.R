@@ -7,7 +7,7 @@
 #'    \item{energy}{(keV).}
 #'    \item{count}{}
 #'  }
-#' @family artefact data
+#' @family datasets
 #' @keywords datasets
 "LaBr"
 
@@ -18,6 +18,6 @@
 #'    \item{energy}{(keV).}
 #'    \item{count}{}
 #'  }
-#' @family artefact data
+#' @family datasets
 #' @keywords datasets
 "BEGe"

@@ -18,8 +18,8 @@ BEGe
 Gamma-Ray Spectrometry
 }
 \seealso{
-Other artefact data: 
+Other datasets: 
 \code{\link{LaBr}}
 }
-\concept{artefact data}
+\concept{datasets}
 \keyword{datasets}

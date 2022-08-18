@@ -18,8 +18,8 @@ LaBr
 In-situ Gamma-Ray Spectrometry
 }
 \seealso{
-Other artefact data: 
+Other datasets: 
 \code{\link{BEGe}}
 }
-\concept{artefact data}
+\concept{datasets}
 \keyword{datasets}
