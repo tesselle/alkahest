@@ -95,7 +95,7 @@ BEGe <- signal_select(BEGe, from = 2.75, to = 200)
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
 ## Linear baseline
-BEGe_linear <- baseline_linear(x = BEGe, from = 500, to = 600) # 35-750
+BEGe_linear <- baseline_linear(x = BEGe, from = 500, to = 600)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_linear, type = "l", col = "red")

@@ -29,6 +29,8 @@ signal_slice(x, y, ...)
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
+\item{...}{Currently not used.}
+
 \item{from, to}{A \code{\link{numeric}} value giving the first and last value (in \code{x}
 unit) to be selected.}
 
@@ -59,7 +61,7 @@ BEGe_1 <- signal_select(BEGe, from = 2.75, to = 200)
 plot(BEGe_1, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
 ## Subset from the 20th to the 1250th value
-BEGe_2 <- signal_slice(BEGe, select = 20:1250)
+BEGe_2 <- signal_slice(BEGe, subset = 20:1250)
 
 ## Plot spectrum
 plot(BEGe_2, type = "l", xlab = "Energy (keV)", ylab = "Count")

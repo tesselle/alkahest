@@ -13,7 +13,6 @@ setMethod(
     ## Find the nearest value
     from <- x[which_nearest(x, from)]
     to <- x[which_nearest(x, to)]
-    print(from)
     idx <- which(x >= from & x <= to)
 
     xy <- list(x = x[idx], y = y[idx])

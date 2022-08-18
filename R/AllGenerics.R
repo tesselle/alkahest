@@ -117,6 +117,7 @@ setGeneric(
 #'  positive or all negative (coerced to integer as by [as.integer()]).
 #' @param from,to A [`numeric`] value giving the first and last value (in `x`
 #'  unit) to be selected.
+#' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @author N. Frerebeau
