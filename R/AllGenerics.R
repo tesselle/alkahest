@@ -171,6 +171,7 @@ setGeneric(
 #'  low signal-to-noise ratio. This particularly targets higher energy peaks.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-transform.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family signal processing methods
