@@ -49,6 +49,7 @@ plot(BEGe_trans, type = "l", xlab = "Energy (keV)", ylab = "sqrt(Count)")
 }
 \seealso{
 Other signal processing methods: 
+\code{\link{rescale}},
 \code{\link{smooth}()},
 \code{\link{subset}()}
 }

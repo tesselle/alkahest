@@ -7,12 +7,16 @@
 \alias{smooth_rectangular-method}
 \alias{smooth_triangular}
 \alias{smooth_triangular-method}
+\alias{smooth_loess}
+\alias{smooth_loess-method}
 \alias{smooth_savitzky}
 \alias{smooth_savitzky-method}
 \alias{smooth_rectangular,numeric,numeric-method}
 \alias{smooth_rectangular,ANY,missing-method}
 \alias{smooth_triangular,numeric,numeric-method}
 \alias{smooth_triangular,ANY,missing-method}
+\alias{smooth_loess,numeric,numeric-method}
+\alias{smooth_loess,ANY,missing-method}
 \alias{smooth_savitzky,numeric,numeric-method}
 \alias{smooth_savitzky,ANY,missing-method}
 \title{Smooth}
@@ -20,6 +24,8 @@
 smooth_rectangular(x, y, ...)
 
 smooth_triangular(x, y, ...)
+
+smooth_loess(x, y, ...)
 
 smooth_savitzky(x, y, ...)
 
@@ -30,6 +36,10 @@ smooth_savitzky(x, y, ...)
 \S4method{smooth_triangular}{numeric,numeric}(x, y, m = 3)
 
 \S4method{smooth_triangular}{ANY,missing}(x, m)
+
+\S4method{smooth_loess}{numeric,numeric}(x, y, span = 0.75)
+
+\S4method{smooth_loess}{ANY,missing}(x, span = 0.75)
 
 \S4method{smooth_savitzky}{numeric,numeric}(x, y, m = 3, p = 2)
 
@@ -43,7 +53,10 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 
 \item{m}{An odd \code{\link{integer}} giving the number of adjacent points to be used.}
 
-\item{p}{An \code{\link{integer}} giving the polynomial degree.}
+\item{span}{An \code{\link{integer}} specifying the degree of smoothing (see
+\code{\link[stats:loess]{stats::loess()}}).}
+
+\item{p}{An \code{\link{integer}} giving the degree of the polynomial to be used.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
@@ -60,6 +73,7 @@ points.}
 \item{\code{triangular}}{Weighted sliding-average or triangular smooth.
 It replaces each point in the signal with the weighted mean of \eqn{m}
 adjacent points.}
+\item{\code{loess}}{Smooth by Loess fitting.}
 \item{\code{savitzky}}{Savitzky-Golay filter. This method is based on the
 least-squares fitting of polynomials to segments of \eqn{m} adjacent
 points.}
@@ -79,15 +93,19 @@ data("LaBr")
 LaBr <- signal_select(LaBr, from = 1350, to = 1650)
 plot(LaBr, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
-## Rectangular smooth
+## Rectangular smoothing
 LaBr_unweighted <- smooth_rectangular(LaBr, m = 3)
 plot(LaBr_unweighted, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
-## Triangular smooth
+## Triangular smoothing
 LaBr_weighted <- smooth_triangular(LaBr, m = 5)
 plot(LaBr_weighted, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
-## Savitzky–Golay
+## Loess smoothing
+LaBr_loess <- smooth_loess(LaBr, span = 0.75)
+plot(LaBr_loess, type = "l", xlab = "Energy (keV)", ylab = "Count")
+
+## Savitzky–Golay filter
 LaBr_savitzky <- smooth_savitzky(LaBr, m = 21, p = 2)
 plot(LaBr_savitzky, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
@@ -102,6 +120,7 @@ Data by Simplified Least Squares Procedures. \emph{Analytical Chemistry},
 }
 \seealso{
 Other signal processing methods: 
+\code{\link{rescale}},
 \code{\link{signal_transform}()},
 \code{\link{subset}()}
 }

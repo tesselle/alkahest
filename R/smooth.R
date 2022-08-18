@@ -95,6 +95,39 @@ setMethod(
   }
 )
 
+# Loess smoothing ==============================================================
+#' @export
+#' @rdname smooth
+#' @aliases smooth_loess,numeric,numeric-method
+setMethod(
+  f = "smooth_loess",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, span = 0.75) {
+
+    points <- data.frame(x, y)
+    fit <- stats::loess(y ~ x, data = points, span = span, degree = 2,
+                        family = "gaussian")
+    bsl <- stats::predict(fit)
+
+    xy <- list(x = x, y = bsl)
+    attr(xy, "method") <- "loess smoothing"
+    xy
+  }
+)
+
+#' @export
+#' @rdname smooth
+#' @aliases smooth_loess,ANY,missing-method
+setMethod(
+  f = "smooth_loess",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, span = 0.75) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, span = span)
+  }
+)
+
+# Savitzky-Golay filter ========================================================
 #' @export
 #' @rdname smooth
 #' @aliases smooth_savitzky,numeric,numeric-method

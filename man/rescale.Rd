@@ -85,7 +85,13 @@ plot(BEGe_total, type = "l", xlab = "Energy (keV)", ylab = "Count")
 BEGe_range <- rescale_range(BEGe, min = 0, max = 1)
 plot(BEGe_range, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
+\seealso{
+Other signal processing methods: 
+\code{\link{signal_transform}()},
+\code{\link{smooth}()},
+\code{\link{subset}()}
+}
 \author{
 N. Frerebeau
 }
-\concept{normalizing methods}
+\concept{signal processing methods}

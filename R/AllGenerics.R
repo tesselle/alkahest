@@ -122,7 +122,7 @@ setGeneric(
 #' @example inst/examples/ex-rescale.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family normalizing methods
+#' @family signal processing methods
 #' @name rescale
 #' @rdname rescale
 NULL
@@ -230,7 +230,9 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param m An odd [`integer`] giving the number of adjacent points to be used.
-#' @param p An [`integer`] giving the polynomial degree.
+#' @param p An [`integer`] giving the degree of the polynomial to be used.
+#' @param span An [`integer`] specifying the degree of smoothing (see
+#'  [stats::loess()]).
 #' @param ... Currently not used.
 #' @details
 #'  The following smoothing methods are available:
@@ -241,6 +243,7 @@ setGeneric(
 #'   \item{`triangular`}{Weighted sliding-average or triangular smooth.
 #'   It replaces each point in the signal with the weighted mean of \eqn{m}
 #'   adjacent points.}
+#'   \item{`loess`}{Smooth by Loess fitting.}
 #'   \item{`savitzky`}{Savitzky-Golay filter. This method is based on the
 #'   least-squares fitting of polynomials to segments of \eqn{m} adjacent
 #'   points.}
@@ -282,6 +285,14 @@ setGeneric(
 setGeneric(
   name = "smooth_triangular",
   def = function(x, y, ...) standardGeneric("smooth_triangular"),
+  valueClass = "list"
+)
+
+#' @rdname smooth
+#' @aliases smooth_loess-method
+setGeneric(
+  name = "smooth_loess",
+  def = function(x, y, ...) standardGeneric("smooth_loess"),
   valueClass = "list"
 )
 
