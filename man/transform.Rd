@@ -35,6 +35,7 @@ low signal-to-noise ratio. This particularly targets higher energy peaks.
 }
 \seealso{
 Other signal processing methods: 
+\code{\link{smooth}()},
 \code{\link{subset}()}
 }
 \author{

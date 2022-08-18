@@ -21,7 +21,8 @@ RoxygenNote: 7.2.1
 Imports: 
     grDevices,
     methods,
-    stats
+    stats,
+    utils
 Collate: 
     'AllGenerics.R'
     'baseline.R'
@@ -29,4 +30,5 @@ Collate:
     'helpers.R'
     'kirke-package.R'
     'signal.R'
+    'smooth.R'
 LazyData: true

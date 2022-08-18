@@ -68,7 +68,8 @@ plot(BEGe_2, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
 \seealso{
 Other signal processing methods: 
-\code{\link{signal_transform}()}
+\code{\link{signal_transform}()},
+\code{\link{smooth}()}
 }
 \author{
 N. Frerebeau

@@ -32,5 +32,6 @@
 
 #' @importFrom grDevices chull xy.coords
 #' @importFrom methods .valueClassTest callGeneric setGeneric setMethod
-#' @importFrom stats approx lm predict smooth.spline spline
+#' @importFrom stats approx lm predict smooth.spline spline weighted.mean
+#' @importFrom utils head tail
 NULL

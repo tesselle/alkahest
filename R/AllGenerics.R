@@ -167,3 +167,72 @@ setGeneric(
   valueClass = "list"
 )
 
+# Smooth =======================================================================
+#' Smooth
+#'
+#' Smoothes intensities.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param m An odd [`integer`] giving the number of adjacent points to be used.
+#' @param p An [`integer`] giving the polynomial degree.
+#' @param ... Currently not used.
+#' @details
+#'  The following smoothing methods are available:
+#'  \describe{
+#'   \item{`rectangular`}{Unweighted sliding-average or rectangular smooth.
+#'   It replaces each point in the signal with the average of \eqn{m} adjacent
+#'   points.}
+#'   \item{`triangular`}{Weighted sliding-average or triangular smooth.
+#'   It replaces each point in the signal with the weighted mean of \eqn{m}
+#'   adjacent points.}
+#'   \item{`savitzky`}{Savitzky-Golay filter. This method is based on the
+#'   least-squares fitting of polynomials to segments of \eqn{m} adjacent
+#'   points.}
+#'  }
+#'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+#'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
+#'  calculated. To prevent data loss, progressively smaller smooths are used at
+#'  the ends of the spectrum by `smooth_rectangular()` and
+#'  `smooth_triangular()`. If the Savitzky-Golay filter is used, the original
+#'  \eqn{(m - 1) / 2} points at the ends of the spectrum are preserved.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @references
+#'  Gorry, P. A. (1990). General Least-Squares Smoothing and Differentiation by
+#'  the Convolution (Savitzky-Golay) Method. *Analytical Chemistry*, 62(6),
+#'  p. 570-573. \doi{10.1021/ac00205a007}.
+#'
+#'  Savitzky, A. & Golay, M. J. E. (1964). Smoothing and Differentiation of
+#'  Data by Simplified Least Squares Procedures. *Analytical Chemistry*,
+#'  36(8), p. 1627-1639. \doi{10.1021/ac60214a047}.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-smooth.R
+#' @docType methods
+#' @family signal processing methods
+#' @name smooth
+#' @rdname smooth
+NULL
+
+#' @rdname smooth
+#' @aliases smooth_rectangular-method
+setGeneric(
+  name = "smooth_rectangular",
+  def = function(x, y, ...) standardGeneric("smooth_rectangular"),
+  valueClass = "list"
+)
+
+#' @rdname smooth
+#' @aliases smooth_triangular-method
+setGeneric(
+  name = "smooth_triangular",
+  def = function(x, y, ...) standardGeneric("smooth_triangular"),
+  valueClass = "list"
+)
+
+#' @rdname smooth
+#' @aliases smooth_savitzky-method
+setGeneric(
+  name = "smooth_savitzky",
+  def = function(x, y, ...) standardGeneric("smooth_savitzky"),
+  valueClass = "list"
+)
