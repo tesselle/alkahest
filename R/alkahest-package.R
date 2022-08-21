@@ -1,6 +1,6 @@
 #' @details
 #' \tabular{ll}{
-#'  **Package:** \tab kirke \cr
+#'  **Package:** \tab alkahest \cr
 #'  **Type:** \tab Package \cr
 #'  **Version:** \tab 0.0.0.9000 \cr
 #'  **License:** \tab GPL-3 \cr
@@ -24,8 +24,8 @@
 #' Université Bordeaux Montaigne\cr
 #' 33607 Pessac cedex\cr
 #' France
-#' @name kirke-package
-#' @aliases kirke
+#' @name alkahest-package
+#' @aliases alkahest
 #' @docType package
 #' @keywords internal
 "_PACKAGE"
