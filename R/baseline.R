@@ -4,7 +4,7 @@ NULL
 
 # Linear =======================================================================
 #' @export
-#' @rdname baseline
+#' @rdname baseline_linear
 #' @aliases baseline_linear,numeric,numeric-method
 setMethod(
   f = "baseline_linear",
@@ -29,7 +29,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname baseline
+#' @rdname baseline_linear
 #' @aliases baseline_linear,ANY,missing-method
 setMethod(
   f = "baseline_linear",
@@ -42,7 +42,7 @@ setMethod(
 
 # Rubberband ===================================================================
 #' @export
-#' @rdname baseline
+#' @rdname baseline_rubberband
 #' @aliases baseline_rubberband,numeric,numeric-method
 setMethod(
   f = "baseline_rubberband",
@@ -86,7 +86,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname baseline
+#' @rdname baseline_rubberband
 #' @aliases baseline_rubberband,ANY,missing-method
 setMethod(
   f = "baseline_rubberband",
@@ -99,12 +99,12 @@ setMethod(
 
 # SNIP =========================================================================
 #' @export
-#' @rdname baseline
+#' @rdname baseline_snip
 #' @aliases baseline_snip,numeric,numeric-method
 setMethod(
   f = "baseline_snip",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, LLS = FALSE, decreasing = FALSE, n = 100, ...) {
+  definition = function(x, y, LLS = FALSE, decreasing = FALSE, n = 100) {
     ## LLS operator
     y <- if (LLS) LLS(y) else y
 
@@ -136,15 +136,15 @@ setMethod(
 )
 
 #' @export
-#' @rdname baseline
+#' @rdname baseline_snip
 #' @aliases baseline_snip,ANY,missing-method
 setMethod(
   f = "baseline_snip",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, LLS = FALSE, decreasing = FALSE, n = 100, ...) {
+  definition = function(x, LLS = FALSE, decreasing = FALSE, n = 100) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, LLS = LLS, decreasing = decreasing,
-                         n = n, ...)
+                         n = n)
   }
 )
 

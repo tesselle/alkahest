@@ -4,7 +4,7 @@ NULL
 
 # Unweighted smoothing =========================================================
 #' @export
-#' @rdname smooth
+#' @rdname smooth_rectangular
 #' @aliases smooth_rectangular,numeric,numeric-method
 setMethod(
   f = "smooth_rectangular",
@@ -37,7 +37,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname smooth
+#' @rdname smooth_rectangular
 #' @aliases smooth_rectangular,ANY,missing-method
 setMethod(
   f = "smooth_rectangular",
@@ -50,7 +50,7 @@ setMethod(
 
 # Weighted smoothing ===========================================================
 #' @export
-#' @rdname smooth
+#' @rdname smooth_triangular
 #' @aliases smooth_triangular,numeric,numeric-method
 setMethod(
   f = "smooth_triangular",
@@ -84,7 +84,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname smooth
+#' @rdname smooth_triangular
 #' @aliases smooth_triangular,ANY,missing-method
 setMethod(
   f = "smooth_triangular",
@@ -97,16 +97,15 @@ setMethod(
 
 # Loess smoothing ==============================================================
 #' @export
-#' @rdname smooth
+#' @rdname smooth_loess
 #' @aliases smooth_loess,numeric,numeric-method
 setMethod(
   f = "smooth_loess",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, span = 0.75) {
+  definition = function(x, y, span = 0.75, ...) {
 
     points <- data.frame(x, y)
-    fit <- stats::loess(y ~ x, data = points, span = span, degree = 2,
-                        family = "gaussian")
+    fit <- stats::loess(y ~ x, data = points, span = span, ...)
     bsl <- stats::predict(fit)
 
     xy <- list(x = x, y = bsl)
@@ -116,20 +115,20 @@ setMethod(
 )
 
 #' @export
-#' @rdname smooth
+#' @rdname smooth_loess
 #' @aliases smooth_loess,ANY,missing-method
 setMethod(
   f = "smooth_loess",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, span = 0.75) {
+  definition = function(x, span = 0.75, ...) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, span = span)
+    methods::callGeneric(x = xy$x, y = xy$y, span = span, ...)
   }
 )
 
 # Savitzky-Golay filter ========================================================
 #' @export
-#' @rdname smooth
+#' @rdname smooth_savitzky
 #' @aliases smooth_savitzky,numeric,numeric-method
 setMethod(
   f = "smooth_savitzky",
@@ -163,7 +162,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname smooth
+#' @rdname smooth_savitzky
 #' @aliases smooth_savitzky,ANY,missing-method
 setMethod(
   f = "smooth_savitzky",

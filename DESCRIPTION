@@ -32,7 +32,7 @@ Collate:
     'baseline.R'
     'data.R'
     'helpers.R'
-    'scale.R'
+    'rescale.R'
     'signal.R'
     'smooth.R'
 LazyData: true

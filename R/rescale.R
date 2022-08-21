@@ -3,7 +3,7 @@
 NULL
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_total
 #' @aliases rescale_total,numeric,numeric-method
 setMethod(
   f = "rescale_total",
@@ -16,7 +16,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_total
 #' @aliases rescale_total,ANY,missing-method
 setMethod(
   f = "rescale_total",
@@ -28,7 +28,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_range,numeric,numeric-method
 setMethod(
   f = "rescale_range",
@@ -41,7 +41,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_range,ANY,missing-method
 setMethod(
   f = "rescale_range",
@@ -53,7 +53,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_min,numeric,numeric-method
 setMethod(
   f = "rescale_min",
@@ -64,7 +64,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_min,ANY,missing-method
 setMethod(
   f = "rescale_min",
@@ -76,7 +76,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_max,numeric,numeric-method
 setMethod(
   f = "rescale_max",
@@ -87,7 +87,7 @@ setMethod(
 )
 
 #' @export
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_max,ANY,missing-method
 setMethod(
   f = "rescale_max",

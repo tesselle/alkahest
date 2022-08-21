@@ -1,45 +1,74 @@
 # GENERIC METHODS
 
 # Baseline =====================================================================
-#' Baseline Estimation
+#' Linear Baseline Estimation
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param LLS A [`logical`] scalar: should the LLS operator be applied on `x`
-#'  before employing SNIP algorithm? Only used if `method` is "`SNIP`".
-#' @param decreasing A [`logical`] scalar: should a decreasing clipping window
-#'  be used? Only used if `method` is "`SNIP`".
-#' @param n An [`integer`] value giving the number of iterations.
-#'  Only used if `method` is "`SNIP`".
+#' @param from An [`numeric`] value giving the first data point (in `x` unit)
+#'  to be used for linear interpolation.
+#' @param to An [`integer`] value giving the last data point (in `x` unit)
+#'  to be used for linear interpolation.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-baseline.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_linear-method
+setGeneric(
+  name = "baseline_linear",
+  def = function(x, y, ...) standardGeneric("baseline_linear"),
+  valueClass = "list"
+)
+
+#' Rubberband Baseline Estimation
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param noise A length-one [`numeric`] vector giving the noise level.
 #'  Only used if `method` is "`rubberband`".
 #' @param spline A [`logical`] scalar: should spline interpolation through the
 #'  support points be used instead of linear interpolation?
 #'  Only used if `method` is "`rubberband`".
-#' @param from An [`numeric`] value giving the first data point (in `x` unit)
-#'  to be used for linear interpolation.
-#' @param to An [`integer`] value giving the last data point (in `x` unit)
-#'  to be used for linear interpolation.
-#' @param ... Extra parameters to be passed to further methods.
+#' @param ... Extra parameters to be passed to [stats::smooth.spline()].
 #' @details
-#'  The following methods are available for baseline estimation:
-#'  \describe{
-#'   \item{`SNIP`}{Sensitive Nonlinear Iterative Peak clipping algorithm.}
-#'   \item{`rubberband`}{A convex envelope of the spectrum is determined and the
-#'   baseline is estimated as the part of the convex envelope lying below the
-#'   spectrum. Note that the rubber band does not enter the concave regions
-#'   (if any) of the spectrum.}
-#'   \item{`linear`}{Linear baseline estimation.}
-#'  }
+#'  A convex envelope of the spectrum is determined and the
+#'  baseline is estimated as the part of the convex envelope lying below the
+#'  spectrum. Note that the rubber band does not enter the concave regions
+#'  (if any) of the spectrum.
 #' @note
 #'  `baseline_rubberband()` is slightly modified from C. Beleites'
 #'  [hyperSpec::spc.rubberband()].
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
-#' @references
-#'  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
-#'  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
+#' @example inst/examples/ex-baseline.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_rubberband-method
+setGeneric(
+  name = "baseline_rubberband",
+  def = function(x, y, ...) standardGeneric("baseline_rubberband"),
+  valueClass = "list"
+)
+
+#' SNIP Baseline Estimation
 #'
+#' Sensitive Nonlinear Iterative Peak clipping algorithm.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param LLS A [`logical`] scalar: should the LLS operator be applied on `x`
+#'  before employing SNIP algorithm? Only used if `method` is "`SNIP`".
+#' @param decreasing A [`logical`] scalar: should a decreasing clipping window
+#'  be used?
+#' @param n An [`integer`] value giving the number of iterations.
+#'  Only used if `method` is "`SNIP`".
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @references#'
 #'  Morháč, M., Kliman, J., Matoušek, V., Veselský, M. & Turzo, I. (1997).
 #'  Background elimination methods for multidimensional gamma-ray spectra.
 #'  *Nuclear Instruments and Methods in Physics Research Section A:
@@ -60,27 +89,6 @@
 #' @author N. Frerebeau
 #' @docType methods
 #' @family baseline estimation methods
-#' @name baseline
-#' @rdname baseline
-NULL
-
-#' @rdname baseline
-#' @aliases baseline_linear-method
-setGeneric(
-  name = "baseline_linear",
-  def = function(x, y, ...) standardGeneric("baseline_linear"),
-  valueClass = "list"
-)
-
-#' @rdname baseline
-#' @aliases baseline_rubberband-method
-setGeneric(
-  name = "baseline_rubberband",
-  def = function(x, y, ...) standardGeneric("baseline_rubberband"),
-  valueClass = "list"
-)
-
-#' @rdname baseline
 #' @aliases baseline_snip-method
 setGeneric(
   name = "baseline_snip",
@@ -96,6 +104,9 @@ setGeneric(
 #   valueClass = "list"
 # )
 
+
+#  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
+#  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
 # @rdname baseline
 # @aliases baseline_peakfilling-method
 # setGeneric(
@@ -105,15 +116,32 @@ setGeneric(
 # )
 
 # Scale ========================================================================
-#' Normalize Intensities
+#' Rescales intensities to sum to a specified value
 #'
-#' @description
-#'  * `rescale_total()` rescales intensities to sum to a specified value.
-#'  * `rescale_range()`, `rescale_min()` and`rescale_max()` rescales intensities
-#'  to have specified minimum and maximum.
+#' Rescales intensities to sum to a specified value.
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param total A legnth-one [`numeric`] vector specifying the output total.
+#'  Defaults to 1, i.e. normalizes by total intensity.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-rescale.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family normalization methods
+#' @aliases rescale_total-method
+setGeneric(
+  name = "rescale_total",
+  def = function(x, y, ...) standardGeneric("rescale_total"),
+  valueClass = "list"
+)
+
+#' Rescales intensities to have specified minimum and maximum
+#'
+#' Rescales intensities to have specified minimum and maximum.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param min A legnth-one [`numeric`] vector specifying the output minimum.
 #' @param max A legnth-one [`numeric`] vector specifying the output maximum.
 #' @param ... Currently not used.
@@ -122,20 +150,7 @@ setGeneric(
 #' @example inst/examples/ex-rescale.R
 #' @author N. Frerebeau
 #' @docType methods
-#' @family signal processing methods
-#' @name rescale
-#' @rdname rescale
-NULL
-
-#' @rdname rescale
-#' @aliases rescale_total-method
-setGeneric(
-  name = "rescale_total",
-  def = function(x, y, ...) standardGeneric("rescale_total"),
-  valueClass = "list"
-)
-
-#' @rdname rescale
+#' @family normalization methods
 #' @aliases rescale_range-method
 setGeneric(
   name = "rescale_range",
@@ -143,7 +158,7 @@ setGeneric(
   valueClass = "list"
 )
 
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_min-method
 setGeneric(
   name = "rescale_min",
@@ -151,35 +166,11 @@ setGeneric(
   valueClass = "list"
 )
 
-#' @rdname rescale
+#' @rdname rescale_range
 #' @aliases rescale_max-method
 setGeneric(
   name = "rescale_max",
   def = function(x, y, ...) standardGeneric("rescale_max"),
-  valueClass = "list"
-)
-
-#' Transform Intensities
-#'
-#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
-#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param f A [`function`] that takes a `numeric` vector of intensities as
-#'  argument and returns a `numeric` vector.
-#' @param ... Extra arguments to be passed to `f`.
-#' @details
-#'  The stabilization step aims at improving the identification of peaks with a
-#'  low signal-to-noise ratio. This particularly targets higher energy peaks.
-#' @return
-#'  Returns a [`list`] with two components `x` and `y`.
-#' @example inst/examples/ex-transform.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family signal processing methods
-#' @rdname transform
-#' @aliases signal_transform-method
-setGeneric(
-  name = "signal_transform",
-  def = function(x, y, ...) standardGeneric("signal_transform"),
   valueClass = "list"
 )
 
@@ -223,37 +214,123 @@ setGeneric(
   valueClass = "list"
 )
 
-# Smooth =======================================================================
-#' Smooth
+#' Transform Intensities
 #'
-#' Smoothes intensities.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param f A [`function`] that takes a `numeric` vector of intensities as
+#'  argument and returns a `numeric` vector.
+#' @param ... Extra arguments to be passed to `f`.
+#' @details
+#'  The stabilization step aims at improving the identification of peaks with a
+#'  low signal-to-noise ratio. This particularly targets higher energy peaks.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-transform.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family signal processing methods
+#' @rdname transform
+#' @aliases signal_transform-method
+setGeneric(
+  name = "signal_transform",
+  def = function(x, y, ...) standardGeneric("signal_transform"),
+  valueClass = "list"
+)
+
+# Smooth =======================================================================
+#' Rectangular Smoothing
+#'
+#' Unweighted sliding-average or rectangular Smoothing.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param m An odd [`integer`] giving the number of adjacent points to be used.
+#' @param ... Currently not used.
+#' @details
+#'  It replaces each point in the signal with the average of \eqn{m} adjacent
+#'  points.
+#'
+#'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+#'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
+#'  calculated. To prevent data loss, progressively smaller smooths are used at
+#'  the ends of the spectrum.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-smooth.R
+#' @docType methods
+#' @family smoothing methods
+#' @aliases smooth_rectangular-method
+setGeneric(
+  name = "smooth_rectangular",
+  def = function(x, y, ...) standardGeneric("smooth_rectangular"),
+  valueClass = "list"
+)
+
+#' Triangular Smoothing
+#'
+#' Weighted sliding-average or triangular smoothing.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param m An odd [`integer`] giving the number of adjacent points to be used.
+#' @param ... Currently not used.
+#' @details
+#'  It replaces each point in the signal with the weighted mean of \eqn{m}
+#'  adjacent points.
+#'
+#'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+#'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
+#'  calculated. To prevent data loss, progressively smaller smooths are used at
+#'  the ends of the spectrum.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-smooth.R
+#' @docType methods
+#' @family smoothing methods
+#' @aliases smooth_triangular-method
+setGeneric(
+  name = "smooth_triangular",
+  def = function(x, y, ...) standardGeneric("smooth_triangular"),
+  valueClass = "list"
+)
+
+#' Loess Smoothing
+#'
+#' Smoothes intensities by loess fitting.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param span An [`integer`] specifying the degree of smoothing (see
+#'  [stats::loess()]).
+#' @param ... Extra parameters to be passed to [stats::loess()].
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-smooth.R
+#' @docType methods
+#' @family smoothing methods
+#' @aliases smooth_loess-method
+setGeneric(
+  name = "smooth_loess",
+  def = function(x, y, ...) standardGeneric("smooth_loess"),
+  valueClass = "list"
+)
+
+#' Savitzky-Golay Filter
+#'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param m An odd [`integer`] giving the number of adjacent points to be used.
 #' @param p An [`integer`] giving the degree of the polynomial to be used.
-#' @param span An [`integer`] specifying the degree of smoothing (see
-#'  [stats::loess()]).
 #' @param ... Currently not used.
 #' @details
-#'  The following smoothing methods are available:
-#'  \describe{
-#'   \item{`rectangular`}{Unweighted sliding-average or rectangular smooth.
-#'   It replaces each point in the signal with the average of \eqn{m} adjacent
-#'   points.}
-#'   \item{`triangular`}{Weighted sliding-average or triangular smooth.
-#'   It replaces each point in the signal with the weighted mean of \eqn{m}
-#'   adjacent points.}
-#'   \item{`loess`}{Smooth by Loess fitting.}
-#'   \item{`savitzky`}{Savitzky-Golay filter. This method is based on the
-#'   least-squares fitting of polynomials to segments of \eqn{m} adjacent
-#'   points.}
-#'  }
+#'  This method is based on the least-squares fitting of polynomials to
+#'  segments of \eqn{m} adjacent points.
+#'
 #'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
 #'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
-#'  calculated. To prevent data loss, progressively smaller smooths are used at
-#'  the ends of the spectrum by `smooth_rectangular()` and
-#'  `smooth_triangular()`. If the Savitzky-Golay filter is used, the original
-#'  \eqn{(m - 1) / 2} points at the ends of the spectrum are preserved.
+#'  calculated. To prevent data loss, the original \eqn{(m - 1) / 2} points at
+#'  the ends of the spectrum are preserved.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @references
@@ -267,36 +344,7 @@ setGeneric(
 #' @author N. Frerebeau
 #' @example inst/examples/ex-smooth.R
 #' @docType methods
-#' @family signal processing methods
-#' @name smooth
-#' @rdname smooth
-NULL
-
-#' @rdname smooth
-#' @aliases smooth_rectangular-method
-setGeneric(
-  name = "smooth_rectangular",
-  def = function(x, y, ...) standardGeneric("smooth_rectangular"),
-  valueClass = "list"
-)
-
-#' @rdname smooth
-#' @aliases smooth_triangular-method
-setGeneric(
-  name = "smooth_triangular",
-  def = function(x, y, ...) standardGeneric("smooth_triangular"),
-  valueClass = "list"
-)
-
-#' @rdname smooth
-#' @aliases smooth_loess-method
-setGeneric(
-  name = "smooth_loess",
-  def = function(x, y, ...) standardGeneric("smooth_loess"),
-  valueClass = "list"
-)
-
-#' @rdname smooth
+#' @family smoothing methods
 #' @aliases smooth_savitzky-method
 setGeneric(
   name = "smooth_savitzky",

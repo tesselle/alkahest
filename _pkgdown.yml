@@ -13,6 +13,12 @@ reference:
 - title: Baseline Estimation
   contents:
   - has_concept("baseline estimation methods")
+- title: Smoothing
+  contents:
+  - has_concept("smoothing methods")
+- title: Normalization
+  contents:
+  - has_concept("normalization methods")
 - title: Datasets
   contents:
   - has_concept("datasets")
