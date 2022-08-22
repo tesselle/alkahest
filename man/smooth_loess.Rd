@@ -18,7 +18,7 @@ smooth_loess(x, y, ...)
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
-\item{...}{Extra parameters to be passed to \code{\link[stats:loess]{stats::loess()}}.}
+\item{...}{Extra arguments to be passed to \code{\link[stats:loess]{stats::loess()}}.}
 
 \item{span}{An \code{\link{integer}} specifying the degree of smoothing (see
 \code{\link[stats:loess]{stats::loess()}}).}

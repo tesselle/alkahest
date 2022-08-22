@@ -18,7 +18,7 @@ baseline_rubberband(x, y, ...)
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
-\item{...}{Extra parameters to be passed to \code{\link[stats:smooth.spline]{stats::smooth.spline()}}.}
+\item{...}{Extra arguments to be passed to \code{\link[stats:smooth.spline]{stats::smooth.spline()}}.}
 
 \item{noise}{A length-one \code{\link{numeric}} vector giving the noise level.
 Only used if \code{method} is "\code{rubberband}".}
@@ -53,12 +53,6 @@ BEGe <- signal_select(BEGe, from = 3, to = 200)
 ## Plot spectrum
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
-## Linear baseline
-BEGe_linear <- baseline_linear(x = BEGe, from = 8, to = 20)
-
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_linear, type = "l", col = "red")
-
 ## Rubberband baseline
 BEGe_rubber <- baseline_rubberband(BEGe)
 
@@ -70,8 +64,17 @@ BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_snip, type = "l", col = "red")
+
+## Baseline correction
+BEGe_corr <- signal_correct(BEGe, method = "SNIP",
+                            LLS = FALSE, decreasing = FALSE, n = 100)
+
+plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+lines(BEGe_corr, type = "l", col = "red")
 }
 \seealso{
+\code{\link[=signal_correct]{signal_correct()}}
+
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
 \code{\link{baseline_snip}()}

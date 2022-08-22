@@ -45,12 +45,6 @@ BEGe <- signal_select(BEGe, from = 3, to = 200)
 ## Plot spectrum
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
-## Linear baseline
-BEGe_linear <- baseline_linear(x = BEGe, from = 8, to = 20)
-
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_linear, type = "l", col = "red")
-
 ## Rubberband baseline
 BEGe_rubber <- baseline_rubberband(BEGe)
 
@@ -62,9 +56,15 @@ BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_snip, type = "l", col = "red")
+
+## Baseline correction
+BEGe_corr <- signal_correct(BEGe, method = "SNIP",
+                            LLS = FALSE, decreasing = FALSE, n = 100)
+
+plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+lines(BEGe_corr, type = "l", col = "red")
 }
 \references{
-#'
 Morháč, M., Kliman, J., Matoušek, V., Veselský, M. & Turzo, I. (1997).
 Background elimination methods for multidimensional gamma-ray spectra.
 \emph{Nuclear Instruments and Methods in Physics Research Section A:
@@ -83,6 +83,8 @@ Beam Interactions with Materials and Atoms}, 34(3), p. 396-402.
 \doi{10.1016/0168-583X(88)90063-8}
 }
 \seealso{
+\code{\link[=signal_correct]{signal_correct()}}
+
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
 \code{\link{baseline_rubberband}()}

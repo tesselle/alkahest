@@ -63,6 +63,46 @@ setMethod(
   }
 )
 
+# Baseline correction ==========================================================
+#' @export
+#' @rdname signal_correct
+#' @aliases signal_correct,numeric,numeric-method
+setMethod(
+  f = "signal_correct",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, method = c("linear", "rubberband", "SNIP"), ...) {
+    ## Validation
+    method <- match.arg(method, several.ok = FALSE)
+
+    ## Get method
+    f <- switch(
+      method,
+      linear = baseline_linear,
+      rubberband = baseline_rubberband,
+      SNIP = baseline_snip
+    )
+
+    ## Baseline estimation
+    bsl <- f(x = x, y = y, ...)
+
+    xy <- list(x = x, y = y - bsl$y)
+    attr(xy, "method") <- method
+    xy
+  }
+)
+
+#' @export
+#' @rdname signal_correct
+#' @aliases signal_correct,ANY,missing-method
+setMethod(
+  f = "signal_correct",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, method = c("linear", "rubberband", "SNIP"), ...) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, method = method, ...)
+  }
+)
+
 # Transform ====================================================================
 #' @export
 #' @rdname transform

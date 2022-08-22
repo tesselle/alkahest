@@ -12,6 +12,7 @@
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
+#' @seealso [signal_correct()]
 #' @example inst/examples/ex-baseline.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -32,7 +33,7 @@ setGeneric(
 #' @param spline A [`logical`] scalar: should spline interpolation through the
 #'  support points be used instead of linear interpolation?
 #'  Only used if `method` is "`rubberband`".
-#' @param ... Extra parameters to be passed to [stats::smooth.spline()].
+#' @param ... Extra arguments to be passed to [stats::smooth.spline()].
 #' @details
 #'  A convex envelope of the spectrum is determined and the
 #'  baseline is estimated as the part of the convex envelope lying below the
@@ -43,6 +44,7 @@ setGeneric(
 #'  [hyperSpec::spc.rubberband()].
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
+#' @seealso [signal_correct()]
 #' @example inst/examples/ex-baseline.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -68,7 +70,8 @@ setGeneric(
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
-#' @references#'
+#' @seealso [signal_correct()]
+#' @references
 #'  Morháč, M., Kliman, J., Matoušek, V., Veselský, M. & Turzo, I. (1997).
 #'  Background elimination methods for multidimensional gamma-ray spectra.
 #'  *Nuclear Instruments and Methods in Physics Research Section A:
@@ -175,6 +178,24 @@ setGeneric(
 )
 
 # Signal =======================================================================
+#' Baseline Correction
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param method A [`character`] string specifying the method for baseline
+#'  estimation. It must be one of "`linear`", "`rubberband`" or "`SNIP`".
+#'  Any unambiguous substring can be given.
+#' @param ... Extra arguments to be passed to `baseline_*()`.
+#' @example inst/examples/ex-baseline.R
+#' @docType methods
+#' @family signal processing methods
+#' @aliases signal_correct-method
+setGeneric(
+  name = "signal_correct",
+  def = function(x, y, ...) standardGeneric("signal_correct"),
+  valueClass = "list"
+)
+
 #' Subset
 #'
 #' @description
@@ -302,7 +323,7 @@ setGeneric(
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param span An [`integer`] specifying the degree of smoothing (see
 #'  [stats::loess()]).
-#' @param ... Extra parameters to be passed to [stats::loess()].
+#' @param ... Extra arguments to be passed to [stats::loess()].
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @author N. Frerebeau
