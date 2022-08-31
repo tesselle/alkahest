@@ -3,11 +3,11 @@
 \docType{data}
 \name{LaBr}
 \alias{LaBr}
-\title{In-situ Gamma-Ray Spectrometry}
+\title{Gamma-Ray Spectrometry}
 \format{
 A \code{\link{data.frame}} with 1024 rows (channels) and 2 variables.
 \describe{
-\item{energy}{(keV).}
+\item{energy}{(keV)}
 \item{count}{}
 }
 }
@@ -15,7 +15,11 @@ A \code{\link{data.frame}} with 1024 rows (channels) and 2 variables.
 LaBr
 }
 \description{
-In-situ Gamma-Ray Spectrometry
+Gamma-Ray Spectrometry
+}
+\examples{
+data("LaBr")
+plot(LaBr, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
 \seealso{
 Other datasets: 

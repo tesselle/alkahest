@@ -66,8 +66,7 @@ plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_snip, type = "l", col = "red")
 
 ## Baseline correction
-BEGe_corr <- signal_correct(BEGe, method = "SNIP",
-                            LLS = FALSE, decreasing = FALSE, n = 100)
+BEGe_corr <- signal_correct(BEGe, method = "SNIP")
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_corr, type = "l", col = "red")

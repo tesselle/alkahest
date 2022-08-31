@@ -7,7 +7,7 @@
 \format{
 A \code{\link{data.frame}} with 8192 rows (channels) and 2 variables.
 \describe{
-\item{energy}{(keV).}
+\item{energy}{(keV)}
 \item{count}{}
 }
 }
@@ -16,6 +16,10 @@ BEGe
 }
 \description{
 Gamma-Ray Spectrometry
+}
+\examples{
+data("BEGe")
+plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
 \seealso{
 Other datasets: 

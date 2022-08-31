@@ -32,12 +32,11 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 
 ## Overview
 
-Pre-Process XY Data from Experimental Methods. **alkahest** is a toolbox
-for pre-processing XY data from experimental methods (i.e. any signal
-that can be measured along a continuous variable). It provides methods
-for baseline correction, smoothing, normalization and integration.
-
-This package depends only on the base R packages.
+Pre-Process XY Data from Experimental Methods. **alkahest** is a
+lightweight, dependency-free toolbox for pre-processing XY data from
+experimental methods (i.e. any signal that can be measured along a
+continuous variable). It provides methods for baseline correction,
+smoothing, normalization and integration.
 
 ## Installation
 
