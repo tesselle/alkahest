@@ -174,6 +174,43 @@ setGeneric(
   def = function(x, y, ...) standardGeneric("peaks_fwhm")
 )
 
+# Replace ======================================================================
+#' Replace Values Below a Given Threshold
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param threshold A [`numeric`] value or a [`function`] that takes a numeric
+#'  vector as argument and returns a single numeric value.
+#' @param value A [`numeric`] value to replace values below `threshold`.
+#' @param ... Extra parameters to be passed to `threshold`.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family replacement methods
+#' @aliases replace_threshold-method
+setGeneric(
+  name = "replace_threshold",
+  def = function(x, y, threshold, ...) standardGeneric("replace_threshold")
+)
+
+#' Replace Negative Values
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param value A [`numeric`] value to replace negative values.
+#' @param ... Extra parameters to be passed to `threshold`.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @docType methods
+#' @family replacement methods
+#' @aliases replace_negative-method
+setGeneric(
+  name = "replace_negative",
+  def = function(x, y, ...) standardGeneric("replace_negative")
+)
+
 # Scale ========================================================================
 #' Rescales intensities to sum to a specified value
 #'
