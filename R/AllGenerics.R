@@ -118,6 +118,25 @@ setGeneric(
 #   valueClass = "list"
 # )
 
+# Integrate ====================================================================
+#' Trapezoidal Rule
+#'
+#' Approximates the definite integral by using the trapezoidal rule.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-integrate.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family integration methods
+#' @aliases signal_integrate-method
+setGeneric(
+  name = "integrate_trapezoid",
+  def = function(x, y, ...) standardGeneric("integrate_trapezoid")
+)
+
 # Peaks ========================================================================
 #' Find Peaks
 #'

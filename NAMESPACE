@@ -3,6 +3,7 @@
 exportMethods(baseline_linear)
 exportMethods(baseline_rubberband)
 exportMethods(baseline_snip)
+exportMethods(integrate_trapezoid)
 exportMethods(peaks_find)
 exportMethods(peaks_fwhm)
 exportMethods(replace_negative)
