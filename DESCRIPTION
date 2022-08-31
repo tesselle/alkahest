@@ -32,6 +32,7 @@ Collate:
     'baseline.R'
     'data.R'
     'helpers.R'
+    'peaks.R'
     'rescale.R'
     'signal.R'
     'smooth.R'

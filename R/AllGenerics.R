@@ -118,6 +118,62 @@ setGeneric(
 #   valueClass = "list"
 # )
 
+# Peaks ========================================================================
+#' Find Peaks
+#'
+#' Finds local maxima in sequential data.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param method A [`character`] string specifying the method to be used for
+#'  background noise estimation (see below).
+#' @param SNR An [`integer`] giving the signal-to-noise-ratio for peak detection
+#'  (see below).
+#' @param m An odd [`integer`] giving the half window size.
+#'  If `NULL`, 5% of the data points is used as the half window size.
+#' @param ... Extra parameters to be passed to internal methods.
+#' @details
+#'  A local maximum has to be the highest one in the given window and has to be
+#'  higher than \eqn{SNR \times noise}{SNR * noise} to be recognized as peak.
+#'
+#'  The following methods are available for noise estimation:
+#'  \describe{
+#'   \item{`MAD`}{Median Absolute Deviation.}
+#'  }
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @note
+#'  Adapted from Stasia Grinberg's
+#'  [`findPeaks`](https://github.com/stas-g/findPeaks) function.
+#' @example inst/examples/ex-peaks.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family peaks detection methods
+#' @aliases peaks_find-method
+setGeneric(
+  name = "peaks_find",
+  def = function(x, y, ...) standardGeneric("peaks_find")
+)
+
+#' Half-Width at Half-Maximum
+#'
+#' Estimates the Half-Width at Half-Maximum (FWHM) for a given peak.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param center A [`numeric`] value giving the peak position in `x` units.
+#' @param ... Currently not used.
+#' @return A [`numeric`] value.
+#' @details
+#'  It tries to get the smallest possible estimate.
+#' @example inst/examples/ex-peaks.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family peaks detection methods
+#' @aliases peaks_fwhm-method
+setGeneric(
+  name = "peaks_fwhm",
+  def = function(x, y, ...) standardGeneric("peaks_fwhm")
+)
+
 # Scale ========================================================================
 #' Rescales intensities to sum to a specified value
 #'

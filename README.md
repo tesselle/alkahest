@@ -32,11 +32,10 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 
 ## Overview
 
-Pre-Processing XY Data from Experimental Methods. **alkahest** is a
-toolbox for pre-processing XY data from experimental methods (i.e. any
-signal that can be measured along a continuous variable). It provides
-methods for baseline correction, smoothing, normalization and
-integration.
+Pre-Process XY Data from Experimental Methods. **alkahest** is a toolbox
+for pre-processing XY data from experimental methods (i.e. any signal
+that can be measured along a continuous variable). It provides methods
+for baseline correction, smoothing, normalization and integration.
 
 This package depends only on the base R packages.
 
@@ -83,6 +82,20 @@ lines(BEGe_snip, type = "l", col = "red")
 ```
 
 ![](man/figures/README-baseline-1.png)<!-- -->
+
+``` r
+## Correct baseline
+BEGe_correct <- signal_correct(BEGe, method = "SNIP")
+
+## Plot spectrum
+plot(BEGe_correct, type = "l", xlab = "Energy (keV)", ylab = "Count")
+
+## Find peaks
+BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
+lines(BEGe_peaks, type = "p", pch = 16, col = "red")
+```
+
+![](man/figures/README-peaks-1.png)<!-- -->
 
 ``` r
 ## gamma-ray spectrometry

@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-Pre-Processing XY Data from Experimental Methods. **alkahest** is a toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). It provides methods for baseline correction, smoothing, normalization and integration.
+Pre-Process XY Data from Experimental Methods. **alkahest** is a toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). It provides methods for baseline correction, smoothing, normalization and integration.
 
 This package depends only on the base R packages.
 
@@ -70,6 +70,18 @@ BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_snip, type = "l", col = "red")
+```
+
+```{r peaks}
+## Correct baseline
+BEGe_correct <- signal_correct(BEGe, method = "SNIP")
+
+## Plot spectrum
+plot(BEGe_correct, type = "l", xlab = "Energy (keV)", ylab = "Count")
+
+## Find peaks
+BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
+lines(BEGe_peaks, type = "p", pch = 16, col = "red")
 ```
 
 ```{r smooth, fig.width=5, fig.height=5, out.width='50%', fig.show='hold'}

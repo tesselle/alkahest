@@ -16,6 +16,9 @@ reference:
 - title: Smoothing
   contents:
   - has_concept("smoothing methods")
+- title: Peaks Detection
+  contents:
+  - has_concept("peaks detection methods")
 - title: Normalization
   contents:
   - has_concept("normalization methods")
