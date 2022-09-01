@@ -11,7 +11,6 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric", threshold = "function"),
   definition = function(x, y, threshold, value = 0, ...) {
     threshold <- threshold(y, ...)
-    i <- y < threshold
     methods::callGeneric(x, y, threshold = threshold, value = value)
   }
 )
@@ -65,7 +64,7 @@ setMethod(
   f = "replace_negative",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, value = 0) {
-    replace_threshold(x, y, threshold = 0, value = 0)
+    replace_threshold(x, y, threshold = 0, value = value)
   }
 )
 
