@@ -36,6 +36,13 @@ setMethod(
   f = "rescale_range",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, min = 0, max = 1) {
+    ## Validation
+    if (min > max) {
+      msg <- sprintf("%s (%g) must be lower than %s (%g).",
+                     sQuote("min"), min, sQuote("max"), max)
+      stop(msg, call. = FALSE)
+    }
+
     y <- (y - min(y)) / (max(y) - min(y)) * (max - min) + min
     xy <- list(x = x, y = y)
     xy
