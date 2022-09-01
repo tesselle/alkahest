@@ -102,29 +102,3 @@ setMethod(
     methods::callGeneric(x = xy$x, y = xy$y, method = method, ...)
   }
 )
-
-# Transform ====================================================================
-#' @export
-#' @rdname transform
-#' @aliases signal_transform,numeric,numeric-method
-setMethod(
-  f = "signal_transform",
-  signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, f, ...) {
-    y <- f(y, ...)
-    xy <- list(x = x, y = y)
-    xy
-  }
-)
-
-#' @export
-#' @rdname transform
-#' @aliases signal_transform,ANY,missing-method
-setMethod(
-  f = "signal_transform",
-  signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, f, ...) {
-    xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, f = f, ...)
-  }
-)

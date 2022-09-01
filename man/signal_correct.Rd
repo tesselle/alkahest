@@ -57,7 +57,6 @@ lines(BEGe_corr, type = "l", col = "red")
 }
 \seealso{
 Other signal processing methods: 
-\code{\link{signal_transform}()},
 \code{\link{subset}()}
 }
 \concept{signal processing methods}

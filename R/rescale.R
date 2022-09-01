@@ -2,6 +2,7 @@
 #' @include AllGenerics.R
 NULL
 
+# Total ========================================================================
 #' @export
 #' @rdname rescale_total
 #' @aliases rescale_total,numeric,numeric-method
@@ -27,6 +28,7 @@ setMethod(
   }
 )
 
+# Min-Max ======================================================================
 #' @export
 #' @rdname rescale_range
 #' @aliases rescale_range,numeric,numeric-method
@@ -95,5 +97,31 @@ setMethod(
   definition = function(x, max = 1) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, max = max)
+  }
+)
+
+# Transform ====================================================================
+#' @export
+#' @rdname rescale_transform
+#' @aliases rescale_transform,numeric,numeric-method
+setMethod(
+  f = "rescale_transform",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, f, ...) {
+    y <- f(y, ...)
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
+#' @export
+#' @rdname rescale_transform
+#' @aliases rescale_transform,ANY,missing-method
+setMethod(
+  f = "rescale_transform",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, f, ...) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, f = f, ...)
   }
 )

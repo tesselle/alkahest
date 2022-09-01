@@ -289,6 +289,29 @@ setGeneric(
   valueClass = "list"
 )
 
+#' Transform Intensities
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param f A [`function`] that takes a `numeric` vector of intensities as
+#'  argument and returns a `numeric` vector.
+#' @param ... Extra arguments to be passed to `f`.
+#' @details
+#'  Transformation of intensities can be used to improve the identification of
+#'  peaks with a low signal-to-noise ratio.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-transform.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family normalization methods
+#' @aliases rescale_transform-method
+setGeneric(
+  name = "rescale_transform",
+  def = function(x, y, ...) standardGeneric("rescale_transform"),
+  valueClass = "list"
+)
+
 # Signal =======================================================================
 #' Baseline Correction
 #'
@@ -344,30 +367,6 @@ setGeneric(
 setGeneric(
   name = "signal_slice",
   def = function(x, y, ...) standardGeneric("signal_slice"),
-  valueClass = "list"
-)
-
-#' Transform Intensities
-#'
-#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
-#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param f A [`function`] that takes a `numeric` vector of intensities as
-#'  argument and returns a `numeric` vector.
-#' @param ... Extra arguments to be passed to `f`.
-#' @details
-#'  The stabilization step aims at improving the identification of peaks with a
-#'  low signal-to-noise ratio. This particularly targets higher energy peaks.
-#' @return
-#'  Returns a [`list`] with two components `x` and `y`.
-#' @example inst/examples/ex-transform.R
-#' @author N. Frerebeau
-#' @docType methods
-#' @family signal processing methods
-#' @rdname transform
-#' @aliases signal_transform-method
-setGeneric(
-  name = "signal_transform",
-  def = function(x, y, ...) standardGeneric("signal_transform"),
   valueClass = "list"
 )
 
