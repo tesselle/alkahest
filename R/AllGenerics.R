@@ -119,6 +119,26 @@ setGeneric(
 # )
 
 # Integrate ====================================================================
+#' Rectangle Rule
+#'
+#' Approximates the definite integral by using the rectangle rule.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param right A [`logical`] scalar: should the right rule be used instead of
+#'  the left rule?
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-integrate.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family integration methods
+#' @aliases integrate_rectangle-method
+setGeneric(
+  name = "integrate_rectangle",
+  def = function(x, y, ...) standardGeneric("integrate_rectangle")
+)
+
 #' Trapezoidal Rule
 #'
 #' Approximates the definite integral by using the trapezoidal rule.
@@ -131,7 +151,7 @@ setGeneric(
 #' @author N. Frerebeau
 #' @docType methods
 #' @family integration methods
-#' @aliases signal_integrate-method
+#' @aliases integrate_trapezoid-method
 setGeneric(
   name = "integrate_trapezoid",
   def = function(x, y, ...) standardGeneric("integrate_trapezoid")
