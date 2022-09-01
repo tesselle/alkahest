@@ -19,13 +19,16 @@ reference:
 - title: Peaks Detection
   contents:
   - has_concept("peaks detection methods")
+- title: Integration
+  contents:
+  - has_concept("integration methods")
 - title: Normalization
   contents:
   - has_concept("normalization methods")
-- title: Integrate
+- title: Shifting
   contents:
-  - has_concept("integration methods")
-- title: Replace
+  - has_concept("shifting methods")
+- title: Replacement
   contents:
   - has_concept("replacement methods")
 - title: Datasets

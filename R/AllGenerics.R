@@ -170,7 +170,8 @@ setGeneric(
 #' @aliases peaks_find-method
 setGeneric(
   name = "peaks_find",
-  def = function(x, y, ...) standardGeneric("peaks_find")
+  def = function(x, y, ...) standardGeneric("peaks_find"),
+  valueClass = "list"
 )
 
 #' Half-Width at Half-Maximum
@@ -210,7 +211,8 @@ setGeneric(
 #' @aliases replace_threshold-method
 setGeneric(
   name = "replace_threshold",
-  def = function(x, y, threshold, ...) standardGeneric("replace_threshold")
+  def = function(x, y, threshold, ...) standardGeneric("replace_threshold"),
+  valueClass = "list"
 )
 
 #' Replace Negative Values
@@ -227,7 +229,8 @@ setGeneric(
 #' @aliases replace_negative-method
 setGeneric(
   name = "replace_negative",
-  def = function(x, y, ...) standardGeneric("replace_negative")
+  def = function(x, y, ...) standardGeneric("replace_negative"),
+  valueClass = "list"
 )
 
 # Scale ========================================================================
@@ -481,5 +484,49 @@ setGeneric(
 setGeneric(
   name = "smooth_savitzky",
   def = function(x, y, ...) standardGeneric("smooth_savitzky"),
+  valueClass = "list"
+)
+
+# Switch =======================================================================
+#' Shift the X Scale by a Given Value
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param delta A length-one [`numeric`] vector specifying the offset.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-shift.R
+#' @docType methods
+#' @family shifting methods
+#' @aliases shift_offset-method
+setGeneric(
+  name = "shift_offset",
+  def = function(x, y, ...) standardGeneric("shift_offset"),
+  valueClass = "list"
+)
+
+#' Linearly Interpolate a New X Scale
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param from A length-one [`numeric`] vector giving the starting value of the
+#'  sequence where interpolation is to take place.
+#' @param to A length-one [`numeric`] vector giving the end value of the
+#'  sequence where interpolation is to take place.
+#' @param by A length-one [`numeric`] vector specifying the increment of the
+#'  sequence.
+#' @param ... Extra arguments to be passed to [stats::approx()].
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-shift.R
+#' @docType methods
+#' @family shifting methods
+#' @aliases shift_interpolate-method
+setGeneric(
+  name = "shift_interpolate",
+  def = function(x, y, ...) standardGeneric("shift_interpolate"),
   valueClass = "list"
 )
