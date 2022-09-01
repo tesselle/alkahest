@@ -27,3 +27,17 @@
 #' @family datasets
 #' @keywords datasets
 "BEGe"
+
+#' Powder X-ray Diffraction
+#'
+#' @format A [`data.frame`] with 2989 rows and 2 variables.
+#'  \describe{
+#'    \item{theta}{}
+#'    \item{count}{}
+#'  }
+#' @examples
+#' data("XRD")
+#' plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+#' @family datasets
+#' @keywords datasets
+"XRD"

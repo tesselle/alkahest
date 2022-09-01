@@ -23,7 +23,8 @@ plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
 \seealso{
 Other datasets: 
-\code{\link{LaBr}}
+\code{\link{LaBr}},
+\code{\link{XRD}}
 }
 \concept{datasets}
 \keyword{datasets}
