@@ -49,15 +49,12 @@ abline(h = mad(BEGe_correct$y) * 3) # noise threshold
 BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
 lines(BEGe_peaks, type = "p", pch = 16, col = "red")
 
-## gamma-ray spectrometry
-data("LaBr")
-
-## Plot spectrum
-LaBr <- signal_select(LaBr, from = 1350, to = 1650)
-plot(LaBr, type = "l", xlab = "Energy (keV)", ylab = "Count")
-
 ## Half-Width at Half-Maximum
-peaks_fwhm(LaBr, center = 1490)
+set.seed(12345)
+x <- seq(-4, 4, length = 1000)
+y <- dnorm(x)
+
+peaks_fwhm(x, y, center = 0) # Expected: 2 * sqrt(2 * log(2))
 }
 \seealso{
 Other peaks detection methods: 

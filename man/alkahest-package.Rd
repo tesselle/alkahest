@@ -7,7 +7,7 @@
 \alias{alkahest}
 \title{alkahest: Pre-Processing XY Data from Experimental Methods}
 \description{
-A toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). This package provides methods for baseline correction, smoothing, normalization and integration.
+A lightweight, dependency-free toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). This package provides methods for baseline estimation and correction, smoothing, normalization, integration and peaks detection.
 }
 \details{
 \tabular{ll}{

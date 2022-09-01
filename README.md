@@ -8,6 +8,7 @@
 [![R-CMD-check](https://github.com/tesselle/alkahest/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/alkahest/actions)
 [![codecov](https://codecov.io/gh/tesselle/alkahest/branch/master/graph/badge.svg)](https://app.codecov.io/gh/tesselle/alkahest)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/alkahest/badge/main)](https://www.codefactor.io/repository/github/tesselle/alkahest/overview/main)
+[![Dependencies](https://tinyverse.netlify.com/badge/alkahest)](https://cran.r-project.org/package=alkahest)
 
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
 src="https://tesselle.r-universe.dev/badges/alkahest"
@@ -32,11 +33,11 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 
 ## Overview
 
-Pre-Process XY Data from Experimental Methods. **alkahest** is a
-lightweight, dependency-free toolbox for pre-processing XY data from
-experimental methods (i.e. any signal that can be measured along a
-continuous variable). It provides methods for baseline correction,
-smoothing, normalization and integration.
+**alkahest** is a lightweight, dependency-free toolbox for
+pre-processing XY data from experimental methods (i.e. any signal that
+can be measured along a continuous variable). It provides methods for
+baseline estimation and correction, smoothing, normalization,
+integration and peaks detection.
 
 ## Installation
 
@@ -63,8 +64,7 @@ library(alkahest)
 
 **alkahest** expects the input data to be in the simplest form (a
 two-column matrix or data frame, a two-element list or two numeric
-vectors). With few exceptions, all functions return a list with two
-elements `x` and `y`.
+vectors).
 
 ``` r
 ## gamma-ray spectrometry
@@ -83,43 +83,40 @@ lines(BEGe_snip, type = "l", col = "red")
 ![](man/figures/README-baseline-1.png)<!-- -->
 
 ``` r
-## Correct baseline
-BEGe_correct <- signal_correct(BEGe, method = "SNIP")
+## X-ray diffraction
+data("XRD")
 
-## Plot spectrum
-plot(BEGe_correct, type = "l", xlab = "Energy (keV)", ylab = "Count")
+## Correct baseline
+XRD_correct <- signal_correct(XRD, method = "SNIP")
 
 ## Find peaks
-BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
-lines(BEGe_peaks, type = "p", pch = 16, col = "red")
+XRD_peaks <- peaks_find(XRD_correct, SNR = 3, m = 5)
+
+plot(XRD_correct, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(XRD_peaks, type = "p", pch = 16, col = "red")
 ```
 
 ![](man/figures/README-peaks-1.png)<!-- -->
 
 ``` r
-## gamma-ray spectrometry
-data("LaBr")
+set.seed(12345)
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x) + rnorm(100, mean = 0, sd = 0.01)
 
-## Subset from 1350 to 1650 keV
-LaBr <- signal_select(LaBr, from = 1350, to = 1650)
-
-## Plot raw spectrum
-plot(LaBr, type = "l", xlab = "Energy (keV)", ylab = "Count", main = "Raw data")
+## Plot raw data
+plot(x, y, type = "l", xlab = "", ylab = "", main = "Raw data")
 
 ## Rectangular smoothing
-LaBr_unweighted <- smooth_rectangular(LaBr, m = 3)
-plot(LaBr_unweighted, type = "l", xlab = "Energy (keV)", ylab = "Count",
-     main = "Rectangular smoothing") 
+unweighted <- smooth_rectangular(x, y, m = 3)
+plot(unweighted, type = "l", xlab = "", ylab = "", main = "Rectangular smoothing") 
 
 ## Triangular smoothing
-LaBr_weighted <- smooth_triangular(LaBr, m = 5)
-plot(LaBr_weighted, type = "l", xlab = "Energy (keV)", ylab = "Count",
-     main = "Triangular smoothing")
+weighted <- smooth_triangular(x, y, m = 5)
+plot(weighted, type = "l", xlab = "", ylab = "", main = "Triangular smoothing")
 
 ## Savitzky–Golay filter
-LaBr_savitzky <- smooth_savitzky(LaBr, m = 21, p = 2)
-plot(LaBr_savitzky, type = "l", xlab = "Energy (keV)", ylab = "Count",
-     main = "Savitzky–Golay filter")
+savitzky <- smooth_savitzky(x, y, m = 21, p = 2)
+plot(savitzky, type = "l", xlab = "", ylab = "", main = "Savitzky–Golay filter")
 ```
 
 <img src="man/figures/README-smooth-1.png" width="50%" /><img src="man/figures/README-smooth-2.png" width="50%" /><img src="man/figures/README-smooth-3.png" width="50%" /><img src="man/figures/README-smooth-4.png" width="50%" />

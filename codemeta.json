@@ -1,0 +1,71 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "alkahest",
+  "description": "A lightweight, dependency-free toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). This package provides methods for baseline estimation and correction, smoothing, normalization, integration and peaks detection.",
+  "name": "alkahest: Pre-Processing XY Data from Experimental Methods",
+  "relatedLink": "https://packages.tesselle.org/alkahest/",
+  "codeRepository": "https://github.com/tesselle/alkahest",
+  "issueTracker": "https://github.com/tesselle/alkahest/issues",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.0.0.9000",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Nicolas",
+      "familyName": "Frerebeau",
+      "email": "nicolas.frerebeau@u-bordeaux-montaigne.fr",
+      "@id": "https://orcid.org/0000-0001-5759-4944"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Nicolas",
+      "familyName": "Frerebeau",
+      "email": "nicolas.frerebeau@u-bordeaux-montaigne.fr",
+      "@id": "https://orcid.org/0000-0001-5759-4944"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.3"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "grDevices",
+      "name": "grDevices"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "methods",
+      "name": "methods"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
+      "identifier": "stats",
+      "name": "stats"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "292.482KB",
+  "releaseNotes": "https://github.com/tesselle/alkahest/blob/master/NEWS.md",
+  "readme": "https://github.com/tesselle/alkahest/blob/main/README.md",
+  "contIntegration": ["https://github.com/tesselle/alkahest/actions", "https://app.codecov.io/gh/tesselle/alkahest"],
+  "developmentStatus": "https://www.repostatus.org/#wip",
+  "keywords": ["r-package", "spectroscopy", "archaeometry", "powder-diffraction"]
+}

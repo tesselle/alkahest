@@ -9,10 +9,10 @@ Authors@R:
              comment = c(ORCID = "0000-0001-5759-4944", 
                          affiliation = "Université Bordeaux Montaigne")))
 Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
-Description: A toolbox for pre-processing XY data from experimental methods 
-    (i.e. any signal that can be measured along a continuous variable). This 
-    package provides methods for baseline correction, smoothing, normalization 
-    and integration.
+Description: A lightweight, dependency-free toolbox for pre-processing XY data 
+    from experimental methods (i.e. any signal that can be measured along a 
+    continuous variable). This package provides methods for baseline estimation 
+    and correction, smoothing, normalization, integration and peaks detection.
 License: GPL (>= 3)
 URL: https://packages.tesselle.org/alkahest/, https://github.com/tesselle/alkahest
 BugReports: https://github.com/tesselle/alkahest/issues
