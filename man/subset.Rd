@@ -68,7 +68,8 @@ plot(BEGe_2, type = "l", xlab = "Energy (keV)", ylab = "Count")
 }
 \seealso{
 Other signal processing methods: 
-\code{\link{signal_correct}()}
+\code{\link{signal_correct}()},
+\code{\link{signal_shift}()}
 }
 \author{
 N. Frerebeau

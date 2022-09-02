@@ -63,6 +63,32 @@ setMethod(
   }
 )
 
+# Shift ========================================================================
+#' @export
+#' @rdname signal_shift
+#' @aliases signal_shift,numeric,numeric-method
+setMethod(
+  f = "signal_shift",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, lag) {
+    x <- x + lag
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
+#' @export
+#' @rdname signal_shift
+#' @aliases signal_shift,ANY,missing-method
+setMethod(
+  f = "signal_shift",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, y, lag) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, lag = lag)
+  }
+)
+
 # Baseline correction ==========================================================
 #' @export
 #' @rdname signal_correct

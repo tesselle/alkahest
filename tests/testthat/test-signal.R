@@ -16,6 +16,16 @@ test_that("Slice", {
   expect_length(BEGe_slice$x, 1231)
   expect_length(BEGe_slice$y, 1231)
 })
+test_that("Shift", {
+  data("XRD")
+
+  ## Shift by one degree
+  offset <- signal_shift(XRD, lag = 1)
+  expect_equal(offset$x, XRD$theta + 1)
+
+  # plot(XRD, type = "l", xlab = "", ylab = "")
+  # lines(offset, type = "l", col = "red")
+})
 test_that("Correct", {
   data("XRD")
 

@@ -393,6 +393,25 @@ setGeneric(
   valueClass = "list"
 )
 
+#' Shift the X Scale by a Given Value
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param lag A length-one [`numeric`] vector specifying the offset.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-shift.R
+#' @docType methods
+#' @family signal processing methods
+#' @aliases shift_offset-method
+setGeneric(
+  name = "signal_shift",
+  def = function(x, y, ...) standardGeneric("signal_shift"),
+  valueClass = "list"
+)
+
 # Smooth =======================================================================
 #' Rectangular Smoothing
 #'
@@ -508,24 +527,7 @@ setGeneric(
 )
 
 # Switch =======================================================================
-#' Shift the X Scale by a Given Value
-#'
-#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
-#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param delta A length-one [`numeric`] vector specifying the offset.
-#' @param ... Currently not used.
-#' @return
-#'  Returns a [`list`] with two components `x` and `y`.
-#' @author N. Frerebeau
-#' @example inst/examples/ex-shift.R
-#' @docType methods
-#' @family shifting methods
-#' @aliases shift_offset-method
-setGeneric(
-  name = "shift_offset",
-  def = function(x, y, ...) standardGeneric("shift_offset"),
-  valueClass = "list"
-)
+
 
 #' Linearly Interpolate a New X Scale
 #'

@@ -3,31 +3,6 @@
 NULL
 
 #' @export
-#' @rdname shift_offset
-#' @aliases shift_offset,numeric,numeric-method
-setMethod(
-  f = "shift_offset",
-  signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, delta) {
-    x <- x + delta
-    xy <- list(x = x, y = y)
-    xy
-  }
-)
-
-#' @export
-#' @rdname shift_offset
-#' @aliases shift_offset,ANY,missing-method
-setMethod(
-  f = "shift_offset",
-  signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, y, delta) {
-    xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, delta = delta)
-  }
-)
-
-#' @export
 #' @rdname shift_interpolate
 #' @aliases shift_interpolate,numeric,numeric-method
 setMethod(
