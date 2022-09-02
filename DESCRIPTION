@@ -35,8 +35,8 @@ Collate:
     'integrate.R'
     'peaks.R'
     'replace.R'
+    'resample.R'
     'rescale.R'
-    'shift.R'
     'signal.R'
     'smooth.R'
 LazyData: true

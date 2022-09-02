@@ -253,6 +253,92 @@ setGeneric(
   valueClass = "list"
 )
 
+# Resample =====================================================================
+#' Bin
+#'
+#' Averages `x` values and sums the corresponding `y` values.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param by An [`integer`] specifying the binning ratio (i.e. the number of
+#'  points to be grouped together).
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-resample.R
+#' @docType methods
+#' @family resampling methods
+#' @aliases resample_bin-method
+setGeneric(
+  name = "resample_bin",
+  def = function(x, y, ...) standardGeneric("resample_bin"),
+  valueClass = "list"
+)
+
+#' Downsample
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param by An [`integer`] specifying the downsampling factor.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-resample.R
+#' @docType methods
+#' @family resampling methods
+#' @aliases resample_down-method
+setGeneric(
+  name = "resample_down",
+  def = function(x, y, ...) standardGeneric("resample_down"),
+  valueClass = "list"
+)
+
+# Upsample
+#
+# @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+# @param by An [`integer`] specifying the upsampling factor.
+# @param ... Currently not used.
+# @details
+#  The signal is upsampled by inserting \eqn{n - 1} zeros between samples.
+# @return
+#  Returns a [`list`] with two components `x` and `y`.
+# @author N. Frerebeau
+# @example inst/examples/ex-resample.R
+# @docType methods
+# @family resampling methods
+# @aliases resample_interpolate-method
+# setGeneric(
+#   name = "resample_up",
+#   def = function(x, y, ...) standardGeneric("resample_up"),
+#   valueClass = "list"
+# )
+
+#' Linearly Interpolate a New X Scale
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param from A length-one [`numeric`] vector giving the starting value of the
+#'  sequence where interpolation is to take place.
+#' @param to A length-one [`numeric`] vector giving the end value of the
+#'  sequence where interpolation is to take place.
+#' @param by A length-one [`numeric`] vector specifying the increment of the
+#'  sequence.
+#' @param ... Extra arguments to be passed to [stats::approx()].
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-resample.R
+#' @docType methods
+#' @family resampling methods
+#' @aliases resample_interpolate-method
+setGeneric(
+  name = "resample_interpolate",
+  def = function(x, y, ...) standardGeneric("resample_interpolate"),
+  valueClass = "list"
+)
+
 # Scale ========================================================================
 #' Rescales intensities to sum to a specified value
 #'
@@ -523,32 +609,5 @@ setGeneric(
 setGeneric(
   name = "smooth_savitzky",
   def = function(x, y, ...) standardGeneric("smooth_savitzky"),
-  valueClass = "list"
-)
-
-# Switch =======================================================================
-
-
-#' Linearly Interpolate a New X Scale
-#'
-#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
-#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param from A length-one [`numeric`] vector giving the starting value of the
-#'  sequence where interpolation is to take place.
-#' @param to A length-one [`numeric`] vector giving the end value of the
-#'  sequence where interpolation is to take place.
-#' @param by A length-one [`numeric`] vector specifying the increment of the
-#'  sequence.
-#' @param ... Extra arguments to be passed to [stats::approx()].
-#' @return
-#'  Returns a [`list`] with two components `x` and `y`.
-#' @author N. Frerebeau
-#' @example inst/examples/ex-shift.R
-#' @docType methods
-#' @family shifting methods
-#' @aliases shift_interpolate-method
-setGeneric(
-  name = "shift_interpolate",
-  def = function(x, y, ...) standardGeneric("shift_interpolate"),
   valueClass = "list"
 )
