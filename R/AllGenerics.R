@@ -611,3 +611,27 @@ setGeneric(
   def = function(x, y, ...) standardGeneric("smooth_savitzky"),
   valueClass = "list"
 )
+
+#' Whittaker Smoothing
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param lambda An [`integer`] giving the smoothing parameter. The larger
+#'  `lambda` is, the smoother the curve.
+#' @param d An [`integer`] specifying the order of the penalty.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @references
+#'  Eilers, P. H. C. (2003). A Perfect Smoother. *Analytical Chemistry*,
+#'  75(14): 3631-36. \doi{10.1021/ac034173t}.
+#' @author N. Frerebeau
+#' @example inst/examples/ex-smooth.R
+#' @docType methods
+#' @family smoothing methods
+#' @aliases smooth_whittaker-method
+setGeneric(
+  name = "smooth_whittaker",
+  def = function(x, y, ...) standardGeneric("smooth_whittaker"),
+  valueClass = "list"
+)

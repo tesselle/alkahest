@@ -179,3 +179,35 @@ coef_savitzky <- function(m, p = 2) {
   J <- vapply(X = c(0, p), FUN = function(p, z) z^p, z, FUN.VALUE = double(m))
   (solve(t(J) %*% J) %*% t(J))[1, , drop = TRUE]
 }
+
+# Whittaker smoothing ==========================================================
+#' @export
+#' @rdname smooth_whittaker
+#' @aliases smooth_whittaker,numeric,numeric-method
+setMethod(
+  f = "smooth_whittaker",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, lambda = 1600, d = 2) {
+    m <- length(y)
+    E <- diag(m)
+    D <- diff(E, lag = 1, differences = d)
+    B <- E + (lambda * t(D) %*% D)
+    z <- solve(B, y)
+
+    xy <- list(x = x, y = z)
+    attr(xy, "method") <- "Whittaker smoothing"
+    xy
+  }
+)
+
+#' @export
+#' @rdname smooth_whittaker
+#' @aliases smooth_whittaker,ANY,missing-method
+setMethod(
+  f = "smooth_whittaker",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, lambda = 1600, d = 2) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, lambda = lambda, d = d)
+  }
+)

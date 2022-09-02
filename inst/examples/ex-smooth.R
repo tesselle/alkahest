@@ -1,22 +1,27 @@
-## gamma-ray spectrometry
-data("LaBr")
+## Simulate data with some noise
+set.seed(12345)
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x) + rnorm(100, mean = 0, sd = 0.01)
 
 ## Plot spectrum
-LaBr <- signal_select(LaBr, from = 1350, to = 1650)
-plot(LaBr, type = "l", xlab = "Energy (keV)", ylab = "Count")
+plot(x, y, type = "l", xlab = "", ylab = "")
 
 ## Rectangular smoothing
-LaBr_unweighted <- smooth_rectangular(LaBr, m = 3)
-plot(LaBr_unweighted, type = "l", xlab = "Energy (keV)", ylab = "Count")
+unweighted <- smooth_rectangular(x, y, m = 3)
+plot(unweighted, type = "l", xlab = "", ylab = "")
 
 ## Triangular smoothing
-LaBr_weighted <- smooth_triangular(LaBr, m = 5)
-plot(LaBr_weighted, type = "l", xlab = "Energy (keV)", ylab = "Count")
+weighted <- smooth_triangular(x, y, m = 5)
+plot(weighted, type = "l", xlab = "", ylab = "")
 
 ## Loess smoothing
-LaBr_loess <- smooth_loess(LaBr, span = 0.75)
-plot(LaBr_loess, type = "l", xlab = "Energy (keV)", ylab = "Count")
+loess <- smooth_loess(x, y, span = 0.75)
+plot(loess, type = "l", xlab = "", ylab = "")
 
 ## Savitzky–Golay filter
-LaBr_savitzky <- smooth_savitzky(LaBr, m = 21, p = 2)
-plot(LaBr_savitzky, type = "l", xlab = "Energy (keV)", ylab = "Count")
+savitzky <- smooth_savitzky(x, y, m = 21, p = 2)
+plot(savitzky, type = "l", xlab = "", ylab = "")
+
+## Whittaker smoothing
+whittaker <- smooth_whittaker(x, y, lambda = 1600, d = 2)
+plot(whittaker, type = "l", xlab = "", ylab = "")

@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/tesselle/alkahest/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/alkahest/actions)
-[![codecov](https://codecov.io/gh/tesselle/alkahest/branch/master/graph/badge.svg)](https://app.codecov.io/gh/tesselle/alkahest)
+[![codecov](https://codecov.io/gh/tesselle/alkahest/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tesselle/alkahest)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/alkahest/badge/main)](https://www.codefactor.io/repository/github/tesselle/alkahest/overview/main)
 [![Dependencies](https://tinyverse.netlify.com/badge/alkahest)](https://cran.r-project.org/package=alkahest)
 
@@ -99,27 +99,38 @@ lines(XRD_peaks, type = "p", pch = 16, col = "red")
 ![](man/figures/README-peaks-1.png)<!-- -->
 
 ``` r
+## Simulate data
 set.seed(12345)
 x <- seq(-4, 4, length = 100)
-y <- dnorm(x) + rnorm(100, mean = 0, sd = 0.01)
+y <- dnorm(x)
+z <- y + rnorm(100, mean = 0, sd = 0.01) # Add some noise
 
 ## Plot raw data
-plot(x, y, type = "l", xlab = "", ylab = "", main = "Raw data")
+plot(x, z, type = "l", xlab = "", ylab = "", main = "Raw data")
+lines(x, y, type = "l", lty = 2, col = "red")
 
 ## Rectangular smoothing
-unweighted <- smooth_rectangular(x, y, m = 3)
+unweighted <- smooth_rectangular(x, z, m = 3)
 plot(unweighted, type = "l", xlab = "", ylab = "", main = "Rectangular smoothing") 
+lines(x, y, type = "l", lty = 2, col = "red")
 
 ## Triangular smoothing
-weighted <- smooth_triangular(x, y, m = 5)
+weighted <- smooth_triangular(x, z, m = 5)
 plot(weighted, type = "l", xlab = "", ylab = "", main = "Triangular smoothing")
+lines(x, y, type = "l", lty = 2, col = "red")
 
 ## Savitzky–Golay filter
-savitzky <- smooth_savitzky(x, y, m = 21, p = 2)
+savitzky <- smooth_savitzky(x, z, m = 21, p = 2)
 plot(savitzky, type = "l", xlab = "", ylab = "", main = "Savitzky–Golay filter")
+lines(x, y, type = "l", lty = 2, col = "red")
+
+## Whittaker smoothing
+whittaker <- smooth_whittaker(x, z, lambda = 1000, d = 3)
+plot(whittaker, type = "l", xlab = "", ylab = "", main = "Whittaker smoothing")
+lines(x, y, type = "l", lty = 2, col = "red")
 ```
 
-<img src="man/figures/README-smooth-1.png" width="50%" /><img src="man/figures/README-smooth-2.png" width="50%" /><img src="man/figures/README-smooth-3.png" width="50%" /><img src="man/figures/README-smooth-4.png" width="50%" />
+<img src="man/figures/README-smooth-1.png" width="50%" /><img src="man/figures/README-smooth-2.png" width="50%" /><img src="man/figures/README-smooth-3.png" width="50%" /><img src="man/figures/README-smooth-4.png" width="50%" /><img src="man/figures/README-smooth-5.png" width="50%" />
 
 ## Contributing
 
