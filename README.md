@@ -67,33 +67,30 @@ two-column matrix or data frame, a two-element list or two numeric
 vectors).
 
 ``` r
-## gamma-ray spectrometry
-data("BEGe")
+## X-ray diffraction
+data("XRD")
 
-## Subset from 3 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## Savitzky–Golay filter
+smooth <- smooth_savitzky(XRD, m = 11, p = 2)
 
-## SNIP baseline
-BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
+## 4S Peak Filling baseline
+baseline <- baseline_peakfilling(smooth, n = 10, m = 5, by = 10)
 
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_snip, type = "l", col = "red")
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(baseline, type = "l", col = "red")
 ```
 
 ![](man/figures/README-baseline-1.png)<!-- -->
 
 ``` r
-## X-ray diffraction
-data("XRD")
-
 ## Correct baseline
-XRD_correct <- signal_correct(XRD, method = "SNIP")
+XRD$count <- XRD$count - baseline$y
 
 ## Find peaks
-XRD_peaks <- peaks_find(XRD_correct, SNR = 3, m = 5)
+peaks <- peaks_find(XRD, SNR = 3, m = 5)
 
-plot(XRD_correct, type = "l", xlab = expression(2*theta), ylab = "Count")
-lines(XRD_peaks, type = "p", pch = 16, col = "red")
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(peaks, type = "p", pch = 16, col = "red")
 ```
 
 ![](man/figures/README-peaks-1.png)<!-- -->
@@ -109,9 +106,9 @@ z <- y + rnorm(100, mean = 0, sd = 0.01) # Add some noise
 plot(x, z, type = "l", xlab = "", ylab = "", main = "Raw data")
 lines(x, y, type = "l", lty = 2, col = "red")
 
-## Savitzky–Golay filter
-savitzky <- smooth_savitzky(x, z, m = 21, p = 2)
-plot(savitzky, type = "l", xlab = "", ylab = "", main = "Savitzky–Golay filter")
+## Whittaker smoothing
+smooth <- smooth_whittaker(x, z, lambda = 1000, d = 3)
+plot(smooth, type = "l", xlab = "", ylab = "", main = "Whittaker smoothing")
 lines(x, y, type = "l", lty = 2, col = "red")
 ```
 
