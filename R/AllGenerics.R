@@ -5,10 +5,8 @@
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param from An [`numeric`] value giving the first data point (in `x` unit)
-#'  to be used for linear interpolation.
-#' @param to An [`integer`] value giving the last data point (in `x` unit)
-#'  to be used for linear interpolation.
+#' @param points A [`numeric`] vector specifying the data points to be used in
+#'  the fitting process (in `x` unit).
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.

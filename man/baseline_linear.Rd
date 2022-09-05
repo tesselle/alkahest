@@ -10,9 +10,9 @@
 \usage{
 baseline_linear(x, y, ...)
 
-\S4method{baseline_linear}{numeric,numeric}(x, y, from = min(x), to = max(x))
+\S4method{baseline_linear}{numeric,numeric}(x, y, points = range(x))
 
-\S4method{baseline_linear}{ANY,missing}(x, from = min(x), to = max(x))
+\S4method{baseline_linear}{ANY,missing}(x, points = range(x))
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -20,11 +20,8 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 
 \item{...}{Currently not used.}
 
-\item{from}{An \code{\link{numeric}} value giving the first data point (in \code{x} unit)
-to be used for linear interpolation.}
-
-\item{to}{An \code{\link{integer}} value giving the last data point (in \code{x} unit)
-to be used for linear interpolation.}
+\item{points}{A \code{\link{numeric}} vector specifying the data points to be used in
+the fitting process (in \code{x} unit).}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.

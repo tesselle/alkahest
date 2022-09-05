@@ -9,20 +9,17 @@ NULL
 setMethod(
   f = "baseline_linear",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, from = min(x), to = max(x)) {
+  definition = function(x, y, points = range(x)) {
 
     ## Find the nearest value
-    x_from <- which_nearest(x, from)
-    x_to <- which_nearest(x, to)
-    from <- x[x_from]
-    to <- x[x_to]
-    idx <- which(x >= from & x <= to)
+    z <- vapply(X = points, FUN = function(i, x) which_nearest(x, i),
+                FUN.VALUE = numeric(1), x = x)
 
-    points <- data.frame(x, y)
-    fit <- stats::lm(y ~ x, data = points, subset = c(x_from, x_to))
-    bsl <- stats::predict(fit, points[idx, 1, drop = FALSE])
+    data <- data.frame(x, y)
+    fit <- stats::lm(y ~ x, data = data, subset = z)
+    bsl <- stats::predict(fit, data)
 
-    xy <- list(x = x[idx], y = bsl)
+    xy <- list(x = x, y = bsl)
     attr(xy, "method") <- "linear baseline"
     xy
   }
@@ -34,9 +31,9 @@ setMethod(
 setMethod(
   f = "baseline_linear",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, from = min(x), to = max(x)) {
+  definition = function(x, points = range(x)) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, from = from, to = to)
+    methods::callGeneric(x = xy$x, y = xy$y, points = points)
   }
 )
 

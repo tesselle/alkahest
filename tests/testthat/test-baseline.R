@@ -1,7 +1,7 @@
 test_that("Linear baseline", {
   data("XRD")
 
-  linear <- baseline_linear(XRD, from = 28.75, to = 31.75)
+  linear <- baseline_linear(XRD, points = c(10, 70))
 
   # plot(XRD, type = "l", xlab = "", ylab = "")
   # lines(linear, type = "l", col = "red")
