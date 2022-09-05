@@ -16,7 +16,6 @@ BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
 lines(BEGe_peaks, type = "p", pch = 16, col = "red")
 
 ## Half-Width at Half-Maximum
-set.seed(12345)
 x <- seq(-4, 4, length = 1000)
 y <- dnorm(x)
 
