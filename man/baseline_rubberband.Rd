@@ -65,17 +65,19 @@ BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_snip, type = "l", col = "red")
 
-## Baseline correction
-BEGe_corr <- signal_correct(BEGe, method = "SNIP")
+## 4S Peak Filling
+BEGe_peak <- baseline_peakfilling(BEGe, n = 5, m = 5, by = 2)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_corr, type = "l", col = "red")
+lines(BEGe_peak, type = "l", col = "red")
+
 }
 \seealso{
 \code{\link[=signal_correct]{signal_correct()}}
 
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
+\code{\link{baseline_peakfilling}()},
 \code{\link{baseline_snip}()}
 }
 \author{

@@ -42,3 +42,13 @@ test_that("SNIP baseline", {
 
   expect_snapshot(snip_decreasing)
 })
+test_that("4S Peak Filling", {
+  data("XRD")
+
+  peak <- baseline_peakfilling(XRD, n = 10, m = 5, by = 10)
+
+  # plot(XRD, type = "l", xlab = "", ylab = "")
+  # lines(peak, type = "l", col = "red")
+
+  expect_snapshot(peak)
+})

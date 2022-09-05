@@ -24,6 +24,14 @@ setGeneric(
   valueClass = "list"
 )
 
+# @rdname baseline
+# @aliases baseline_rollingball-method
+# setGeneric(
+#   name = "baseline_rollingball",
+#   def = function(x, y, ...) standardGeneric("baseline_rollingball"),
+#   valueClass = "list"
+# )
+
 #' Rubberband Baseline Estimation
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
@@ -66,7 +74,6 @@ setGeneric(
 #' @param decreasing A [`logical`] scalar: should a decreasing clipping window
 #'  be used?
 #' @param n An [`integer`] value giving the number of iterations.
-#'  Only used if `method` is "`SNIP`".
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
@@ -99,24 +106,29 @@ setGeneric(
   valueClass = "list"
 )
 
-# @rdname baseline
-# @aliases baseline_rollingball-method
-# setGeneric(
-#   name = "baseline_rollingball",
-#   def = function(x, y, ...) standardGeneric("baseline_rollingball"),
-#   valueClass = "list"
-# )
-
-
-#  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
-#  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
-# @rdname baseline
-# @aliases baseline_peakfilling-method
-# setGeneric(
-#   name = "baseline_peakfilling",
-#   def = function(x, y, ...) standardGeneric("baseline_peakfilling"),
-#   valueClass = "list"
-# )
+#' 4S Peak Filling
+#'
+#' Baseline estimation by iterative mean suppression.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param n An [`integer`] value giving the number of iterations.
+#' @param m An odd [`integer`] giving the half window size.
+#' @inheritParams smooth_whittaker
+#' @inheritParams resample_bin
+#' @seealso [signal_correct()]
+#' @references
+#'  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
+#'  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
+#' @example inst/examples/ex-baseline.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_peakfilling-method
+setGeneric(
+  name = "baseline_peakfilling",
+  def = function(x, y, ...) standardGeneric("baseline_peakfilling"),
+  valueClass = "list"
+)
 
 # Integrate ====================================================================
 #' Rectangle Rule
@@ -219,8 +231,8 @@ setGeneric(
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param threshold A [`numeric`] value or a [`function`] that takes a numeric
-#'  vector as argument and returns a single numeric value.
+#' @param threshold A [`numeric`] value or a [`function`] that takes a `numeric`
+#'  vector as argument and returns a single `numeric` value.
 #' @param value A [`numeric`] value to replace values below `threshold`.
 #' @param ... Extra parameters to be passed to `threshold`.
 #' @return
@@ -433,7 +445,7 @@ setGeneric(
 #'  estimation. It must be one of "`linear`", "`rubberband`" or "`SNIP`".
 #'  Any unambiguous substring can be given.
 #' @param ... Extra arguments to be passed to `baseline_*()`.
-#' @example inst/examples/ex-baseline.R
+#' @example inst/examples/ex-correct.R
 #' @docType methods
 #' @family signal processing methods
 #' @aliases signal_correct-method

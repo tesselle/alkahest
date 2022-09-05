@@ -26,8 +26,7 @@ before employing SNIP algorithm? Only used if \code{method} is "\code{SNIP}".}
 \item{decreasing}{A \code{\link{logical}} scalar: should a decreasing clipping window
 be used?}
 
-\item{n}{An \code{\link{integer}} value giving the number of iterations.
-Only used if \code{method} is "\code{SNIP}".}
+\item{n}{An \code{\link{integer}} value giving the number of iterations.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
@@ -57,11 +56,12 @@ BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_snip, type = "l", col = "red")
 
-## Baseline correction
-BEGe_corr <- signal_correct(BEGe, method = "SNIP")
+## 4S Peak Filling
+BEGe_peak <- baseline_peakfilling(BEGe, n = 5, m = 5, by = 2)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_corr, type = "l", col = "red")
+lines(BEGe_peak, type = "l", col = "red")
+
 }
 \references{
 Morháč, M., Kliman, J., Matoušek, V., Veselský, M. & Turzo, I. (1997).
@@ -86,6 +86,7 @@ Beam Interactions with Materials and Atoms}, 34(3), p. 396-402.
 
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
+\code{\link{baseline_peakfilling}()},
 \code{\link{baseline_rubberband}()}
 }
 \author{

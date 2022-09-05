@@ -23,7 +23,7 @@ setMethod(
     bsl <- stats::predict(fit, points[idx, 1, drop = FALSE])
 
     xy <- list(x = x[idx], y = bsl)
-    attr(xy, "method") <- "linear"
+    attr(xy, "method") <- "linear baseline"
     xy
   }
 )
@@ -80,7 +80,7 @@ setMethod(
            call. = FALSE)
 
     xy <- list(x = x, y = bsl)
-    attr(xy, "method") <- "rubberband"
+    attr(xy, "method") <- "rubberband baseline"
     xy
   }
 )
@@ -159,3 +159,73 @@ LLS <- function(x) {
 inverseLLS <- function(x) {
   (exp(exp(x) - 1) - 1)^2 - 1
 }
+
+# Peak Filling =================================================================
+#' @export
+#' @rdname baseline_peakfilling
+#' @aliases baseline_peakfilling,numeric,numeric-method
+setMethod(
+  f = "baseline_peakfilling",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, n, m, by = 10) {
+    ## Number of bucket intervals
+    by <- length(x) / by
+
+    ## Exponential decrease in interval width
+    win <- m
+    if (n != 1) {
+      i <- log10(m) * (1 - (0:(n - 2)) / (n - 1))
+      win <- ceiling((10)^c(i, 0))
+    }
+
+    ## Smoothing
+    # DIY
+
+    ## Subsampling
+    breaks <- cut(seq_along(x), breaks = by, labels = FALSE)
+    mid <- unlist(tapply(X = x, INDEX = breaks, FUN = mean, simplify = FALSE))
+    bin <- unlist(tapply(X = y, INDEX = breaks, FUN = min, simplify = FALSE))
+
+    ## Suppression
+    iter <- seq_len(n)
+    for (i in iter) {
+      win_0 <- win[i] # Current half window width
+
+      ## Interval cut-off close to edges
+      k <- seq(from = 2, to = by - 1, by = 1)
+      j <- by - k + 1
+      v <- pmin(k - 1, win_0, by - k)
+
+      ## Point-wise iteration to the right
+      a <- mapply(function(k, v, bin) { mean(bin[(k - v):(k + v)]) }, k, v,
+                  MoreArgs = list(bin = bin))
+      bin[k] <- pmin(a, bin[k]) # Baseline suppression
+
+      ## Point-wise iteration to the left
+      a <- mapply(function(j, v, bin) { mean(bin[(j - v):(j + v)]) }, j, v,
+                  MoreArgs = list(bin = bin))
+      bin[j] <- pmin(a, bin[j]) # Baseline suppression
+    }
+
+    ## Stretch
+    mid[1] <- x[1]
+    mid[by] <- x[length(x)]
+    bsl <- stats::approx(mid, bin, x)$y
+
+    xy <- list(x = x, y = bsl)
+    attr(xy, "method") <- "4S Peak Filling"
+    xy
+  }
+)
+
+#' @export
+#' @rdname baseline_peakfilling
+#' @aliases baseline_peakfilling,ANY,missing-method
+setMethod(
+  f = "baseline_peakfilling",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, n, m, by = 10) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, n = n, m = m, by = by)
+  }
+)
