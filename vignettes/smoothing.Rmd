@@ -63,6 +63,20 @@ plot(x, y - weighted$y, ylim = c(-0.03, 0.03), type = "l", xlab = "", ylab = "")
 abline(h = 0, lty = 2)
 ```
 
+```{r loess, fig.width=7, fig.height=6, fig.cap="Loess smoothing"}
+## Loess smoothing
+loess <- smooth_loess(x, z, span = 0.2)
+
+par(mar = c(3, 3, 1, 1) + 0.1, las = 1)
+layout(matrix(c(1, 2), nrow = 2, ncol = 1), heights = c(2, 1))
+
+plot(loess, type = "l", xlab = "", ylab = "")
+lines(x, y, type = "l", lty = 2, col = "red")
+
+plot(x, y - loess$y, ylim = c(-0.03, 0.03), type = "l", xlab = "", ylab = "")
+abline(h = 0, lty = 2)
+```
+
 ```{r savitzky, fig.width=7, fig.height=6, fig.cap="Savitzky–Golay filter"}
 ## Savitzky–Golay filter
 savitzky <- smooth_savitzky(x, z, m = 21, p = 2)

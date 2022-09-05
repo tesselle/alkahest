@@ -41,7 +41,6 @@ the ends of the spectrum are preserved.
 }
 \examples{
 ## Simulate data with some noise
-set.seed(12345)
 x <- seq(-4, 4, length = 100)
 y <- dnorm(x) + rnorm(100, mean = 0, sd = 0.01)
 
