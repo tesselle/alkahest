@@ -9,7 +9,7 @@ setMethod(
   f = "integrate_rectangle",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, right = FALSE) {
-    h <- if (right) tail(y, -1) else head(y, -1)
+    h <- if (right) utils::tail(y, -1) else utils::head(y, -1)
     sum(h * diff(x))
   }
 )
@@ -33,7 +33,7 @@ setMethod(
   f = "integrate_trapezoid",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y) {
-    sum((head(y, -1) + tail(y, -1)) * diff(x) / 2)
+    sum((utils::head(y, -1) + utils::tail(y, -1)) * diff(x) / 2)
   }
 )
 

@@ -10,22 +10,33 @@
 \usage{
 signal_correct(x, y, ...)
 
-\S4method{signal_correct}{numeric,numeric}(x, y, method = c("linear", "rubberband", "SNIP"), ...)
+\S4method{signal_correct}{numeric,numeric}(x, y, method = c("linear", "rubberband", "SNIP", "4S"), ...)
 
-\S4method{signal_correct}{ANY,missing}(x, method = c("linear", "rubberband", "SNIP"), ...)
+\S4method{signal_correct}{ANY,missing}(x, method = c("linear", "rubberband", "SNIP", "4S"), ...)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
-\item{...}{Extra arguments to be passed to \verb{baseline_*()}.}
+\item{...}{Extra arguments to be passed to \verb{baseline_*()} (see details).}
 
 \item{method}{A \code{\link{character}} string specifying the method for baseline
-estimation. It must be one of "\code{linear}", "\code{rubberband}" or "\code{SNIP}".
-Any unambiguous substring can be given.}
+estimation. It must be one of "\code{linear}", "\code{rubberband}", "\code{SNIP}" or "\verb{4S}"
+(see details). Any unambiguous substring can be given.}
 }
 \description{
 Baseline Correction
+}
+\details{
+Available methods for baseline estimation:
+\describe{
+\item{\code{linear}}{Linear baseline estimation (see \code{\link[=baseline_linear]{baseline_linear()}}).}
+\item{\code{rubberband}}{Rubberband baseline estimation (see
+\code{\link[=baseline_rubberband]{baseline_rubberband()}}).}
+\item{\code{SNIP}}{Sensitive Nonlinear Iterative Peak clipping algorithm
+(see \code{\link[=baseline_snip]{baseline_snip()}}).}
+\item{\verb{4S}}{4S Peak Filling (see \code{\link[=baseline_peakfilling]{baseline_peakfilling()}}).}
+}
 }
 \examples{
 ## gamma-ray spectrometry

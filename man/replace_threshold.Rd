@@ -24,8 +24,8 @@ replace_threshold(x, y, threshold, ...)
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
-\item{threshold}{A \code{\link{numeric}} value or a \code{\link{function}} that takes a numeric
-vector as argument and returns a single numeric value.}
+\item{threshold}{A \code{\link{numeric}} value or a \code{\link{function}} that takes a \code{numeric}
+vector as argument and returns a single \code{numeric} value.}
 
 \item{...}{Extra parameters to be passed to \code{threshold}.}
 

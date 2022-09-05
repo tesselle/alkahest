@@ -442,9 +442,19 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param method A [`character`] string specifying the method for baseline
-#'  estimation. It must be one of "`linear`", "`rubberband`" or "`SNIP`".
-#'  Any unambiguous substring can be given.
-#' @param ... Extra arguments to be passed to `baseline_*()`.
+#'  estimation. It must be one of "`linear`", "`rubberband`", "`SNIP`" or "`4S`"
+#'  (see details). Any unambiguous substring can be given.
+#' @param ... Extra arguments to be passed to `baseline_*()` (see details).
+#' @details
+#'  Available methods for baseline estimation:
+#'  \describe{
+#'   \item{`linear`}{Linear baseline estimation (see [baseline_linear()]).}
+#'   \item{`rubberband`}{Rubberband baseline estimation (see
+#'   [baseline_rubberband()]).}
+#'   \item{`SNIP`}{Sensitive Nonlinear Iterative Peak clipping algorithm
+#'   (see [baseline_snip()]).}
+#'   \item{`4S`}{4S Peak Filling (see [baseline_peakfilling()]).}
+#'  }
 #' @example inst/examples/ex-correct.R
 #' @docType methods
 #' @family signal processing methods
