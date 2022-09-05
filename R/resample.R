@@ -9,7 +9,7 @@ NULL
 setMethod(
   f = "resample_bin",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, by) {
+  definition = function(x, y, by, f = sum, ...) {
 
     k <- length(x) %% by
     if (k != 0) {
@@ -19,7 +19,7 @@ setMethod(
     i <- cut(seq_along(x), breaks = length(x) / by, labels = FALSE)
 
     mid <- tapply(X = x, INDEX = i, FUN = mean, simplify = FALSE)
-    bin <- tapply(X = y, INDEX = i, FUN = sum, simplify = FALSE)
+    bin <- tapply(X = y, INDEX = i, FUN = f, ..., simplify = FALSE)
 
     xy <- list(x = unlist(mid), y = unlist(bin))
     xy
@@ -32,9 +32,9 @@ setMethod(
 setMethod(
   f = "resample_bin",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, y, by) {
+  definition = function(x, y, by, f = sum) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, by = by)
+    methods::callGeneric(x = xy$x, y = xy$y, by = by, f = f)
   }
 )
 

@@ -10,24 +10,28 @@
 \usage{
 resample_bin(x, y, ...)
 
-\S4method{resample_bin}{numeric,numeric}(x, y, by)
+\S4method{resample_bin}{numeric,numeric}(x, y, by, f = sum, ...)
 
-\S4method{resample_bin}{ANY,missing}(x, y, by)
+\S4method{resample_bin}{ANY,missing}(x, y, by, f = sum)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
-\item{...}{Currently not used.}
+\item{...}{Extra parameters to be passed to \code{f}.}
 
 \item{by}{An \code{\link{integer}} specifying the binning ratio (i.e. the number of
 points to be grouped together).}
+
+\item{f}{A \code{\link{function}} that takes a \code{numeric} vector of intensities as
+argument and returns a single \code{numeric} vector. Used to estimate the local
+representative value in each bin (defaults to \code{\link[=sum]{sum()}}; see examples).}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
 }
 \description{
-Averages \code{x} values and sums the corresponding \code{y} values.
+Averages \code{x} values and applies a function to the corresponding \code{y} values.
 }
 \examples{
 ## X-ray diffraction
@@ -37,9 +41,11 @@ data("XRD")
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 
 ## Bin by 3
-XRD_bin <- resample_bin(XRD, by = 3)
+XRD_bin_sum <- resample_bin(XRD, by = 3, f = sum)
+XRD_bin_min <- resample_bin(XRD, by = 3, f = min)
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
-lines(XRD_bin, type = "l", col = "red")
+lines(XRD_bin_sum, type = "l", col = "red")
+lines(XRD_bin_min, type = "l", col = "green")
 
 ## Downsample by 10
 XRD_down <- resample_down(XRD, by = 10)

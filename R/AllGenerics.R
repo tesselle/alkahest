@@ -256,12 +256,15 @@ setGeneric(
 # Resample =====================================================================
 #' Bin
 #'
-#' Averages `x` values and sums the corresponding `y` values.
+#' Averages `x` values and applies a function to the corresponding `y` values.
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param by An [`integer`] specifying the binning ratio (i.e. the number of
 #'  points to be grouped together).
-#' @param ... Currently not used.
+#' @param f A [`function`] that takes a `numeric` vector of intensities as
+#'  argument and returns a single `numeric` vector. Used to estimate the local
+#'  representative value in each bin (defaults to [sum()]; see examples).
+#' @param ... Extra parameters to be passed to `f`.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @author N. Frerebeau

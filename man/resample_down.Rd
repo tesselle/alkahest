@@ -36,9 +36,11 @@ data("XRD")
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 
 ## Bin by 3
-XRD_bin <- resample_bin(XRD, by = 3)
+XRD_bin_sum <- resample_bin(XRD, by = 3, f = sum)
+XRD_bin_min <- resample_bin(XRD, by = 3, f = min)
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
-lines(XRD_bin, type = "l", col = "red")
+lines(XRD_bin_sum, type = "l", col = "red")
+lines(XRD_bin_min, type = "l", col = "green")
 
 ## Downsample by 10
 XRD_down <- resample_down(XRD, by = 10)
