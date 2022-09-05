@@ -352,7 +352,29 @@ setGeneric(
   valueClass = "list"
 )
 
-# Scale ========================================================================
+# Rescale ======================================================================
+#' Normalize intensities by AUC
+#'
+#' Rescales intensities so that the area under the curve (AUC) is equal to 1.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param method A [`character`] string specifying the method for integration.
+#'  It must be one of "`rectangle`" or "`trapezoid`".
+#'  Any unambiguous substring can be given.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @example inst/examples/ex-rescale.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family normalization methods
+#' @aliases rescale_area-method
+setGeneric(
+  name = "rescale_area",
+  def = function(x, y, ...) standardGeneric("rescale_area"),
+  valueClass = "list"
+)
+
 #' Rescales intensities to sum to a specified value
 #'
 #' Rescales intensities to sum to a specified value.

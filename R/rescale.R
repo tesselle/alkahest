@@ -2,6 +2,45 @@
 #' @include AllGenerics.R
 NULL
 
+# Area =========================================================================
+#' @export
+#' @rdname rescale_area
+#' @aliases rescale_area,numeric,numeric-method
+setMethod(
+  f = "rescale_area",
+  signature = signature(x = "numeric", y = "numeric"),
+  definition = function(x, y, method = c("rectangle", "trapezoid"), ...) {
+    ## Validation
+    method <- match.arg(method, several.ok = FALSE)
+
+    ## Get method
+    f <- switch(
+      method,
+      rectangle = integrate_rectangle,
+      trapezoid = integrate_trapezoid
+    )
+
+    ## Baseline estimation
+    auc <- f(x = x, y = y, ...)
+    y <- y / auc
+
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
+#' @export
+#' @rdname rescale_area
+#' @aliases rescale_area,ANY,missing-method
+setMethod(
+  f = "rescale_area",
+  signature = signature(x = "ANY", y = "missing"),
+  definition = function(x, method = c("rectangle", "trapezoid"), ...) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, method = method, ...)
+  }
+)
+
 # Total ========================================================================
 #' @export
 #' @rdname rescale_total

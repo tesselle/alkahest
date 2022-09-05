@@ -1,3 +1,9 @@
+test_that("Normalize by AUC", {
+  data("XRD")
+
+  XRD_area <- rescale_area(XRD)
+  expect_equal(integrate_rectangle(XRD_area), 1)
+})
 test_that("Normalize by total intensity", {
   data("XRD")
 
