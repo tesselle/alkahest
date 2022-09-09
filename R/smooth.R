@@ -187,12 +187,25 @@ coef_savitzky <- function(m, p = 2) {
 setMethod(
   f = "smooth_whittaker",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, lambda = 1600, d = 2) {
+  definition = function(x, y, lambda = 1600, d = 2, sparse = FALSE) {
     m <- length(y)
-    E <- diag(m)
-    D <- diff(E, lag = 1, differences = d)
-    B <- E + (lambda * t(D) %*% D)
-    z <- solve(B, y)
+
+    if (sparse) {
+      if (!requireNamespace("Matrix", quietly = TRUE)) {
+        msg <- "The Matrix package is required. Please install it."
+        stop(msg, call. = FALSE)
+      }
+
+      E <- Matrix::Diagonal(m)
+      D <- Matrix::diff(E, lag = 1, differences = d)
+      B <- Matrix::chol(E + (lambda * Matrix::t(D) %*% D))
+      z <- Matrix::solve(B, Matrix::solve(Matrix::t(B), y))@x
+    } else {
+      E <- diag(m)
+      D <- diff(E, lag = 1, differences = d)
+      B <- E + (lambda * t(D) %*% D)
+      z <- solve(B, y)
+    }
 
     xy <- list(x = x, y = z)
     attr(xy, "method") <- "Whittaker smoothing"
@@ -206,8 +219,9 @@ setMethod(
 setMethod(
   f = "smooth_whittaker",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, lambda = 1600, d = 2) {
+  definition = function(x, lambda = 1600, d = 2, sparse = FALSE) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, lambda = lambda, d = d)
+    methods::callGeneric(x = xy$x, y = xy$y, lambda = lambda, d = d,
+                         sparse = sparse)
   }
 )

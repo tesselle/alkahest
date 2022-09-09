@@ -10,9 +10,9 @@
 \usage{
 smooth_whittaker(x, y, ...)
 
-\S4method{smooth_whittaker}{numeric,numeric}(x, y, lambda = 1600, d = 2)
+\S4method{smooth_whittaker}{numeric,numeric}(x, y, lambda = 1600, d = 2, sparse = FALSE)
 
-\S4method{smooth_whittaker}{ANY,missing}(x, lambda = 1600, d = 2)
+\S4method{smooth_whittaker}{ANY,missing}(x, lambda = 1600, d = 2, sparse = FALSE)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -24,6 +24,9 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \code{lambda} is, the smoother the curve.}
 
 \item{d}{An \code{\link{integer}} specifying the order of the penalty.}
+
+\item{sparse}{A \code{\link{logical}} scalar: should sparse matrices be used for
+computation? If \code{TRUE}, \pkg{Matrix} is required.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.

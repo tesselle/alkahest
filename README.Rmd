@@ -61,8 +61,8 @@ library(alkahest)
 ## X-ray diffraction
 data("XRD")
 
-## Savitzky–Golay filter
-smooth <- smooth_savitzky(XRD, m = 11, p = 2)
+## Whittaker smoothing
+smooth <- smooth_whittaker(XRD, lambda = 1000, d = 2, sparse = TRUE)
 
 ## 4S Peak Filling baseline
 baseline <- baseline_peakfilling(smooth, n = 10, m = 5, by = 10)
@@ -93,9 +93,9 @@ z <- y + rnorm(100, mean = 0, sd = 0.01) # Add some noise
 plot(x, z, type = "l", xlab = "", ylab = "", main = "Raw data")
 lines(x, y, type = "l", lty = 2, col = "red")
 
-## Whittaker smoothing
-smooth <- smooth_whittaker(x, z, lambda = 1000, d = 3)
-plot(smooth, type = "l", xlab = "", ylab = "", main = "Whittaker smoothing")
+## Savitzky–Golay filter
+smooth <- smooth_savitzky(x, z, m = 21, p = 2)
+plot(smooth, type = "l", xlab = "", ylab = "", main = "Savitzky–Golay filter")
 lines(x, y, type = "l", lty = 2, col = "red")
 ```
 

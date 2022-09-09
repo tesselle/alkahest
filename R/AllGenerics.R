@@ -664,6 +664,8 @@ setGeneric(
 #' @param lambda An [`integer`] giving the smoothing parameter. The larger
 #'  `lambda` is, the smoother the curve.
 #' @param d An [`integer`] specifying the order of the penalty.
+#' @param sparse A [`logical`] scalar: should sparse matrices be used for
+#'  computation? If `TRUE`, \pkg{Matrix} is required.
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.

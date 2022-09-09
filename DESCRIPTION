@@ -26,6 +26,11 @@ Imports:
     methods,
     stats,
     utils
+Suggests: 
+    knitr,
+    Matrix,
+    rmarkdown,
+    testthat (>= 3.0.0)
 Collate: 
     'AllGenerics.R'
     'alkahest-package.R'
@@ -40,9 +45,5 @@ Collate:
     'signal.R'
     'smooth.R'
 LazyData: true
-Suggests: 
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
