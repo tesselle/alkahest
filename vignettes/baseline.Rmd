@@ -39,7 +39,7 @@ plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-corrected <- signal_drift(XRD, lag = baseline, add = FALSE)
+corrected <- signal_drift(XRD, lag = baseline, substract = TRUE)
 
 plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
 ```
@@ -63,7 +63,7 @@ plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-corrected <- signal_drift(XRD, lag = baseline, add = FALSE)
+corrected <- signal_drift(XRD, lag = baseline, substract = TRUE)
 
 plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
 ```
@@ -87,9 +87,9 @@ plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-corrected <- signal_drift(BEGe, lag = baseline, add = FALSE)
+corrected <- signal_drift(BEGe, lag = baseline, substract = TRUE)
 
-plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
+plot(corrected, type = "l", xlab = "Energy (keV)", ylab = "Count")
 ```
 
 # SNIP baseline
@@ -111,31 +111,31 @@ plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-corrected <- signal_drift(BEGe, lag = baseline, add = FALSE)
+corrected <- signal_drift(BEGe, lag = baseline, substract = TRUE)
 
-plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
+plot(corrected, type = "l", xlab = "Energy (keV)", ylab = "Count")
 ```
 
 # 4S Peak Filling
 
 ```{r peakfilling, fig.width=7, fig.height=6, fig.cap="4S Peak Filling"}
-## gamma-ray spectrometry
-data("BEGe")
-
-## Subset from 2.75 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## X-ray diffraction
+data("XRD")
 
 ## Plot spectrum
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+plot(XRD, type = "l", xlab = "Energy (keV)", ylab = "Count")
 
-## Estimate baseline
-baseline <- baseline_peakfilling(BEGe, n = 5, m = 5, by = 2)
+## Whittaker smoothing
+smooth <- smooth_whittaker(XRD, lambda = 1000, d = 2, sparse = TRUE)
 
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+## 4S Peak Filling baseline
+baseline <- baseline_peakfilling(smooth, n = 10, m = 5, by = 10)
+
+plot(XRD, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-corrected <- signal_drift(BEGe, lag = baseline, add = FALSE)
+corrected <- signal_drift(XRD, lag = baseline, substract = TRUE)
 
 plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
 ```

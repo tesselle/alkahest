@@ -10,9 +10,9 @@
 \usage{
 signal_drift(x, y, lag, ...)
 
-\S4method{signal_drift}{numeric,numeric,numeric}(x, y, lag, add = TRUE)
+\S4method{signal_drift}{numeric,numeric,numeric}(x, y, lag)
 
-\S4method{signal_drift}{ANY,missing,ANY}(x, lag, add = TRUE)
+\S4method{signal_drift}{ANY,missing,ANY}(x, lag, substract = FALSE)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -23,8 +23,7 @@ be interpreted in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices
 
 \item{...}{Currently not used.}
 
-\item{add}{A \code{\link{logical}} scalar: should \code{lag} be added to \code{y}?
-If \code{FALSE}, \code{lag} is subtracted from \code{y}.}
+\item{substract}{A \code{\link{logical}} scalar: should \code{lag} be subtracted to \code{y}?}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
@@ -40,8 +39,8 @@ data("BEGe")
 BEGe <- signal_select(BEGe, from = 3, to = 200)
 
 ## Drift
-BEGe_plus <- signal_drift(BEGe, lag = 250, add = TRUE)
-BEGe_minus <- signal_drift(BEGe, lag = 250, add = FALSE)
+BEGe_plus <- signal_drift(BEGe, lag = 250)
+BEGe_minus <- signal_drift(BEGe, lag = 250, substract = TRUE)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_plus, type = "l", col = "red")

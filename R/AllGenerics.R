@@ -571,9 +571,7 @@ setGeneric(
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param lag A length-one [`numeric`] vector specifying the offset.
-#' @param add A [`logical`] scalar: should `lag` be added to `x`?
-#'  If `FALSE`, `lag` is subtracted from `x`.
+#' @param lag A [`numeric`] vector specifying the offset.
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
@@ -584,7 +582,7 @@ setGeneric(
 #' @aliases signal_shift-method
 setGeneric(
   name = "signal_shift",
-  def = function(x, y, ...) standardGeneric("signal_shift"),
+  def = function(x, y, lag, ...) standardGeneric("signal_shift"),
   valueClass = "list"
 )
 
@@ -594,8 +592,7 @@ setGeneric(
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param lag A [`numeric`] vector specifying the offset or any object that can
 #'  be interpreted in a suitable way (see [grDevices::xy.coords()])
-#' @param add A [`logical`] scalar: should `lag` be added to `y`?
-#'  If `FALSE`, `lag` is subtracted from `y`.
+#' @param substract A [`logical`] scalar: should `lag` be subtracted to `y`?
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.

@@ -95,8 +95,8 @@ setMethod(
 setMethod(
   f = "signal_shift",
   signature = c(x = "numeric", y = "numeric"),
-  definition = function(x, y, lag, add = TRUE) {
-    x <- if (add) x + lag else x - lag
+  definition = function(x, y, lag) {
+    x <- x + lag
     xy <- list(x = x, y = y)
     xy
   }
@@ -108,9 +108,9 @@ setMethod(
 setMethod(
   f = "signal_shift",
   signature = c(x = "ANY", y = "missing"),
-  definition = function(x, y, lag, add = TRUE) {
+  definition = function(x, lag) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, lag = lag, add = lag)
+    methods::callGeneric(x = xy$x, y = xy$y, lag = lag)
   }
 )
 
@@ -121,8 +121,8 @@ setMethod(
 setMethod(
   f = "signal_drift",
   signature = c(x = "numeric", y = "numeric", lag = "numeric"),
-  definition = function(x, y, lag, add = TRUE) {
-    y <- if (add) y + lag else y - lag
+  definition = function(x, y, lag) {
+    y <- y + lag
     xy <- list(x = x, y = y)
     xy
   }
@@ -134,10 +134,11 @@ setMethod(
 setMethod(
   f = "signal_drift",
   signature = c(x = "ANY", y = "missing", lag = "ANY"),
-  definition = function(x, lag, add = TRUE) {
+  definition = function(x, lag, substract = FALSE) {
     xy <- grDevices::xy.coords(x)
     zz <- grDevices::xy.coords(lag)
-    methods::callGeneric(x = xy$x, y = xy$y, lag = zz$y, add = add)
+    lag <- if (substract) -zz$y else zz$y
+    methods::callGeneric(x = xy$x, y = xy$y, lag = lag)
   }
 )
 

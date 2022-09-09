@@ -38,10 +38,10 @@ test_that("Drift", {
   data("XRD")
 
   ## Drift by 500
-  XRD_plus <- signal_drift(XRD, lag = 250, add = TRUE)
+  XRD_plus <- signal_drift(XRD, lag = 250)
   expect_equal(XRD_plus$y, XRD$count + 250)
 
-  XRD_minus <- signal_drift(XRD, lag = XRD, add = FALSE)
+  XRD_minus <- signal_drift(XRD, lag = XRD, substract = TRUE)
   expect_equal(XRD_minus$y, rep(0, nrow(XRD)))
 
   # plot(XRD, type = "l", xlab = "", ylab = "")

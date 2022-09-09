@@ -8,22 +8,19 @@
 \alias{signal_shift,ANY,missing-method}
 \title{Shift the X Scale by a Given Value}
 \usage{
-signal_shift(x, y, ...)
+signal_shift(x, y, lag, ...)
 
-\S4method{signal_shift}{numeric,numeric}(x, y, lag, add = TRUE)
+\S4method{signal_shift}{numeric,numeric}(x, y, lag)
 
-\S4method{signal_shift}{ANY,missing}(x, y, lag, add = TRUE)
+\S4method{signal_shift}{ANY,missing}(x, lag)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
 interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 
+\item{lag}{A \code{\link{numeric}} vector specifying the offset.}
+
 \item{...}{Currently not used.}
-
-\item{lag}{A length-one \code{\link{numeric}} vector specifying the offset.}
-
-\item{add}{A \code{\link{logical}} scalar: should \code{lag} be added to \code{x}?
-If \code{FALSE}, \code{lag} is subtracted from \code{x}.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.

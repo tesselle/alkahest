@@ -6,7 +6,7 @@ BEGe <- signal_select(BEGe, from = 3, to = 200)
 
 ## Drift
 baseline <- baseline_snip(BEGe)
-BEGe_drif <- signal_drift(BEGe, lag = baseline, add = FALSE)
+BEGe_drif <- signal_drift(BEGe, lag = baseline, substract = TRUE)
 
 plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
 lines(BEGe_drif, type = "l", col = "red")
