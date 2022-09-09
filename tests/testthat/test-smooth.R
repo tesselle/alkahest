@@ -43,9 +43,17 @@ test_that("Savitzky–Golay filter", {
   # lines(savitzky, type = "l", col = "red")
 })
 test_that("Whittaker smoothing", {
-  whittaker <- smooth_whittaker(x, y, lambda = 1000, d = 3)
+  whittaker <- smooth_whittaker(x, y, lambda = 1000, d = 3, sparse = FALSE)
   expect_snapshot(whittaker)
 
   # plot(x, y, type = "l", xlab = "", ylab = "")
   # lines(whittaker, type = "l", col = "red")
+
+  skip_if_not_installed("Matrix")
+  whittaker_sparse <- smooth_whittaker(x, y, lambda = 1000, d = 3, sparse = TRUE)
+
+  expect_equal(whittaker, whittaker_sparse)
+
+  # plot(x, y, type = "l", xlab = "", ylab = "")
+  # lines(whittaker_sparse, type = "l", col = "red")
 })

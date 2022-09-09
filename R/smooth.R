@@ -11,8 +11,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3) {
     ## Validation
-    if (m %% 2 == 0)
-      stop(sQuote("m"), " must be an odd integer.", call. = FALSE)
+    assert_odd(m)
 
     ## Index
     k <- (m - 1) / 2
@@ -57,8 +56,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3) {
     # Validation
-    if (m %% 2 == 0)
-      stop(sQuote("m"), " must be an odd integer.", call. = FALSE)
+    assert_odd(m)
 
     # Index
     k <- (m - 1) / 2
@@ -135,8 +133,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3, p = 2) {
     ## Validation
-    if (m %% 2 == 0)
-      stop(sQuote("m"), " must be an odd integer.", call. = FALSE)
+    assert_odd(m)
 
     k <- (m - 1) / 2
     i <- seq(from = -k, to = k, by = 1)
