@@ -42,5 +42,7 @@ navbar:
       menu:
       - text: Smoothing Methods
         href: articles/smoothing.html
+      - text: Baseline Estimation
+        href: articles/baseline.html
       - text: Bibliography
         href: articles/bibliography.html
