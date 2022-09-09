@@ -2,13 +2,38 @@
 #' @include AllGenerics.R
 NULL
 
+# Mean =========================================================================
+#' @export
+#' @rdname signal_mean
+#' @aliases signal_mean,ANY-method
+setMethod(
+  f = "signal_mean",
+  signature = c("ANY"),
+  definition = function(...) {
+
+    signal <- list(...)
+    coords <- lapply(X = signal, FUN = grDevices::xy.coords)
+
+    x <- lapply(X = coords, FUN = `[[`, i = "x")
+    x <- do.call(cbind, x)
+    x <- rowMeans(x)
+
+    y <- lapply(X = coords, FUN = `[[`, i = "y")
+    y <- do.call(cbind, y)
+    y <- rowMeans(y)
+
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
 # Subset =======================================================================
 #' @export
 #' @rdname subset
 #' @aliases signal_select,numeric,numeric-method
 setMethod(
   f = "signal_select",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, from, to) {
     ## Find the nearest value
     from <- x[which_nearest(x, from)]
@@ -25,7 +50,7 @@ setMethod(
 #' @aliases signal_select,ANY,missing-method
 setMethod(
   f = "signal_select",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, from, to) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, from = from, to = to)
@@ -37,7 +62,7 @@ setMethod(
 #' @aliases signal_slice,numeric,numeric-method
 setMethod(
   f = "signal_slice",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, subset) {
     i <- as.integer(subset)
 
@@ -56,7 +81,7 @@ setMethod(
 #' @aliases signal_slice,ANY,missing-method
 setMethod(
   f = "signal_slice",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, subset) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, subset = subset)
@@ -69,7 +94,7 @@ setMethod(
 #' @aliases signal_shift,numeric,numeric-method
 setMethod(
   f = "signal_shift",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, lag) {
     x <- x + lag
     xy <- list(x = x, y = y)
@@ -82,7 +107,7 @@ setMethod(
 #' @aliases signal_shift,ANY,missing-method
 setMethod(
   f = "signal_shift",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, y, lag) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, lag = lag)
@@ -95,7 +120,7 @@ setMethod(
 #' @aliases signal_correct,numeric,numeric-method
 setMethod(
   f = "signal_correct",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, method = c("linear", "rubberband", "SNIP", "4S"),
                         ...) {
     ## Validation
@@ -124,7 +149,7 @@ setMethod(
 #' @aliases signal_correct,ANY,missing-method
 setMethod(
   f = "signal_correct",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, method = c("linear", "rubberband", "SNIP", "4S"),
                         ...) {
     xy <- grDevices::xy.coords(x)

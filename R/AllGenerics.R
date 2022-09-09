@@ -514,6 +514,19 @@ setGeneric(
   valueClass = "list"
 )
 
+#' Mean
+#'
+#' @param ... Any object that can be interpreted in a suitable way
+#'  (see [grDevices::xy.coords()]).
+#' @example inst/examples/ex-mean.R
+#' @docType methods
+#' @family signal processing methods
+#' @aliases signal_mean-method
+setGeneric(
+  name = "signal_mean",
+  def = function(...) standardGeneric("signal_mean")
+)
+
 #' Subset
 #'
 #' @description

@@ -42,6 +42,7 @@ lines(XRD_offset, type = "l", col = "red")
 \seealso{
 Other signal processing methods: 
 \code{\link{signal_correct}()},
+\code{\link{signal_mean}()},
 \code{\link{subset}()}
 }
 \author{

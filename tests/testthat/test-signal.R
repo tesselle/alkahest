@@ -1,3 +1,11 @@
+test_that("Mean", {
+  data("XRD")
+
+  XRD1 <- XRD
+  XRD1$count <- XRD1$count + 1500
+
+  expect_snapshot(signal_mean(XRD, XRD1))
+})
 test_that("Select", {
   data("BEGe")
 
