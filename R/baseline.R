@@ -8,16 +8,20 @@ NULL
 #' @aliases baseline_linear,numeric,numeric-method
 setMethod(
   f = "baseline_linear",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, points = range(x)) {
 
     ## Find the nearest value
     z <- vapply(X = points, FUN = function(i, x) which_nearest(x, i),
                 FUN.VALUE = numeric(1), x = x)
+    zi <- which(x >= min(points) & x <= max(points))
 
     data <- data.frame(x, y)
     fit <- stats::lm(y ~ x, data = data, subset = z)
-    bsl <- stats::predict(fit, data)
+    pred <- stats::predict(fit, data.frame(x = x[zi]))
+
+    bsl <- rep(NA_real_, length(x))
+    bsl[zi] <- pred
 
     xy <- list(x = x, y = bsl)
     attr(xy, "method") <- "linear baseline"
@@ -30,10 +34,58 @@ setMethod(
 #' @aliases baseline_linear,ANY,missing-method
 setMethod(
   f = "baseline_linear",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, points = range(x)) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, points = points)
+  }
+)
+
+# Polynomial ===================================================================
+#' @export
+#' @rdname baseline_polynomial
+#' @aliases baseline_polynomial,numeric,numeric-method
+setMethod(
+  f = "baseline_polynomial",
+  signature = c(x = "numeric", y = "numeric"),
+  definition = function(x, y, d = 3, tolerance = 0.001, stop = 100) {
+
+    polynom <- cbind(1 / sqrt(length(x)), stats::poly(x, degree = d))
+
+    old_y <- y
+    start <- 0
+    convergence <- FALSE
+    while (!convergence) {
+      new_y <- polynom %*% crossprod(polynom, old_y)
+      new_y <- pmin(y, new_y)
+
+      criterion <- sum(abs((new_y - old_y) / old_y), na.rm = TRUE)
+      convergence <- criterion < tolerance
+
+      old_y <- new_y
+      start <- start + 1
+      if (start >= stop) {
+        warning("Convergence not reached (possible infinite loop).", call. = FALSE)
+        break
+      }
+    }
+
+    xy <- list(x = x, y = new_y)
+    attr(xy, "method") <- "polynomial baseline"
+    xy
+  }
+)
+
+#' @export
+#' @rdname baseline_polynomial
+#' @aliases baseline_polynomial,ANY,missing-method
+setMethod(
+  f = "baseline_polynomial",
+  signature = c(x = "ANY", y = "missing"),
+  definition = function(x, d = 3, tolerance = 0.001, stop = 100) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, d = d, tolerance = tolerance,
+                         stop = stop)
   }
 )
 
@@ -43,7 +95,7 @@ setMethod(
 #' @aliases baseline_rubberband,numeric,numeric-method
 setMethod(
   f = "baseline_rubberband",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, noise = 0, spline = TRUE, ...) {
 
     ## (chull returns points in clockwise order)
@@ -87,7 +139,7 @@ setMethod(
 #' @aliases baseline_rubberband,ANY,missing-method
 setMethod(
   f = "baseline_rubberband",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, noise = 0, spline = TRUE, ...) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, noise = noise, spline = spline, ...)
@@ -100,7 +152,7 @@ setMethod(
 #' @aliases baseline_snip,numeric,numeric-method
 setMethod(
   f = "baseline_snip",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, LLS = FALSE, decreasing = FALSE, n = 100) {
     ## LLS operator
     y <- if (LLS) LLS(y) else y
@@ -137,7 +189,7 @@ setMethod(
 #' @aliases baseline_snip,ANY,missing-method
 setMethod(
   f = "baseline_snip",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, LLS = FALSE, decreasing = FALSE, n = 100) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, LLS = LLS, decreasing = decreasing,
@@ -163,7 +215,7 @@ inverseLLS <- function(x) {
 #' @aliases baseline_peakfilling,numeric,numeric-method
 setMethod(
   f = "baseline_peakfilling",
-  signature = signature(x = "numeric", y = "numeric"),
+  signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, n, m, by = 10) {
     ## Number of bucket intervals
     by <- length(x) / by
@@ -220,7 +272,7 @@ setMethod(
 #' @aliases baseline_peakfilling,ANY,missing-method
 setMethod(
   f = "baseline_peakfilling",
-  signature = signature(x = "ANY", y = "missing"),
+  signature = c(x = "ANY", y = "missing"),
   definition = function(x, n, m, by = 10) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, n = n, m = m, by = by)

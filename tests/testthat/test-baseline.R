@@ -8,6 +8,17 @@ test_that("Linear baseline", {
 
   expect_snapshot(linear)
 })
+test_that("Polynomial baseline", {
+  data("XRD")
+
+  XRD <- signal_select(XRD, from = 20, to = 70)
+  polynomial <- baseline_polynomial(XRD, d = 4, tolerance = 0.02, stop = 1000)
+
+  # plot(XRD, type = "l", xlab = "", ylab = "")
+  # lines(polynomial, type = "l", col = "red")
+
+  expect_snapshot(polynomial)
+})
 test_that("Rubberband baseline", {
   data("XRD")
 

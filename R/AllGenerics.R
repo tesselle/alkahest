@@ -11,7 +11,7 @@
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @seealso [signal_correct()]
-#' @example inst/examples/ex-baseline.R
+#' @example inst/examples/ex-baseline-linear.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family baseline estimation methods
@@ -19,6 +19,35 @@
 setGeneric(
   name = "baseline_linear",
   def = function(x, y, ...) standardGeneric("baseline_linear"),
+  valueClass = "list"
+)
+
+#' Polynomial Baseline Estimation
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param d An [`integer`] giving the degree of the polynomial. Must be less
+#'  than the number of unique points.
+#' @param tolerance A [`numeric`] scalar giving the tolerance of difference
+#'  between iterations.
+#' @param stop An [`integer`] giving the stopping rule (i.e. maximum number of
+#'  iterations).
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @seealso [signal_correct()]
+#' @references
+#'  Lieber, C. A. and Mahadevan-Jansen, A. (2003). Automated Method for
+#'  Subtraction of Fluorescence from Biological Raman Spectra. *Applied
+#'  Spectroscopy*, 57(11): 1363-67. \doi{10.1366/000370203322554518}.
+#' @example inst/examples/ex-baseline-polynomial.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_polynomial-method
+setGeneric(
+  name = "baseline_polynomial",
+  def = function(x, y, ...) standardGeneric("baseline_polynomial"),
   valueClass = "list"
 )
 
@@ -51,7 +80,7 @@ setGeneric(
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @seealso [signal_correct()]
-#' @example inst/examples/ex-baseline.R
+#' @example inst/examples/ex-baseline-rubberband.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family baseline estimation methods
@@ -93,7 +122,7 @@ setGeneric(
 #'  *Nuclear Instruments and Methods in Physics Research Section B:
 #'  Beam Interactions with Materials and Atoms*, 34(3), p. 396-402.
 #'  \doi{10.1016/0168-583X(88)90063-8}
-#' @example inst/examples/ex-baseline.R
+#' @example inst/examples/ex-baseline-snip.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family baseline estimation methods
@@ -117,7 +146,7 @@ setGeneric(
 #' @references
 #'  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
 #'  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
-#' @example inst/examples/ex-baseline.R
+#' @example inst/examples/ex-baseline-peakfilling.R
 #' @author N. Frerebeau
 #' @docType methods
 #' @family baseline estimation methods

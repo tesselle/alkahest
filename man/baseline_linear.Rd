@@ -30,39 +30,29 @@ Returns a \code{\link{list}} with two components \code{x} and \code{y}.
 Linear Baseline Estimation
 }
 \examples{
-## gamma-ray spectrometry
-data("BEGe")
-
-## Subset from 2.75 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## X-ray diffraction
+data("XRD")
 
 ## Plot spectrum
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 
-## Rubberband baseline
-BEGe_rubber <- baseline_rubberband(BEGe)
+## Linear baseline
+baseline <- baseline_linear(XRD, points = c(25, 34))
 
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_rubber, type = "l", col = "red")
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(baseline, type = "l", col = "red")
 
-## SNIP baseline
-BEGe_snip <- baseline_snip(BEGe, LLS = FALSE, decreasing = FALSE, n = 100)
+## Correct baseline
+XRD$count <- XRD$count - baseline$y
 
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_snip, type = "l", col = "red")
-
-## 4S Peak Filling
-BEGe_peak <- baseline_peakfilling(BEGe, n = 5, m = 5, by = 2)
-
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-lines(BEGe_peak, type = "l", col = "red")
-
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 }
 \seealso{
 \code{\link[=signal_correct]{signal_correct()}}
 
 Other baseline estimation methods: 
 \code{\link{baseline_peakfilling}()},
+\code{\link{baseline_polynomial}()},
 \code{\link{baseline_rubberband}()},
 \code{\link{baseline_snip}()}
 }
