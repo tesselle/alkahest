@@ -37,6 +37,7 @@ lines(XRD_mean, type = "l", col = "red")
 \seealso{
 Other signal processing methods: 
 \code{\link{signal_correct}()},
+\code{\link{signal_drift}()},
 \code{\link{signal_shift}()},
 \code{\link{subset}()}
 }

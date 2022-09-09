@@ -3,16 +3,16 @@
 \docType{methods}
 \name{signal_shift}
 \alias{signal_shift}
-\alias{shift_offset-method}
+\alias{signal_shift-method}
 \alias{signal_shift,numeric,numeric-method}
 \alias{signal_shift,ANY,missing-method}
 \title{Shift the X Scale by a Given Value}
 \usage{
 signal_shift(x, y, ...)
 
-\S4method{signal_shift}{numeric,numeric}(x, y, lag)
+\S4method{signal_shift}{numeric,numeric}(x, y, lag, add = TRUE)
 
-\S4method{signal_shift}{ANY,missing}(x, y, lag)
+\S4method{signal_shift}{ANY,missing}(x, y, lag, add = TRUE)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -21,6 +21,9 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \item{...}{Currently not used.}
 
 \item{lag}{A length-one \code{\link{numeric}} vector specifying the offset.}
+
+\item{add}{A \code{\link{logical}} scalar: should \code{lag} be added to \code{x}?
+If \code{FALSE}, \code{lag} is subtracted from \code{x}.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
@@ -42,6 +45,7 @@ lines(XRD_offset, type = "l", col = "red")
 \seealso{
 Other signal processing methods: 
 \code{\link{signal_correct}()},
+\code{\link{signal_drift}()},
 \code{\link{signal_mean}()},
 \code{\link{subset}()}
 }

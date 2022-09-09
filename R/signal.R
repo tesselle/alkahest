@@ -95,8 +95,8 @@ setMethod(
 setMethod(
   f = "signal_shift",
   signature = c(x = "numeric", y = "numeric"),
-  definition = function(x, y, lag) {
-    x <- x + lag
+  definition = function(x, y, lag, add = TRUE) {
+    x <- if (add) x + lag else x - lag
     xy <- list(x = x, y = y)
     xy
   }
@@ -108,13 +108,40 @@ setMethod(
 setMethod(
   f = "signal_shift",
   signature = c(x = "ANY", y = "missing"),
-  definition = function(x, y, lag) {
+  definition = function(x, y, lag, add = TRUE) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, lag = lag)
+    methods::callGeneric(x = xy$x, y = xy$y, lag = lag, add = lag)
   }
 )
 
-# Baseline correction ==========================================================
+# Drift ========================================================================
+#' @export
+#' @rdname signal_drift
+#' @aliases signal_drift,numeric,numeric,numeric-method
+setMethod(
+  f = "signal_drift",
+  signature = c(x = "numeric", y = "numeric", lag = "numeric"),
+  definition = function(x, y, lag, add = TRUE) {
+    y <- if (add) y + lag else y - lag
+    xy <- list(x = x, y = y)
+    xy
+  }
+)
+
+#' @export
+#' @rdname signal_drift
+#' @aliases signal_drift,ANY,missing,ANY-method
+setMethod(
+  f = "signal_drift",
+  signature = c(x = "ANY", y = "missing", lag = "ANY"),
+  definition = function(x, lag, add = TRUE) {
+    xy <- grDevices::xy.coords(x)
+    zz <- grDevices::xy.coords(lag)
+    methods::callGeneric(x = xy$x, y = xy$y, lag = zz$y, add = add)
+  }
+)
+
+# Correct ======================================================================
 #' @export
 #' @rdname signal_correct
 #' @aliases signal_correct,numeric,numeric-method

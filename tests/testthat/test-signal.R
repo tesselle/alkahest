@@ -34,6 +34,19 @@ test_that("Shift", {
   # plot(XRD, type = "l", xlab = "", ylab = "")
   # lines(offset, type = "l", col = "red")
 })
+test_that("Drift", {
+  data("XRD")
+
+  ## Drift by 500
+  XRD_plus <- signal_drift(XRD, lag = 250, add = TRUE)
+  expect_equal(XRD_plus$y, XRD$count + 250)
+
+  XRD_minus <- signal_drift(XRD, lag = XRD, add = FALSE)
+  expect_equal(XRD_minus$y, rep(0, nrow(XRD)))
+
+  # plot(XRD, type = "l", xlab = "", ylab = "")
+  # lines(XRD_plus, type = "l", col = "red")
+})
 test_that("Correct", {
   data("XRD")
 
