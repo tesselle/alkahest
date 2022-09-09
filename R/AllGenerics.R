@@ -328,7 +328,7 @@ setGeneric(
 #   valueClass = "list"
 # )
 
-#' Linearly Interpolate a New X Scale
+#' Linearly Interpolate
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).

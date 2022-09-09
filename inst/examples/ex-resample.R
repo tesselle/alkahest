@@ -5,10 +5,10 @@ data("XRD")
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 
 ## Bin by 3
-XRD_bin_sum <- resample_bin(XRD, by = 3, f = sum)
+XRD_bin_mean <- resample_bin(XRD, by = 3, f = mean)
 XRD_bin_min <- resample_bin(XRD, by = 3, f = min)
-plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
-lines(XRD_bin_sum, type = "l", col = "red")
+plot(XRD, type = "l", xlim = c(25, 35), xlab = expression(2*theta), ylab = "Count")
+lines(XRD_bin_mean, type = "l", col = "red")
 lines(XRD_bin_min, type = "l", col = "green")
 
 ## Downsample by 10

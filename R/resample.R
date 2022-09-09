@@ -9,7 +9,7 @@ NULL
 setMethod(
   f = "resample_bin",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, by, f = sum, ...) {
+  definition = function(x, y, by, f = mean, ...) {
 
     k <- length(x) %% by
     if (k != 0) {
