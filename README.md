@@ -84,7 +84,7 @@ lines(baseline, type = "l", col = "red")
 
 ``` r
 ## Correct baseline
-XRD$count <- XRD$count - baseline$y
+XRD <- signal_drift(XRD, lag = baseline, subtract = TRUE)
 
 ## Find peaks
 peaks <- peaks_find(XRD, SNR = 3, m = 5)

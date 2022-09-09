@@ -592,7 +592,7 @@ setGeneric(
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param lag A [`numeric`] vector specifying the offset or any object that can
 #'  be interpreted in a suitable way (see [grDevices::xy.coords()])
-#' @param substract A [`logical`] scalar: should `lag` be subtracted to `y`?
+#' @param subtract A [`logical`] scalar: should `lag` be subtracted to `y`?
 #' @param ... Currently not used.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.

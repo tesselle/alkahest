@@ -134,10 +134,10 @@ setMethod(
 setMethod(
   f = "signal_drift",
   signature = c(x = "ANY", y = "missing", lag = "ANY"),
-  definition = function(x, lag, substract = FALSE) {
+  definition = function(x, lag, subtract = FALSE) {
     xy <- grDevices::xy.coords(x)
     zz <- grDevices::xy.coords(lag)
-    lag <- if (substract) -zz$y else zz$y
+    lag <- if (subtract) -zz$y else zz$y
     methods::callGeneric(x = xy$x, y = xy$y, lag = lag)
   }
 )
