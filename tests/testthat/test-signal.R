@@ -1,10 +1,24 @@
+test_that("Bind", {
+  data("XRD")
+
+  XRD1 <- signal_drift(XRD, lag = 1500)
+
+  expect_snapshot(signal_bind(XRD, XRD1)[, 1:20])
+
+  XRD1 <- signal_slice(XRD1, subset = 1:100)
+
+  expect_error(signal_mean(XRD, XRD1))
+})
 test_that("Mean", {
   data("XRD")
 
-  XRD1 <- XRD
-  XRD1$count <- XRD1$count + 1500
+  XRD1 <- signal_drift(XRD, lag = 1500)
 
   expect_snapshot(signal_mean(XRD, XRD1))
+
+  XRD1 <- signal_slice(XRD1, subset = 1:100)
+
+  expect_error(signal_mean(XRD, XRD1))
 })
 test_that("Select", {
   data("BEGe")

@@ -2,6 +2,33 @@
 #' @include AllGenerics.R
 NULL
 
+# Bind =========================================================================
+#' @export
+#' @rdname signal_bind
+#' @aliases signal_bind,ANY-method
+setMethod(
+  f = "signal_bind",
+  signature = c("ANY"),
+  definition = function(...) {
+
+    signal <- list(...)
+    coords <- lapply(X = signal, FUN = grDevices::xy.coords)
+
+    y <- lapply(X = coords, FUN = `[[`, i = "y")
+    ny <- lengths(y)
+    if (any(ny != mean(ny))) {
+      stop("All objects must have the same number of data points.", call. = FALSE)
+    }
+    y <- do.call(rbind, y)
+
+    ## Get names
+    subst <- substitute(list(...))[-1]
+    arg_names <- vapply(X = subst, FUN = deparse, FUN.VALUE = character(1))
+    rownames(y) <- arg_names
+    y
+  }
+)
+
 # Mean =========================================================================
 #' @export
 #' @rdname signal_mean
@@ -15,10 +42,17 @@ setMethod(
     coords <- lapply(X = signal, FUN = grDevices::xy.coords)
 
     x <- lapply(X = coords, FUN = `[[`, i = "x")
-    x <- do.call(cbind, x)
-    x <- rowMeans(x)
+    nx <- lengths(x)
 
     y <- lapply(X = coords, FUN = `[[`, i = "y")
+    ny <- lengths(y)
+
+    if (any(nx != mean(nx)) | any(ny != mean(ny))) {
+      stop("All objects must have the same number of data points.", call. = FALSE)
+    }
+
+    x <- do.call(cbind, x)
+    x <- rowMeans(x)
     y <- do.call(cbind, y)
     y <- rowMeans(y)
 

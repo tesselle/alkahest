@@ -504,6 +504,9 @@ setGeneric(
 #'   (see [baseline_snip()]).}
 #'   \item{`4S`}{4S Peak Filling (see [baseline_peakfilling()]).}
 #'  }
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
 #' @example inst/examples/ex-correct.R
 #' @docType methods
 #' @family signal processing methods
@@ -514,10 +517,31 @@ setGeneric(
   valueClass = "list"
 )
 
+#' Bind
+#'
+#' Combines XY objects.
+#' @param ... Any object that can be interpreted in a suitable way
+#'  (see [grDevices::xy.coords()]).
+#' @return
+#'  Returns a [`matrix`].
+#' @author N. Frerebeau
+#' @example inst/examples/ex-mean.R
+#' @docType methods
+#' @family signal processing methods
+#' @aliases signal_bind-method
+setGeneric(
+  name = "signal_bind",
+  def = function(...) standardGeneric("signal_bind"),
+  valueClass = "matrix"
+)
+
 #' Mean
 #'
 #' @param ... Any object that can be interpreted in a suitable way
 #'  (see [grDevices::xy.coords()]).
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @author N. Frerebeau
 #' @example inst/examples/ex-mean.R
 #' @docType methods
 #' @family signal processing methods
@@ -567,8 +591,9 @@ setGeneric(
   valueClass = "list"
 )
 
-#' Shift the X Scale by a Given Value
+#' Shift the X Scale
 #'
+#' Shifts the `x` scale by a given value.
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param lag A [`numeric`] vector specifying the offset.

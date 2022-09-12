@@ -6,7 +6,7 @@
 \alias{signal_shift-method}
 \alias{signal_shift,numeric,numeric-method}
 \alias{signal_shift,ANY,missing-method}
-\title{Shift the X Scale by a Given Value}
+\title{Shift the X Scale}
 \usage{
 signal_shift(x, y, lag, ...)
 
@@ -26,7 +26,7 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
 }
 \description{
-Shift the X Scale by a Given Value
+Shifts the \code{x} scale by a given value.
 }
 \examples{
 ## X-ray diffraction
@@ -41,6 +41,7 @@ lines(XRD_offset, type = "l", col = "red")
 }
 \seealso{
 Other signal processing methods: 
+\code{\link{signal_bind}()},
 \code{\link{signal_correct}()},
 \code{\link{signal_drift}()},
 \code{\link{signal_mean}()},

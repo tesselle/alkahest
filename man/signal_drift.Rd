@@ -48,6 +48,7 @@ lines(BEGe_minus, type = "l", col = "green")
 }
 \seealso{
 Other signal processing methods: 
+\code{\link{signal_bind}()},
 \code{\link{signal_correct}()},
 \code{\link{signal_mean}()},
 \code{\link{signal_shift}()},

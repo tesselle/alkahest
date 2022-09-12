@@ -24,6 +24,9 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 estimation. It must be one of "\code{linear}", "\code{rubberband}", "\code{SNIP}" or "\verb{4S}"
 (see details). Any unambiguous substring can be given.}
 }
+\value{
+Returns a \code{\link{list}} with two components \code{x} and \code{y}.
+}
 \description{
 Baseline Correction
 }
@@ -60,9 +63,13 @@ lines(BEGe_corr, type = "l", col = "red")
 }
 \seealso{
 Other signal processing methods: 
+\code{\link{signal_bind}()},
 \code{\link{signal_drift}()},
 \code{\link{signal_mean}()},
 \code{\link{signal_shift}()},
 \code{\link{subset}()}
+}
+\author{
+N. Frerebeau
 }
 \concept{signal processing methods}

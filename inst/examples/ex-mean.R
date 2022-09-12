@@ -1,8 +1,11 @@
 ## X-ray diffraction
 data("XRD")
 
-XRD1 <- XRD
-XRD1$count <- XRD1$count + 1500
+XRD1 <- signal_drift(XRD, lag = 1500)
+
+## Bind
+XRD_bind <- signal_bind(XRD, XRD1)
+XRD_bind[, 1:10]
 
 ## Mean
 XRD_mean <- signal_mean(XRD, XRD1)
