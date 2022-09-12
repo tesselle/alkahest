@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/tesselle/alkahest",
   "issueTracker": "https://github.com/tesselle/alkahest/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.0.0.9000",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -31,6 +31,57 @@
       "familyName": "Frerebeau",
       "email": "nicolas.frerebeau@u-bordeaux-montaigne.fr",
       "@id": "https://orcid.org/0000-0001-5759-4944"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "Matrix",
+      "name": "Matrix",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Matrix"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
   "softwareRequirements": {
@@ -62,10 +113,26 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "292.482KB",
+  "fileSize": "950.545KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2022",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Nicolas",
+          "familyName": "Frerebeau"
+        }
+      ],
+      "name": "alkahest: Pre-Processing XY Data from Experimental Methods",
+      "url": "https://packages.tesselle.org/alkahest/",
+      "description": "R package version 1.0.0"
+    }
+  ],
   "releaseNotes": "https://github.com/tesselle/alkahest/blob/master/NEWS.md",
   "readme": "https://github.com/tesselle/alkahest/blob/main/README.md",
   "contIntegration": ["https://github.com/tesselle/alkahest/actions", "https://app.codecov.io/gh/tesselle/alkahest"],
   "developmentStatus": "https://www.repostatus.org/#wip",
-  "keywords": ["r-package", "spectroscopy", "archaeometry", "powder-diffraction"]
+  "keywords": ["r-package", "spectroscopy", "archaeometry"]
 }

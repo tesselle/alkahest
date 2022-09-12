@@ -13,7 +13,7 @@ A lightweight, dependency-free toolbox for pre-processing XY data from experimen
 \tabular{ll}{
 \strong{Package:} \tab alkahest \cr
 \strong{Type:} \tab Package \cr
-\strong{Version:} \tab 0.0.0.9000 \cr
+\strong{Version:} \tab 1.0.0 \cr
 \strong{License:} \tab GPL-3 \cr
 \strong{Zenodo:} \tab  \cr
 }
