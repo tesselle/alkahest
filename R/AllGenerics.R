@@ -413,7 +413,7 @@ setGeneric(
   valueClass = "list"
 )
 
-#' Rescales intensities to sum to a specified value
+#' Rescale intensities to sum to a specified value
 #'
 #' Rescales intensities to sum to a specified value.
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
@@ -532,7 +532,7 @@ setGeneric(
 #' @param ... Any object that can be interpreted in a suitable way
 #'  (see [grDevices::xy.coords()]).
 #' @return
-#'  Returns a [`matrix`].
+#'  Returns a [`matrix`] of intensities.
 #' @author N. Frerebeau
 #' @example inst/examples/ex-mean.R
 #' @docType methods
@@ -544,7 +544,7 @@ setGeneric(
   valueClass = "matrix"
 )
 
-#' Mean
+#' Mean Intensities
 #'
 #' @param ... Any object that can be interpreted in a suitable way
 #'  (see [grDevices::xy.coords()]).

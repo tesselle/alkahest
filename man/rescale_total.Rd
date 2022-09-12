@@ -6,7 +6,7 @@
 \alias{rescale_total-method}
 \alias{rescale_total,numeric,numeric-method}
 \alias{rescale_total,ANY,missing-method}
-\title{Rescales intensities to sum to a specified value}
+\title{Rescale intensities to sum to a specified value}
 \usage{
 rescale_total(x, y, ...)
 

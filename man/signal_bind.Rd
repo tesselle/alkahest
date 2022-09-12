@@ -16,7 +16,7 @@ signal_bind(...)
 (see \code{\link[grDevices:xy.coords]{grDevices::xy.coords()}}).}
 }
 \value{
-Returns a \code{\link{matrix}}.
+Returns a \code{\link{matrix}} of intensities.
 }
 \description{
 Combines XY objects.

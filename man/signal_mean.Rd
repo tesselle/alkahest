@@ -5,7 +5,7 @@
 \alias{signal_mean}
 \alias{signal_mean-method}
 \alias{signal_mean,ANY-method}
-\title{Mean}
+\title{Mean Intensities}
 \usage{
 signal_mean(...)
 
@@ -19,7 +19,7 @@ signal_mean(...)
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
 }
 \description{
-Mean
+Mean Intensities
 }
 \examples{
 ## X-ray diffraction

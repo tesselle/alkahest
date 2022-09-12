@@ -8,7 +8,7 @@ NULL
 #' @aliases signal_bind,ANY-method
 setMethod(
   f = "signal_bind",
-  signature = c("ANY"),
+  signature = "ANY",
   definition = function(...) {
 
     signal <- list(...)
@@ -35,7 +35,7 @@ setMethod(
 #' @aliases signal_mean,ANY-method
 setMethod(
   f = "signal_mean",
-  signature = c("ANY"),
+  signature = "ANY",
   definition = function(...) {
 
     signal <- list(...)
