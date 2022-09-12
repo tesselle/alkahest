@@ -10,23 +10,14 @@ setMethod(
   f = "smooth_rectangular",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3) {
-    ## Validation
-    assert_odd(m)
+    ## Windows
+    index <- which_window(length(x), m)
 
-    ## Index
-    k <- (m - 1) / 2
-    index_k <- seq_len(k)
-    index_y <- seq_along(y)
-    index_m <- c(index_k, rep_len(k + 1, length(y) - 2 * k), rev(index_k)) - 1
-
-    y <- mapply(
-      FUN = function(i, k, data) {
-        index <- seq(from = i - k, to = i + k, by = 1)
-        mean(data[index])
-      },
-      i = index_y,
-      k = index_m,
-      MoreArgs = list(data = y)
+    y <- vapply(
+      X = index,
+      FUN = function(i, data) mean(data[i]),
+      FUN.VALUE = numeric(1),
+      data = y
     )
 
     xy <- list(x = x, y = y)

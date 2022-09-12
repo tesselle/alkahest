@@ -76,7 +76,7 @@ lines(baseline, type = "l", col = "red")
 XRD <- signal_drift(XRD, lag = baseline, subtract = TRUE)
 
 ## Find peaks
-peaks <- peaks_find(XRD, SNR = 3, m = 5)
+peaks <- peaks_find(XRD, SNR = 3, m = 11)
 
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 lines(peaks, type = "p", pch = 16, col = "red")

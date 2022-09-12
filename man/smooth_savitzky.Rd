@@ -20,7 +20,8 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 
 \item{...}{Currently not used.}
 
-\item{m}{An odd \code{\link{integer}} giving the number of adjacent points to be used.}
+\item{m}{An odd \code{\link{integer}} giving the window size (i.e. the number of
+adjacent points to be used).}
 
 \item{p}{An \code{\link{integer}} giving the degree of the polynomial to be used.}
 }
@@ -33,11 +34,12 @@ Savitzky-Golay Filter
 \details{
 This method is based on the least-squares fitting of polynomials to
 segments of \eqn{m} adjacent points.
-
+}
+\note{
 There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
-of the spectrum for which a complete \eqn{m}-width smooth cannot be
-calculated. To prevent data loss, the original \eqn{(m - 1) / 2} points at
-the ends of the spectrum are preserved.
+of the data series for which a complete \eqn{m}-width window cannot be
+obtained. To prevent data loss, the original \eqn{(m - 1) / 2} points at
+both ends of the data series are preserved.
 }
 \examples{
 ## Simulate data with some noise

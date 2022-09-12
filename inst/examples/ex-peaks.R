@@ -1,19 +1,24 @@
-## gamma-ray spectrometry
-data("BEGe")
+## X-ray diffraction
+data("XRD")
 
-## Subset from 2.75 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## Whittaker smoothing
+smooth <- smooth_whittaker(XRD, lambda = 1000, d = 2, sparse = TRUE)
+
+## 4S Peak Filling baseline
+baseline <- baseline_peakfilling(smooth, n = 10, m = 5, by = 10)
+
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-BEGe_correct <- signal_correct(BEGe, method = "SNIP")
-
-## Plot spectrum
-plot(BEGe_correct, type = "l", xlab = "Energy (keV)", ylab = "Count")
-abline(h = mad(BEGe_correct$y) * 3) # noise threshold
+XRD <- signal_drift(XRD, lag = baseline, subtract = TRUE)
 
 ## Find peaks
-BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
-lines(BEGe_peaks, type = "p", pch = 16, col = "red")
+peaks <- peaks_find(XRD, SNR = 3, m = 11)
+
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(peaks, type = "p", pch = 16, col = "red")
+abline(h = attr(peaks, "noise"), lty = 2) # noise threshold
 
 ## Half-Width at Half-Maximum
 x <- seq(-4, 4, length = 1000)

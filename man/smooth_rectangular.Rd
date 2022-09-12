@@ -20,7 +20,8 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 
 \item{...}{Currently not used.}
 
-\item{m}{An odd \code{\link{integer}} giving the number of adjacent points to be used.}
+\item{m}{An odd \code{\link{integer}} giving the window size (i.e. the number of
+adjacent points to be used).}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
@@ -31,11 +32,12 @@ Unweighted sliding-average or rectangular Smoothing.
 \details{
 It replaces each point in the signal with the average of \eqn{m} adjacent
 points.
-
+}
+\note{
 There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
-of the spectrum for which a complete \eqn{m}-width smooth cannot be
-calculated. To prevent data loss, progressively smaller smooths are used at
-the ends of the spectrum.
+of the data series for which a complete \eqn{m}-width window cannot be
+obtained. To prevent data loss, progressively wider/narrower windows are
+used at both ends of the data series.
 }
 \examples{
 ## Simulate data with some noise

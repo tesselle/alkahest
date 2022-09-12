@@ -10,9 +10,9 @@
 \usage{
 peaks_find(x, y, ...)
 
-\S4method{peaks_find}{numeric,numeric}(x, y, method = c("MAD"), SNR = 2, m = NULL, ...)
+\S4method{peaks_find}{numeric,numeric}(x, y, method = "MAD", SNR = 2, m = NULL, ...)
 
-\S4method{peaks_find}{ANY,missing}(x, method = c("MAD"), SNR = 2, m = NULL, ...)
+\S4method{peaks_find}{ANY,missing}(x, method = "MAD", SNR = 2, m = NULL, ...)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -26,7 +26,8 @@ background noise estimation (see below).}
 \item{SNR}{An \code{\link{integer}} giving the signal-to-noise-ratio for peak detection
 (see below).}
 
-\item{m}{An odd \code{\link{integer}} giving the half window size.
+\item{m}{An odd \code{\link{integer}} giving the window size (i.e. the number of
+adjacent points to be used).
 If \code{NULL}, 5\% of the data points is used as the half window size.}
 }
 \value{
@@ -43,28 +44,41 @@ The following methods are available for noise estimation:
 \describe{
 \item{\code{MAD}}{Median Absolute Deviation.}
 }
+
+Note that to improve peak detection, it may be helpful to smooth the data
+and remove the baseline beforehand.
 }
 \note{
+There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+of the data series for which a complete \eqn{m}-width window cannot be
+obtained. To prevent data loss, progressively wider/narrower windows are
+used at both ends of the data series.
+
 Adapted from Stasia Grinberg's
 \href{https://github.com/stas-g/findPeaks}{\code{findPeaks}} function.
 }
 \examples{
-## gamma-ray spectrometry
-data("BEGe")
+## X-ray diffraction
+data("XRD")
 
-## Subset from 2.75 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## Whittaker smoothing
+smooth <- smooth_whittaker(XRD, lambda = 1000, d = 2, sparse = TRUE)
+
+## 4S Peak Filling baseline
+baseline <- baseline_peakfilling(smooth, n = 10, m = 5, by = 10)
+
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(baseline, type = "l", col = "red")
 
 ## Correct baseline
-BEGe_correct <- signal_correct(BEGe, method = "SNIP")
-
-## Plot spectrum
-plot(BEGe_correct, type = "l", xlab = "Energy (keV)", ylab = "Count")
-abline(h = mad(BEGe_correct$y) * 3) # noise threshold
+XRD <- signal_drift(XRD, lag = baseline, subtract = TRUE)
 
 ## Find peaks
-BEGe_peaks <- peaks_find(BEGe_correct, SNR = 3, m = 5)
-lines(BEGe_peaks, type = "p", pch = 16, col = "red")
+peaks <- peaks_find(XRD, SNR = 3, m = 11)
+
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(peaks, type = "p", pch = 16, col = "red")
+abline(h = attr(peaks, "noise"), lty = 2) # noise threshold
 
 ## Half-Width at Half-Maximum
 x <- seq(-4, 4, length = 1000)

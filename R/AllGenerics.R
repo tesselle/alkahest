@@ -206,7 +206,8 @@ setGeneric(
 #'  background noise estimation (see below).
 #' @param SNR An [`integer`] giving the signal-to-noise-ratio for peak detection
 #'  (see below).
-#' @param m An odd [`integer`] giving the half window size.
+#' @param m An odd [`integer`] giving the window size (i.e. the number of
+#'  adjacent points to be used).
 #'  If `NULL`, 5% of the data points is used as the half window size.
 #' @param ... Extra parameters to be passed to internal methods.
 #' @details
@@ -217,6 +218,14 @@ setGeneric(
 #'  \describe{
 #'   \item{`MAD`}{Median Absolute Deviation.}
 #'  }
+#'
+#'  Note that to improve peak detection, it may be helpful to smooth the data
+#'  and remove the baseline beforehand.
+#' @note
+#'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+#'  of the data series for which a complete \eqn{m}-width window cannot be
+#'  obtained. To prevent data loss, progressively wider/narrower windows are
+#'  used at both ends of the data series.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @note
@@ -638,16 +647,17 @@ setGeneric(
 #' Unweighted sliding-average or rectangular Smoothing.
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param m An odd [`integer`] giving the number of adjacent points to be used.
+#' @param m An odd [`integer`] giving the window size (i.e. the number of
+#'  adjacent points to be used).
 #' @param ... Currently not used.
 #' @details
 #'  It replaces each point in the signal with the average of \eqn{m} adjacent
 #'  points.
-#'
+#' @note
 #'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
-#'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
-#'  calculated. To prevent data loss, progressively smaller smooths are used at
-#'  the ends of the spectrum.
+#'  of the data series for which a complete \eqn{m}-width window cannot be
+#'  obtained. To prevent data loss, progressively wider/narrower windows are
+#'  used at both ends of the data series.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @author N. Frerebeau
@@ -666,16 +676,17 @@ setGeneric(
 #' Weighted sliding-average or triangular smoothing.
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param m An odd [`integer`] giving the number of adjacent points to be used.
+#' @param m An odd [`integer`] giving the window size (i.e. the number of
+#'  adjacent points to be used).
 #' @param ... Currently not used.
 #' @details
 #'  It replaces each point in the signal with the weighted mean of \eqn{m}
 #'  adjacent points.
-#'
+#' @note
 #'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
-#'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
-#'  calculated. To prevent data loss, progressively smaller smooths are used at
-#'  the ends of the spectrum.
+#'  of the data series for which a complete \eqn{m}-width window cannot be
+#'  obtained. To prevent data loss, progressively wider/narrower windows are
+#'  used at both ends of the data series.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @author N. Frerebeau
@@ -714,17 +725,18 @@ setGeneric(
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param m An odd [`integer`] giving the number of adjacent points to be used.
+#' @param m An odd [`integer`] giving the window size (i.e. the number of
+#'  adjacent points to be used).
 #' @param p An [`integer`] giving the degree of the polynomial to be used.
 #' @param ... Currently not used.
 #' @details
 #'  This method is based on the least-squares fitting of polynomials to
 #'  segments of \eqn{m} adjacent points.
-#'
+#' @note
 #'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
-#'  of the spectrum for which a complete \eqn{m}-width smooth cannot be
-#'  calculated. To prevent data loss, the original \eqn{(m - 1) / 2} points at
-#'  the ends of the spectrum are preserved.
+#'  of the data series for which a complete \eqn{m}-width window cannot be
+#'  obtained. To prevent data loss, the original \eqn{(m - 1) / 2} points at
+#'  both ends of the data series are preserved.
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @references

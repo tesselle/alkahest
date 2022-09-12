@@ -8,13 +8,16 @@ NULL
 setMethod(
   f = "peaks_find",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, method = c("MAD"), SNR = 2, m = NULL, ...) {
+  definition = function(x, y, method = "MAD", SNR = 2, m = NULL, ...) {
     ## Validation
     method <- match.arg(method, several.ok = FALSE)
-    if (is.null(m)) m <- round(length(x) * 0.05)
-    m <- as.integer(m)
+    if (is.null(m)) {
+      m <- as.integer(length(x) * 0.05)
+      if (m %% 2 == 0) m <- m + 1
+    }
 
     ## Noise threshold
+    threshold <- NULL
     if (SNR != 0) {
       noise <- switch (
         method,
@@ -25,26 +28,25 @@ setMethod(
       y[index_noise] <- 0
     }
 
-    ## Peaks detection
+    ## Windows
     shape <- diff(sign(diff(y, na.pad = FALSE)))
-    index_shape <- lapply(
-      X = which(shape < 0),
-      FUN = function(i, data, m) {
-        n <- length(data)
-        z <- i - m + 1
-        z <- ifelse(z > 0, z, 1)
-        w <- i + m + 1
-        w <- ifelse(w < n, w, n)
-        if (all(data[c(z:i, (i + 2):w)] <= data[i + 1])) return(i + 1)
-        return(NULL)
-      },
-      data = y,
-      m = m
-    )
-    k <- unlist(index_shape)
+    win <- which_window(length(x), m, i = which(shape < 0) + 1L)
 
-    xy <- list(x = x[k], y = y[k])
-    attr(xy, "method") <- method
+    ## Peaks detection
+    pks <- vapply(
+      X = win,
+      FUN = function(w, k, data) {
+        i <- length(w) - k # Middle of the window
+        p <- if (all(data[w[-i]] <= data[w[i]])) w[i] else 0
+        return(p)
+      },
+      FUN.VALUE = numeric(1),
+      k = (m - 1) / 2,
+      data = y
+    )
+
+    xy <- list(x = x[pks], y = y[pks])
+    attr(xy, "noise") <- threshold
     xy
   }
 )
@@ -55,7 +57,7 @@ setMethod(
 setMethod(
   f = "peaks_find",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, method = c("MAD"), SNR = 2, m = NULL, ...) {
+  definition = function(x, method = "MAD", SNR = 2, m = NULL, ...) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, method = method, SNR = SNR,
                          m = m, ...)
