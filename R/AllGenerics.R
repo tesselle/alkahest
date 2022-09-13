@@ -56,9 +56,10 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param m An odd [`integer`] giving the window size (i.e. the number of
-#'  adjacent points to be used) for minimization/maximization.
+#'  adjacent points to be used; see [`window_sliding()`]) for
+#'  minimization/maximization.
 #' @param s An odd [`integer`] giving the window size (i.e. the number of
-#'  adjacent points to be used) for smoothing.
+#'  adjacent points to be used; see [`window_sliding()`]) for smoothing.
 #' @param ... Currently not used.
 #' @note
 #'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
@@ -333,7 +334,7 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param by An [`integer`] specifying the binning ratio (i.e. the number of
-#'  points to be grouped together).
+#'  points to be grouped together; see [`window_tumbling()`]).
 #' @param f A [`function`] that takes a `numeric` vector of intensities as
 #'  argument and returns a single `numeric` vector. Used to estimate the local
 #'  representative value in each bin (defaults to [sum()]; see examples).
@@ -673,7 +674,7 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param m An odd [`integer`] giving the window size (i.e. the number of
-#'  adjacent points to be used).
+#'  adjacent points to be used; see [`window_sliding()`]).
 #' @param ... Currently not used.
 #' @details
 #'  It replaces each point in the signal with the average of \eqn{m} adjacent
@@ -702,7 +703,7 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param m An odd [`integer`] giving the window size (i.e. the number of
-#'  adjacent points to be used).
+#'  adjacent points to be used; see [`window_sliding()`]).
 #' @param ... Currently not used.
 #' @details
 #'  It replaces each point in the signal with the weighted mean of \eqn{m}
@@ -806,5 +807,60 @@ setGeneric(
 setGeneric(
   name = "smooth_whittaker",
   def = function(x, y, ...) standardGeneric("smooth_whittaker"),
+  valueClass = "list"
+)
+
+# Windows ======================================================================
+#' Sliding Windows
+#'
+#' @param n An [`integer`] giving the length of the data series (will be coerced
+#'  with [`as.integer()`] and hence truncated toward zero).
+#' @param m An odd [`integer`] giving the window size, i.e. the number of
+#'  adjacent points to be used (will be coerced with [`as.integer()`] and hence
+#'  truncated toward zero).
+#' @param i A vector [`integer`] specifying the indices of the data points for
+#'  which windows should be returned. If `NULL` (the default), windows are
+#'  evaluated for each data point.
+#' @description
+#'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+#'  of the data series for which a complete \eqn{m}-width window cannot be
+#'  obtained. To prevent data loss, progressively wider/narrower windows are
+#'  evaluated at both ends of the data series.
+#' @param ... Currently not used.
+#' @return
+#'  Returns a length-\eqn{n} [`list`] of [`integer`] vectors (indices of the
+#'  data points in each window).
+#' @author N. Frerebeau
+#' @example inst/examples/ex-windows.R
+#' @docType methods
+#' @family moving windows
+#' @aliases window_sliding-method
+setGeneric(
+  name = "window_sliding",
+  def = function(n, m, ...) standardGeneric("window_sliding"),
+  valueClass = "list"
+)
+
+#' Tumbling Windows
+#'
+#' @param n An [`integer`] giving the length of the data series (will be coerced
+#'  with [`as.integer()`] and hence truncated toward zero).
+#' @param m An [`integer`] giving the window size, i.e. the number of
+#'  adjacent points to be used (will be coerced with [`as.integer()`] and hence
+#'  truncated toward zero).
+#' @param drop A [`logical`] scalar: if `m` is not a multiple of `n`, should the
+#' last data points be removed so that all windows have the same length?
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] of [`integer`] vectors (indices of the data points in
+#'  each window).
+#' @author N. Frerebeau
+#' @example inst/examples/ex-windows.R
+#' @docType methods
+#' @family moving windows
+#' @aliases window_tumbling-method
+setGeneric(
+  name = "window_tumbling",
+  def = function(n, m, ...) standardGeneric("window_tumbling"),
   valueClass = "list"
 )

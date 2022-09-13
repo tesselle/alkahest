@@ -21,7 +21,7 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \item{...}{Extra parameters to be passed to \code{f}.}
 
 \item{by}{An \code{\link{integer}} specifying the binning ratio (i.e. the number of
-points to be grouped together).}
+points to be grouped together; see \code{\link[=window_tumbling]{window_tumbling()}}).}
 
 \item{f}{A \code{\link{function}} that takes a \code{numeric} vector of intensities as
 argument and returns a single \code{numeric} vector. Used to estimate the local

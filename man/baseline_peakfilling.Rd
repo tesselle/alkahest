@@ -25,7 +25,7 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \item{m}{An odd \code{\link{integer}} giving the half window size.}
 
 \item{by}{An \code{\link{integer}} specifying the binning ratio (i.e. the number of
-points to be grouped together).}
+points to be grouped together; see \code{\link[=window_tumbling]{window_tumbling()}}).}
 }
 \description{
 Baseline estimation by iterative mean suppression.

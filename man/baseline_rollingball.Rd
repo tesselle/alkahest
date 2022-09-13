@@ -21,10 +21,11 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \item{...}{Currently not used.}
 
 \item{m}{An odd \code{\link{integer}} giving the window size (i.e. the number of
-adjacent points to be used) for minimization/maximization.}
+adjacent points to be used; see \code{\link[=window_sliding]{window_sliding()}}) for
+minimization/maximization.}
 
 \item{s}{An odd \code{\link{integer}} giving the window size (i.e. the number of
-adjacent points to be used) for smoothing.}
+adjacent points to be used; see \code{\link[=window_sliding]{window_sliding()}}) for smoothing.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.

@@ -44,6 +44,7 @@ Collate:
     'rescale.R'
     'signal.R'
     'smooth.R'
+    'windows.R'
 LazyData: true
 Config/testthat/edition: 3
 VignetteBuilder: knitr

@@ -99,8 +99,8 @@ setMethod(
   definition = function(x, y, m, s) {
     ## Windows
     n <- length(x)
-    win_minmax <- which_window(n, m)
-    win_smooth <- which_window(n, s)
+    win_minmax <- window_sliding(n, m)
+    win_smooth <- window_sliding(n, s)
 
     ## Minimize
     T1 <- vapply(

@@ -30,7 +30,7 @@ setMethod(
 
     ## Windows
     shape <- diff(sign(diff(y, na.pad = FALSE)))
-    win <- which_window(length(x), m, i = which(shape < 0) + 1L)
+    win <- window_sliding(length(x), m, i = which(shape < 0) + 1L)
 
     ## Peaks detection
     pks <- vapply(

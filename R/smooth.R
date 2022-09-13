@@ -11,7 +11,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3) {
     ## Windows
-    index <- which_window(length(x), m)
+    index <- window_sliding(length(x), m)
 
     y <- vapply(
       X = index,

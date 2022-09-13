@@ -28,6 +28,9 @@ reference:
 - title: Resample
   contents:
   - has_concept("resampling methods")
+- title: Windows
+  contents:
+  - has_concept("moving windows")
 - title: Replacement
   contents:
   - has_concept("replacement methods")
