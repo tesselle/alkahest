@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# alkahest
+# alkahest <img width=120px src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/tesselle/alkahest/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/alkahest/actions)
