@@ -66,6 +66,7 @@ Other baseline estimation methods:
 \code{\link{baseline_linear}()},
 \code{\link{baseline_peakfilling}()},
 \code{\link{baseline_polynomial}()},
+\code{\link{baseline_rollingball}()},
 \code{\link{baseline_snip}()}
 }
 \author{

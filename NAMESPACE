@@ -3,6 +3,7 @@
 exportMethods(baseline_linear)
 exportMethods(baseline_peakfilling)
 exportMethods(baseline_polynomial)
+exportMethods(baseline_rollingball)
 exportMethods(baseline_rubberband)
 exportMethods(baseline_snip)
 exportMethods(integrate_rectangle)

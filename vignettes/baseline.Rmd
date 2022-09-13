@@ -21,14 +21,15 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(alkahest)
+
+## Load data
+data("BEGe") # gamma-ray spectrometry
+data("XRD") # X-ray diffraction
 ```
 
 # Linear baseline
 
 ```{r linear, fig.width=7, fig.height=6, fig.cap="Linear baseline."}
-## X-ray diffraction
-data("XRD")
-
 ## Plot spectrum
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 
@@ -47,9 +48,6 @@ plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
 # Polynomial baseline
 
 ```{r polynomial, fig.width=7, fig.height=6, fig.cap="Polynomial baseline"}
-## X-ray diffraction
-data("XRD")
-
 ## Subset from 20 to 70 degrees
 XRD <- signal_select(XRD, from = 20, to = 70)
 
@@ -68,12 +66,28 @@ corrected <- signal_drift(XRD, lag = baseline, subtract = TRUE)
 plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
 ```
 
+```{r rollingball, fig.width=7, fig.height=6, fig.cap="Rolling Ball baseline"}
+## Subset from 20 to 70 degrees
+XRD <- signal_select(XRD, from = 20, to = 70)
+
+## Plot spectrum
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+
+## Estimate baseline
+baseline <- baseline_rollingball(XRD, m = 201, s = 151)
+
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
+lines(baseline, type = "l", col = "red")
+
+## Correct baseline
+corrected <- signal_drift(XRD, lag = baseline, subtract = TRUE)
+
+plot(corrected, type = "l", xlab = expression(2*theta), ylab = "Count")
+```
+
 # Rubberband baseline
 
 ```{r rubberband, fig.width=7, fig.height=6, fig.cap="Rubberband baseline"}
-## gamma-ray spectrometry
-data("BEGe")
-
 ## Subset from 2.75 to 200 keV
 BEGe <- signal_select(BEGe, from = 3, to = 200)
 
@@ -95,9 +109,6 @@ plot(corrected, type = "l", xlab = "Energy (keV)", ylab = "Count")
 # SNIP baseline
 
 ```{r snip, fig.width=7, fig.height=6, fig.cap="SNIP baseline"}
-## gamma-ray spectrometry
-data("BEGe")
-
 ## Subset from 2.75 to 200 keV
 BEGe <- signal_select(BEGe, from = 3, to = 200)
 
@@ -119,9 +130,6 @@ plot(corrected, type = "l", xlab = "Energy (keV)", ylab = "Count")
 # 4S Peak Filling
 
 ```{r peakfilling, fig.width=7, fig.height=6, fig.cap="4S Peak Filling"}
-## X-ray diffraction
-data("XRD")
-
 ## Plot spectrum
 plot(XRD, type = "l", xlab = "Energy (keV)", ylab = "Count")
 

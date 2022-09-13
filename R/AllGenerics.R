@@ -51,13 +51,38 @@ setGeneric(
   valueClass = "list"
 )
 
-# @rdname baseline
-# @aliases baseline_rollingball-method
-# setGeneric(
-#   name = "baseline_rollingball",
-#   def = function(x, y, ...) standardGeneric("baseline_rollingball"),
-#   valueClass = "list"
-# )
+#' Rolling Ball Baseline Estimation
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param m An odd [`integer`] giving the window size (i.e. the number of
+#'  adjacent points to be used) for minimization/maximization.
+#' @param s An odd [`integer`] giving the window size (i.e. the number of
+#'  adjacent points to be used) for smoothing.
+#' @param ... Currently not used.
+#' @note
+#'  There will be \eqn{(m - 1) / 2} points both at the beginning and at the end
+#'  of the data series for which a complete \eqn{m}-width window cannot be
+#'  obtained. To prevent data loss, progressively wider/narrower windows are
+#'  used at both ends of the data series.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @seealso [signal_correct()]
+#' @references
+#'  Kneen, M. A. and Annegarn, H. J. (1996). Algorithm for Fitting XRF, SEM and
+#'  PIXE X-Ray Spectra Backgrounds. *Nuclear Instruments and Methods in Physics
+#'  Research Section B: Beam Interactions with Materials and Atoms*,
+#'  109/110: 209-213. \doi{10.1016/0168-583X(95)00908-6}.
+#' @example inst/examples/ex-baseline-rollingball.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_rollingball-method
+setGeneric(
+ name = "baseline_rollingball",
+ def = function(x, y, ...) standardGeneric("baseline_rollingball"),
+ valueClass = "list"
+)
 
 #' Rubberband Baseline Estimation
 #'

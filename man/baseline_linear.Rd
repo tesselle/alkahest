@@ -53,6 +53,7 @@ plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 Other baseline estimation methods: 
 \code{\link{baseline_peakfilling}()},
 \code{\link{baseline_polynomial}()},
+\code{\link{baseline_rollingball}()},
 \code{\link{baseline_rubberband}()},
 \code{\link{baseline_snip}()}
 }

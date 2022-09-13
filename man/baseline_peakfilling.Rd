@@ -56,6 +56,7 @@ mean suppression. \emph{MethodsX}, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
 \code{\link{baseline_polynomial}()},
+\code{\link{baseline_rollingball}()},
 \code{\link{baseline_rubberband}()},
 \code{\link{baseline_snip}()}
 }

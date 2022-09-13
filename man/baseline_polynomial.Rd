@@ -62,6 +62,7 @@ Spectroscopy}, 57(11): 1363-67. \doi{10.1366/000370203322554518}.
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
 \code{\link{baseline_peakfilling}()},
+\code{\link{baseline_rollingball}()},
 \code{\link{baseline_rubberband}()},
 \code{\link{baseline_snip}()}
 }

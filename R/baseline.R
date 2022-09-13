@@ -89,6 +89,67 @@ setMethod(
   }
 )
 
+# Rolling Ball =================================================================
+#' @export
+#' @rdname baseline_rollingball
+#' @aliases baseline_rollingball,numeric,numeric-method
+setMethod(
+  f = "baseline_rollingball",
+  signature = c(x = "numeric", y = "numeric"),
+  definition = function(x, y, m, s) {
+    ## Windows
+    n <- length(x)
+    win_minmax <- which_window(n, m)
+    win_smooth <- which_window(n, s)
+
+    ## Minimize
+    T1 <- vapply(
+      X = win_minmax,
+      FUN = function(i, data) {
+        min(data[i])
+      },
+      FUN.VALUE = numeric(1),
+      data = y
+    )
+
+    ## Maximize
+    T2 <- vapply(
+      X = win_minmax,
+      FUN = function(i, data) {
+        max(data[i])
+      },
+      FUN.VALUE = numeric(1),
+      data = T1
+    )
+
+    ## Smooth
+    T3 <- vapply(
+      X = win_smooth,
+      FUN = function(i, data) {
+        mean(data[i])
+      },
+      FUN.VALUE = numeric(1),
+      data = T2
+    )
+
+    xy <- list(x = x, y = T3)
+    attr(xy, "method") <- "rolling ball baseline"
+    xy
+  }
+)
+
+#' @export
+#' @rdname baseline_rollingball
+#' @aliases baseline_rollingball,ANY,missing-method
+setMethod(
+  f = "baseline_rollingball",
+  signature = c(x = "ANY", y = "missing"),
+  definition = function(x, m, s) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, m = m, s = s)
+  }
+)
+
 # Rubberband ===================================================================
 #' @export
 #' @rdname baseline_rubberband

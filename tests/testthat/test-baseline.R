@@ -19,6 +19,16 @@ test_that("Polynomial baseline", {
 
   expect_snapshot(polynomial)
 })
+test_that("Rolling Ball baseline", {
+  data("XRD")
+
+  rollingball <- baseline_rollingball(XRD, m = 201, s = 151)
+
+  # plot(XRD, type = "l", xlab = "", ylab = "")
+  # lines(rollingball, type = "l", col = "red")
+
+  expect_snapshot(rollingball)
+})
 test_that("Rubberband baseline", {
   data("XRD")
 
