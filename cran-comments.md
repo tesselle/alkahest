@@ -8,4 +8,5 @@
 
 0 errors | 0 warnings | 1 note
 
+* This is a resubmission.
 * Some links in the documentation point to articles behind paywalls that may return a 403 error.
