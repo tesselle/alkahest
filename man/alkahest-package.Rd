@@ -17,7 +17,7 @@ A lightweight, dependency-free toolbox for pre-processing XY data from experimen
 \strong{Type:} \tab Package \cr
 \strong{Version:} \tab 1.0.0 \cr
 \strong{License:} \tab GPL-3 \cr
-\strong{Zenodo:} \tab  \cr
+\strong{Zenodo:} \tab \doi{10.5281/zenodo.7081524} \cr
 }
 }
 \seealso{
