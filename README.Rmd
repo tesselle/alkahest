@@ -22,6 +22,9 @@ knitr::opts_chunk$set(
 [![Dependencies](https://tinyverse.netlify.com/badge/alkahest)](https://cran.r-project.org/package=alkahest)
 
 [![r-universe](https://tesselle.r-universe.dev/badges/alkahest)](https://tesselle.r-universe.dev){.pkgdown-devel}
+[![CRAN Version](http://www.r-pkg.org/badges/version/alkahest)](https://cran.r-project.org/package=alkahest){.pkgdown-release}
+[![CRAN checks](https://cranchecks.info/badges/worst/alkahest)](https://cran.r-project.org/web/checks/check_results_alkahest.html){.pkgdown-release}
+[![CRAN Downloads](http://cranlogs.r-pkg.org/badges/alkahest)](https://cran.r-project.org/package=alkahest){.pkgdown-release}
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->

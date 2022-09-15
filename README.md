@@ -13,6 +13,18 @@
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
 src="https://tesselle.r-universe.dev/badges/alkahest"
 alt="r-universe" /></a>
+<a href="https://cran.r-project.org/package=alkahest"
+class="pkgdown-release"><img
+src="http://www.r-pkg.org/badges/version/alkahest"
+alt="CRAN Version" /></a> <a
+href="https://cran.r-project.org/web/checks/check_results_alkahest.html"
+class="pkgdown-release"><img
+src="https://cranchecks.info/badges/worst/alkahest"
+alt="CRAN checks" /></a>
+<a href="https://cran.r-project.org/package=alkahest"
+class="pkgdown-release"><img
+src="http://cranlogs.r-pkg.org/badges/alkahest"
+alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
