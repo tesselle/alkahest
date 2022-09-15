@@ -2,13 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "alkahest",
-  "description": "A lightweight, dependency-free toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). This package provides methods for baseline estimation and correction, smoothing, normalization, integration and peaks detection.",
+  "description": "A lightweight, dependency-free toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). This package provides methods for baseline estimation and correction, smoothing, normalization, integration and peaks detection. Baseline correction methods includes polynomial fitting as described in Lieber and Mahadevan-Jansen (2003) <doi:10.1366/000370203322554518>, Rolling Ball algorithm after Kneen and Annegarn (1996) <doi:10.1016/0168-583X(95)00908-6>, SNIP algorithm after Ryan et al. (1988) <doi:10.1016/0168-583X(88)90063-8>, 4S Peak Filling after Liland (2015) <doi:10.1016/j.mex.2015.02.009> and more.",
   "name": "alkahest: Pre-Processing XY Data from Experimental Methods",
   "relatedLink": "https://packages.tesselle.org/alkahest/",
   "codeRepository": "https://github.com/tesselle/alkahest",
   "issueTracker": "https://github.com/tesselle/alkahest/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0",
+  "version": "1.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -122,7 +122,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1109.44KB",
+  "fileSize": "1113.1KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -135,13 +135,16 @@
         }
       ],
       "name": "alkahest: Pre-Processing XY Data from Experimental Methods",
+      "identifier": "10.5281/zenodo.7081524",
       "url": "https://packages.tesselle.org/alkahest/",
-      "description": "R package version 1.0.0"
+      "description": "R package version 1.0.0",
+      "@id": "https://doi.org/10.5281/zenodo.7081524",
+      "sameAs": "https://doi.org/10.5281/zenodo.7081524"
     }
   ],
   "releaseNotes": "https://github.com/tesselle/alkahest/blob/master/NEWS.md",
   "readme": "https://github.com/tesselle/alkahest/blob/main/README.md",
   "contIntegration": ["https://github.com/tesselle/alkahest/actions", "https://app.codecov.io/gh/tesselle/alkahest"],
-  "developmentStatus": "https://www.repostatus.org/#wip",
+  "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["r-package", "spectroscopy", "archaeometry"]
 }
