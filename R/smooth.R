@@ -247,7 +247,7 @@ setMethod(
       aic[i] <- like$aic
       mu[, i] <- like$mu
       se[, i] <- like$se
-      R[, i] <- like$r
+      res[, i] <- like$res
 
       if (progress) utils::setTxtProgressBar(pb, i)
     }
@@ -257,12 +257,12 @@ setMethod(
     k <- which.min(aic)
     mu <- mu[, k]
     se <- se[, k]
-    R <- R[, k]
+    res <- res[, k]
     op_lambda <- lambda[k]
     op_aic <- aic[k]
 
-    xy <- list(x = x, y = mu, aic = aic, op_aic = op_aic, op_lambda = op_lambda,
-               se = se, r = R)
+    xy <- list(x = x, y = mu, aic = aic, se = se, residuals = res,
+               optimal_aic = op_aic, optimal_lambda = op_lambda)
     attr(xy, "method") <- "penalized likelihood smoothing"
     xy
   }
@@ -303,7 +303,7 @@ penalized_likelihood <- function(y, lambda, d = 2, AIC = TRUE, SE = FALSE) {
   }
 
   ## AIC
-  aic <- 0
+  aic <- NA_real_
   if (isTRUE(AIC)) {
     H <- Matrix::solve(W + P) %*% W
     ed <- sum(Matrix::diag(H))
@@ -312,14 +312,14 @@ penalized_likelihood <- function(y, lambda, d = 2, AIC = TRUE, SE = FALSE) {
   }
 
   ## Standard error
-  se <- rep(0, m)
+  se <- rep(NA_real_, m)
   if (isTRUE(SE)) {
     HH <- Matrix::tcrossprod(H %*% W, H)
     se <- sqrt(Matrix::diag(HH))
   }
 
   ## Standardized residuals for counts
-  r <- (y - mu) / sqrt(mu)
+  res <- (y - mu) / sqrt(mu)
 
-  list(mu = mu, aic = aic, se = se, r = r)
+  list(mu = mu, aic = aic, se = se, res = res)
 }

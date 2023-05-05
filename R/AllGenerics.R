@@ -832,13 +832,49 @@ setGeneric(
 #'  model. *Journal of Applied Crystallography*, 47: 852-860.
 #'  \doi{10.1107/S1600576714005809}
 #' @author J. J. de Rooi *et al.* (original R code).
-#' @example inst/examples/ex-strip-ka2.R
+#' @example inst/examples/ex-xrd-ka2.R
 #' @docType methods
 #' @family smoothing methods
 #' @aliases smooth_likelihood-method
 setGeneric(
   name = "smooth_likelihood",
   def = function(x, y, ...) standardGeneric("smooth_likelihood"),
+  valueClass = "list"
+)
+
+# Strip ========================================================================
+#' Strip XRD ka2
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param lambda An [`integer`] giving the smoothing parameter. The larger
+#'  `lambda` is, the smoother the curve.
+#' @param wave A length-two [`numeric`] vector giving the characteristic
+#'  wavelengths of the anode material (defaults to copper).
+#' @param tau A length-one [`numeric`] vector giving the ratio between
+#'  \eqn{\alpha}1 and \eqn{\alpha}2 line intensities (defaults to 1/2).
+#' @param nseg A length-one [`numeric`] vector specifying the number of equally
+#'  sized segments for B-spline basis matrix computation.
+#' @param progress A [`logical`] scalar: should a progress bar be displayed?
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @note
+#'  \pkg{Matrix} is required.
+#' @author J. J. de Rooi *et al.* (original R code).
+#' @references
+#'  de Rooi, J. J., van der Pers, N. M., Hendrikx, R. W. A., Delhez, R.,
+#'  Böttger A. J. and Eilers, P. H. C. (2014). Smoothing of X-ray diffraction
+#'  data and Ka2 elimination using penalized likelihood and the composite link
+#'  model. *Journal of Applied Crystallography*, 47: 852-860.
+#'  \doi{10.1107/S1600576714005809}
+#' @example inst/examples/ex-xrd-ka2.R
+#' @docType methods
+#' @family specialized tools
+#' @aliases ka2_strip_penalized-method
+setGeneric(
+  name = "ka2_strip_penalized",
+  def = function(x, y, ...) standardGeneric("ka2_strip_penalized"),
   valueClass = "list"
 )
 

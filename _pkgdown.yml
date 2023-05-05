@@ -34,6 +34,9 @@ reference:
 - title: Replacement
   contents:
   - has_concept("replacement methods")
+- title: Specialized Tools
+  contents:
+  - has_concept("specialized tools")
 - title: Datasets
   contents:
   - has_concept("datasets")
