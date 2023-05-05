@@ -810,6 +810,38 @@ setGeneric(
   valueClass = "list"
 )
 
+#' Penalized Likelihood Smoothing
+#'
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param lambda An [`integer`] giving the smoothing parameter. The larger
+#'  `lambda` is, the smoother the curve.
+#' @param d An [`integer`] specifying the order of the penalty.
+#' @param AIC A [`logical`] scalar: should AIC be returned?
+#' @param SE A [`logical`] scalar: should standard errors be returned?
+#' @param progress A [`logical`] scalar: should a progress bar be displayed?
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @note
+#'  \pkg{Matrix} is required.
+#' @references
+#'  de Rooi, J. J., van der Pers, N. M., Hendrikx, R. W. A., Delhez, R.,
+#'  Böttger A. J. and Eilers, P. H. C. (2014). Smoothing of X-ray diffraction
+#'  data and Ka2 elimination using penalized likelihood and the composite link
+#'  model. *Journal of Applied Crystallography*, 47: 852-860.
+#'  \doi{10.1107/S1600576714005809}
+#' @author J. J. de Rooi *et al.* (original R code).
+#' @example inst/examples/ex-strip-ka2.R
+#' @docType methods
+#' @family smoothing methods
+#' @aliases smooth_likelihood-method
+setGeneric(
+  name = "smooth_likelihood",
+  def = function(x, y, ...) standardGeneric("smooth_likelihood"),
+  valueClass = "list"
+)
+
 # Windows ======================================================================
 #' Sliding Windows
 #'

@@ -68,6 +68,7 @@ Eilers, P. H. C. (2003). A Perfect Smoother. \emph{Analytical Chemistry},
 }
 \seealso{
 Other smoothing methods: 
+\code{\link{smooth_likelihood}()},
 \code{\link{smooth_loess}()},
 \code{\link{smooth_rectangular}()},
 \code{\link{smooth_savitzky}()},

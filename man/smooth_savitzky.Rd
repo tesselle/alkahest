@@ -80,6 +80,7 @@ Data by Simplified Least Squares Procedures. \emph{Analytical Chemistry},
 }
 \seealso{
 Other smoothing methods: 
+\code{\link{smooth_likelihood}()},
 \code{\link{smooth_loess}()},
 \code{\link{smooth_rectangular}()},
 \code{\link{smooth_triangular}()},

@@ -69,6 +69,7 @@ plot(whittaker, type = "l", xlab = "", ylab = "")
 }
 \seealso{
 Other smoothing methods: 
+\code{\link{smooth_likelihood}()},
 \code{\link{smooth_loess}()},
 \code{\link{smooth_rectangular}()},
 \code{\link{smooth_savitzky}()},
