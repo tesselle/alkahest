@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/tesselle/alkahest/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/alkahest/actions)
-[![codecov](https://codecov.io/gh/tesselle/alkahest/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tesselle/alkahest)
+[![codecov](https://codecov.io/gh/tesselle/alkahest/branch/main/graph/badge.svg?token=wsIkAQ0XFK)](https://app.codecov.io/gh/tesselle/alkahest)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/alkahest/badge/main)](https://www.codefactor.io/repository/github/tesselle/alkahest/overview/main)
 [![Dependencies](https://tinyverse.netlify.com/badge/alkahest)](https://cran.r-project.org/package=alkahest)
 
@@ -19,7 +19,7 @@ src="http://www.r-pkg.org/badges/version/alkahest"
 alt="CRAN Version" /></a> <a
 href="https://cran.r-project.org/web/checks/check_results_alkahest.html"
 class="pkgdown-release"><img
-src="https://cranchecks.info/badges/worst/alkahest"
+src="https://badges.cranchecks.info/worst/alkahest.svg"
 alt="CRAN checks" /></a>
 <a href="https://cran.r-project.org/package=alkahest"
 class="pkgdown-release"><img
