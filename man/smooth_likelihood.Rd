@@ -10,17 +10,9 @@
 \usage{
 smooth_likelihood(x, y, ...)
 
-\S4method{smooth_likelihood}{numeric,numeric}(
-  x,
-  y,
-  lambda,
-  d = 2,
-  AIC = TRUE,
-  SE = FALSE,
-  progress = interactive()
-)
+\S4method{smooth_likelihood}{numeric,numeric}(x, y, lambda, d = 2, SE = FALSE, progress = interactive())
 
-\S4method{smooth_likelihood}{ANY,missing}(x, lambda, d = 2, AIC = TRUE, SE = FALSE)
+\S4method{smooth_likelihood}{ANY,missing}(x, lambda, d = 2, SE = FALSE, progress = interactive())
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -32,8 +24,6 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \code{lambda} is, the smoother the curve.}
 
 \item{d}{An \code{\link{integer}} specifying the order of the penalty.}
-
-\item{AIC}{A \code{\link{logical}} scalar: should AIC be returned?}
 
 \item{SE}{A \code{\link{logical}} scalar: should standard errors be returned?}
 
@@ -67,7 +57,7 @@ likelihood <- smooth_likelihood(XRD, lambda = lambda, d = 3)
 lines(likelihood, col = "red")
 
 ## Strip ka2
-ka2 <- strip_ka2(XRD, lambda = lambda, tau = 0.5, nseg = 1)
+ka2 <- ka2_strip_penalized(XRD, lambda = lambda, tau = 0.5, nseg = 1)
 lines(ka2, col = "blue")
 }
 }

@@ -221,7 +221,7 @@ setMethod(
 setMethod(
   f = "smooth_likelihood",
   signature = signature(x = "numeric", y = "numeric"),
-  definition = function(x, y, lambda, d = 2, AIC = TRUE, SE = FALSE,
+  definition = function(x, y, lambda, d = 2, SE = FALSE,
                         progress = interactive()) {
 
     if (!requireNamespace("Matrix", quietly = TRUE)) {
@@ -235,14 +235,13 @@ setMethod(
     aic <- rep(0, n)
     mu <- matrix(data = 0, nrow = m, ncol = n)
     se <- matrix(data = 0, nrow = m, ncol = n)
-    R <- matrix(data = 0, nrow = m, ncol = n)
+    res <- matrix(data = 0, nrow = m, ncol = n)
 
     if (progress) pb <- utils::txtProgressBar(min = 0, max = n, style=3)
 
     n_lambda <- seq_len(n)
     for (i in n_lambda) {
-      like <- penalized_likelihood(y, lambda = lambda[i], d = d,
-                                   AIC = AIC, SE = SE)
+      like <- penalized_likelihood(y, lambda = lambda[i], d = d, SE = SE)
 
       aic[i] <- like$aic
       mu[, i] <- like$mu
@@ -274,14 +273,15 @@ setMethod(
 setMethod(
   f = "smooth_likelihood",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x, lambda, d = 2, AIC = TRUE, SE = FALSE) {
+  definition = function(x, lambda, d = 2, SE = FALSE,
+                        progress = interactive()) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, lambda = lambda, d = d,
-                         AIC = AIC, SE = SE)
+                         SE = SE, progress = progress)
   }
 )
 
-penalized_likelihood <- function(y, lambda, d = 2, AIC = TRUE, SE = FALSE) {
+penalized_likelihood <- function(y, lambda, d = 2, SE = FALSE) {
 
   m <- length(y)
   z <- log(y + 1)
@@ -304,12 +304,10 @@ penalized_likelihood <- function(y, lambda, d = 2, AIC = TRUE, SE = FALSE) {
 
   ## AIC
   aic <- NA_real_
-  if (isTRUE(AIC)) {
-    H <- Matrix::solve(W + P) %*% W
-    ed <- sum(Matrix::diag(H))
-    dev <- 2 * sum(y * log((y + 1e-10) / mu))
-    aic <- dev + 2 * ed * m / (m - ed)
-  }
+  H <- Matrix::solve(W + P) %*% W
+  ed <- sum(Matrix::diag(H))
+  dev <- 2 * sum(y * log((y + 1e-10) / mu))
+  aic <- dev + 2 * ed * m / (m - ed)
 
   ## Standard error
   se <- rep(NA_real_, m)

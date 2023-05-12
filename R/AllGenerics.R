@@ -824,7 +824,6 @@ setGeneric(
 #' @param lambda An [`integer`] giving the smoothing parameter. The larger
 #'  `lambda` is, the smoother the curve.
 #' @param d An [`integer`] specifying the order of the penalty.
-#' @param AIC A [`logical`] scalar: should AIC be returned?
 #' @param SE A [`logical`] scalar: should standard errors be returned?
 #' @param progress A [`logical`] scalar: should a progress bar be displayed?
 #' @param ... Currently not used.

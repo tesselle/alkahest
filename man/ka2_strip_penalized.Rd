@@ -77,7 +77,7 @@ likelihood <- smooth_likelihood(XRD, lambda = lambda, d = 3)
 lines(likelihood, col = "red")
 
 ## Strip ka2
-ka2 <- strip_ka2(XRD, lambda = lambda, tau = 0.5, nseg = 1)
+ka2 <- ka2_strip_penalized(XRD, lambda = lambda, tau = 0.5, nseg = 1)
 lines(ka2, col = "blue")
 }
 }
