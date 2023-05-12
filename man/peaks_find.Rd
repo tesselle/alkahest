@@ -61,11 +61,8 @@ Adapted from Stasia Grinberg's
 ## X-ray diffraction
 data("XRD")
 
-## Whittaker smoothing
-smooth <- smooth_whittaker(XRD, lambda = 1000, d = 2, sparse = TRUE)
-
 ## 4S Peak Filling baseline
-baseline <- baseline_peakfilling(smooth, n = 10, m = 5, by = 10)
+baseline <- baseline_peakfilling(XRD, n = 10, m = 5, by = 10, sparse = TRUE)
 
 plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 lines(baseline, type = "l", col = "red")

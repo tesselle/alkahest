@@ -66,7 +66,7 @@ test_that("SNIP baseline", {
 test_that("4S Peak Filling", {
   data("XRD")
 
-  peak <- baseline_peakfilling(XRD, n = 10, m = 5, by = 10)
+  peak <- baseline_peakfilling(XRD, n = 10, m = 5, by = 10, sparse = TRUE)
 
   # plot(XRD, type = "l", xlab = "", ylab = "")
   # lines(peak, type = "l", col = "red")

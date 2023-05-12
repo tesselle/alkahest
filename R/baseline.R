@@ -277,7 +277,7 @@ inverseLLS <- function(x) {
 setMethod(
   f = "baseline_peakfilling",
   signature = c(x = "numeric", y = "numeric"),
-  definition = function(x, y, n, m, by = 10) {
+  definition = function(x, y, n, m, by = 10, lambda = 1600, d = 2, sparse = FALSE) {
     ## Number of bucket intervals
     by <- length(x) / by
 
@@ -289,7 +289,9 @@ setMethod(
     }
 
     ## Smoothing
-    # DIY
+    smoothed <- smooth_whittaker(x, y, lambda = lambda, d = d, sparse = sparse)
+    x <- smoothed$x
+    y <- smoothed$y
 
     ## Subsampling
     breaks <- cut(seq_along(x), breaks = by, labels = FALSE)
@@ -334,8 +336,9 @@ setMethod(
 setMethod(
   f = "baseline_peakfilling",
   signature = c(x = "ANY", y = "missing"),
-  definition = function(x, n, m, by = 10) {
+  definition = function(x, n, m, by = 10, lambda = 1600, d = 2, sparse = FALSE) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y, n = n, m = m, by = by)
+    methods::callGeneric(x = xy$x, y = xy$y, n = n, m = m, by = by,
+                         lambda = lambda, d = d, sparse = sparse)
   }
 )

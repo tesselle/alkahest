@@ -10,9 +10,9 @@
 \usage{
 baseline_peakfilling(x, y, ...)
 
-\S4method{baseline_peakfilling}{numeric,numeric}(x, y, n, m, by = 10)
+\S4method{baseline_peakfilling}{numeric,numeric}(x, y, n, m, by = 10, lambda = 1600, d = 2, sparse = FALSE)
 
-\S4method{baseline_peakfilling}{ANY,missing}(x, n, m, by = 10)
+\S4method{baseline_peakfilling}{ANY,missing}(x, n, m, by = 10, lambda = 1600, d = 2, sparse = FALSE)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
@@ -24,26 +24,29 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 
 \item{m}{An odd \code{\link{integer}} giving the half window size.}
 
-\item{by}{An \code{\link{integer}} specifying the binning ratio (i.e. the number of
-points to be grouped together; see \code{\link[=window_tumbling]{window_tumbling()}}).}
+\item{by}{A length-one \code{\link{numeric}} vector givging the umber of buckets to
+divide \code{x} into.}
+
+\item{lambda}{An \code{\link{integer}} giving the smoothing parameter. The larger
+\code{lambda} is, the smoother the curve (see \code{\link[=smooth_whittaker]{smooth_whittaker()}}).}
+
+\item{d}{An \code{\link{integer}} specifying the order of the penalty (see
+\code{\link[=smooth_whittaker]{smooth_whittaker()}}).}
+
+\item{sparse}{A \code{\link{logical}} scalar: should sparse matrices be used for
+computation (see \code{\link[=smooth_whittaker]{smooth_whittaker()}})? If \code{TRUE}, \pkg{Matrix} is required.}
 }
 \description{
 Baseline estimation by iterative mean suppression.
 }
 \examples{
-## gamma-ray spectrometry
-data("BEGe")
+## X-ray diffraction
+data("XRD")
 
-## Subset from 2.75 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## 4S Peak Filling baseline
+baseline <- baseline_peakfilling(XRD, n = 10, m = 5, by = 10, sparse = TRUE)
 
-## Plot spectrum
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-
-## 4S Peak Filling
-baseline <- baseline_peakfilling(BEGe, n = 5, m = 5, by = 2)
-
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 lines(baseline, type = "l", col = "red")
 }
 \references{
@@ -51,7 +54,7 @@ Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
 mean suppression. \emph{MethodsX}, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
 }
 \seealso{
-\code{\link[=signal_correct]{signal_correct()}}
+\code{\link[=signal_correct]{signal_correct()}}, \code{\link[=smooth_whittaker]{smooth_whittaker()}}
 
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},

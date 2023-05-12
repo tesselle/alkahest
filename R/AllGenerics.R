@@ -166,9 +166,16 @@ setGeneric(
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param n An [`integer`] value giving the number of iterations.
 #' @param m An odd [`integer`] giving the half window size.
-#' @inheritParams smooth_whittaker
-#' @inheritParams resample_bin
-#' @seealso [signal_correct()]
+#' @param by A length-one [`numeric`] vector givging the umber of buckets to
+#'  divide `x` into.
+#' @param lambda An [`integer`] giving the smoothing parameter. The larger
+#'  `lambda` is, the smoother the curve (see [smooth_whittaker()]).
+#' @param d An [`integer`] specifying the order of the penalty (see
+#'  [smooth_whittaker()]).
+#' @param sparse A [`logical`] scalar: should sparse matrices be used for
+#'  computation (see [smooth_whittaker()])? If `TRUE`, \pkg{Matrix} is required.
+#' @param ... Currently not used.
+#' @seealso [signal_correct()], [smooth_whittaker()]
 #' @references
 #'  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
 #'  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.

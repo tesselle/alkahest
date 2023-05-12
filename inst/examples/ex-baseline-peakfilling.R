@@ -1,14 +1,8 @@
-## gamma-ray spectrometry
-data("BEGe")
+## X-ray diffraction
+data("XRD")
 
-## Subset from 2.75 to 200 keV
-BEGe <- signal_select(BEGe, from = 3, to = 200)
+## 4S Peak Filling baseline
+baseline <- baseline_peakfilling(XRD, n = 10, m = 5, by = 10, sparse = TRUE)
 
-## Plot spectrum
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
-
-## 4S Peak Filling
-baseline <- baseline_peakfilling(BEGe, n = 5, m = 5, by = 2)
-
-plot(BEGe, type = "l", xlab = "Energy (keV)", ylab = "Count")
+plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 lines(baseline, type = "l", col = "red")

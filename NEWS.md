@@ -3,6 +3,9 @@
 * Add penalized likelihood smoothing (de Rooi et al. 2014).
 * Add ka2 radiation removal method (de Rooi et al., 2014).
 
+## Bugfixes & changes
+* `baseline_peakfilling()` now smoothes the data using the Whittaker smoother as defined in Liland (2015).
+
 # alkahest 1.0.0
 
 * First release
