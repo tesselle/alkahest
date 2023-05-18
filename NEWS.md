@@ -1,4 +1,4 @@
-# alkahest 1.0.0.9000
+# alkahest 1.1.0
 ## New classes and methods
 * Add penalized likelihood smoothing (de Rooi et al. 2014).
 * Add ka2 radiation removal method (de Rooi et al., 2014).

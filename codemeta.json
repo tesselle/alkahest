@@ -4,17 +4,23 @@
   "identifier": "alkahest",
   "description": "A lightweight, dependency-free toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). This package provides methods for baseline estimation and correction, smoothing, normalization, integration and peaks detection. Baseline correction methods includes polynomial fitting as described in Lieber and Mahadevan-Jansen (2003) <doi:10.1366/000370203322554518>, Rolling Ball algorithm after Kneen and Annegarn (1996) <doi:10.1016/0168-583X(95)00908-6>, SNIP algorithm after Ryan et al. (1988) <doi:10.1016/0168-583X(88)90063-8>, 4S Peak Filling after Liland (2015) <doi:10.1016/j.mex.2015.02.009> and more.",
   "name": "alkahest: Pre-Processing XY Data from Experimental Methods",
-  "relatedLink": "https://packages.tesselle.org/alkahest/",
+  "relatedLink": ["https://packages.tesselle.org/alkahest/", "https://CRAN.R-project.org/package=alkahest"],
   "codeRepository": "https://github.com/tesselle/alkahest",
   "issueTracker": "https://github.com/tesselle/alkahest/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0.9000",
+  "version": "1.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "runtimePlatform": "R version 4.3.0 (2023-04-21)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -81,16 +87,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "testthat",
-      "name": "testthat",
-      "version": ">= 3.0.0",
+      "identifier": "tinytest",
+      "name": "tinytest",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
+      "sameAs": "https://CRAN.R-project.org/package=tinytest"
     }
   ],
   "softwareRequirements": {
@@ -122,11 +127,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "1113.1KB",
+  "fileSize": "852.426KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2022",
+      "datePublished": "2023",
       "author": [
         {
           "@type": "Person",
@@ -134,10 +139,10 @@
           "familyName": "Frerebeau"
         }
       ],
-      "name": "alkahest: Pre-Processing XY Data from Experimental Methods",
+      "name": "{alkahest: Pre-Processing XY Data from Experimental Methods}",
       "identifier": "10.5281/zenodo.7081524",
       "url": "https://packages.tesselle.org/alkahest/",
-      "description": "R package version 1.0.0",
+      "description": "R package version 1.1.0",
       "@id": "https://doi.org/10.5281/zenodo.7081524",
       "sameAs": "https://doi.org/10.5281/zenodo.7081524"
     }
