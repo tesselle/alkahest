@@ -251,25 +251,29 @@ penalized_strip_ka2 <- function(y, B, C, D, beta, lambda) {
   P <- lambda * Matrix::t(D) %*% D
 
   ## Fit iteratively
-  for (it in 1:30) {
+  delta_beta <- 1
+  limit <- 1 # Stop condition to prevent infinite loop
+  while (delta_beta >= 0.0001 & limit <= 30) {
     eta <- B %*% beta
     gam <- exp(eta)
     mu <- as.numeric(C %*% gam)
+
     M <- Matrix::Diagonal(x = 1 / mu)
     X <- (M %*% C %*% Matrix::Diagonal(x = as.numeric(gam))) %*% B
     W <- Matrix::Diagonal(x = mu)
     G <- Matrix::crossprod(X, W) %*% X
 
-    bnew <- Matrix::solve(G + P, Matrix::crossprod(X, (y - mu)) + G %*% beta)
-    db <- max(abs(bnew - beta))
-    beta <- bnew
-    if (db < 1e-4) break
+    new_beta <- Matrix::solve(G + P, Matrix::crossprod(X, (y - mu)) + G %*% beta)
+    delta_beta <- max(abs(new_beta - beta))
+    beta <- new_beta
+
+    limit <- limit + 1
   }
 
   ## AIC
-  dev <- 2 * sum(y * log((y + (y == 0)) / mu))
   H <- Matrix::solve(G + P, G)
   ed <- sum(Matrix::diag(H))
+  dev <- 2 * sum(y * log((y + (y == 0)) / mu))
   aic <- dev + 2 * ed
 
   ## Standardized residuals for counts

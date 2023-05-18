@@ -303,7 +303,6 @@ penalized_likelihood <- function(y, lambda, d = 2, SE = FALSE) {
   }
 
   ## AIC
-  aic <- NA_real_
   H <- Matrix::solve(W + P) %*% W
   ed <- sum(Matrix::diag(H))
   dev <- 2 * sum(y * log((y + 1e-10) / mu))
