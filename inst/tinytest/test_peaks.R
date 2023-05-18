@@ -1,4 +1,5 @@
-test_that("Half-Width at Half-Maximum", {
+if (at_home()) {
+  # Peak detection =============================================================
   w <- c(0.504, 0.317, 1.614, 0.565, 6, 0.416, 7, 0.34, 0.747, 12, 0.163,
          0.319, 0.822, 6, 0.94, 0.877, 0.875, 0.857, 2.026, 3, 0.897,
          1.198, 1.692, 0.699, 0.539, 1.338, 0.822, 1.841, 0.097, 0.987,
@@ -12,15 +13,15 @@ test_that("Half-Width at Half-Maximum", {
          0.067, 2.997, 1.954)
 
   peaks <- peaks_find(seq_along(w), w, SNR = 3, m = 1)
-  expect_snapshot(peaks)
+  expect_equal_to_reference(peaks, file = "_snaps/peaks_find.rds")
 
   # plot(w, type = "l")
   # lines(peaks, type = "p", pch = 16, col = "red")
-})
-test_that("Half-Width at Half-Maximum", {
-  x <- seq(-4, 4, length = 10000)
-  y <- dnorm(x)
+}
 
-  # Expected: 2 * sqrt(2 * log(2))
-  expect_equal(round(peaks_fwhm(x, y, center = 0), 3), 2.355)
-})
+# Half-Width at Half-Maximum ===================================================
+x <- seq(-4, 4, length = 10000)
+y <- dnorm(x)
+
+# Expected: 2 * sqrt(2 * log(2))
+expect_equal(round(peaks_fwhm(x, y, center = 0), 3), 2.355)
