@@ -103,7 +103,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 3.3"
+      "version": ">= 3.5.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -127,7 +127,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "852.426KB",
+  "fileSize": "852.613KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
