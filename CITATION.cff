@@ -8,7 +8,7 @@ message: 'To cite package "alkahest" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'alkahest: Pre-Processing XY Data from Experimental Methods'
-version: 1.1.0
+version: 1.1.0.9000
 doi: 10.5281/zenodo.7081524
 abstract: A lightweight, dependency-free toolbox for pre-processing XY data from experimental
   methods (i.e. any signal that can be measured along a continuous variable). This
@@ -202,3 +202,6 @@ identifiers:
 - description: The versioned DOI for version 1.0.0.
   type: doi
   value: 10.5281/zenodo.7081525
+- description: The versioned DOI for version 1.1.0.
+  type: doi
+  value: 10.5281/zenodo.7947723
