@@ -35,6 +35,10 @@ knitr::opts_chunk$set(
 
 **alkahest** is a lightweight, dependency-free toolbox for pre-processing XY data from experimental methods (i.e. any signal that can be measured along a continuous variable). It provides methods for baseline estimation and correction, smoothing, normalization, integration and peaks detection.
 
+```{r citation, echo=FALSE, comment=''}
+utils::citation("alkahest")
+```
+
 ## Installation
 
 You can install the released version of **alkahest** from [CRAN](https://CRAN.R-project.org) with:
