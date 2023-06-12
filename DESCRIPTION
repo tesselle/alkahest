@@ -42,10 +42,10 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Collate: 
     'AllGenerics.R'
+    'alkahest-internal.R'
     'alkahest-package.R'
     'baseline.R'
     'data.R'
-    'helpers.R'
     'integrate.R'
     'peaks.R'
     'replace.R'
