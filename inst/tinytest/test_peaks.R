@@ -11,8 +11,8 @@ if (at_home()) {
          0.341, 0.043, 0.488, 0.793, 1.322, 0.579, 0.162, 1.003, 0.427,
          0.212, 1.124, 1.047, 0.089, 0.305, 0.896, 0.513, 0.338, 0.087,
          0.067, 2.997, 1.954)
-
-  peaks <- peaks_find(seq_along(w), w, SNR = 3, m = 1)
+  z <- data.frame(seq_along(w), w)
+  peaks <- peaks_find(z, SNR = 3, m = 1)
   expect_equal_to_reference(peaks, file = "_snaps/peaks_find.rds")
 
   # plot(w, type = "l")
@@ -22,6 +22,7 @@ if (at_home()) {
 # Half-Width at Half-Maximum ===================================================
 x <- seq(-4, 4, length = 10000)
 y <- dnorm(x)
+z <- data.frame(x, y)
 
 # Expected: 2 * sqrt(2 * log(2))
-expect_equal(round(peaks_fwhm(x, y, center = 0), 3), 2.355)
+expect_equal(round(peaks_fwhm(z, center = 0), 3), 2.355)
