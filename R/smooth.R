@@ -187,7 +187,9 @@ setMethod(
       E <- Matrix::Diagonal(m)
       D <- Matrix::diff(E, lag = 1, differences = d)
       B <- Matrix::chol(E + (lambda * Matrix::t(D) %*% D))
-      z <- Matrix::solve(B, Matrix::solve(Matrix::t(B), y))@x
+      z <- Matrix::solve(B, Matrix::solve(Matrix::t(B), y))
+      ## Prior to v1.6, Matrix::solve(a=<Matrix>, b=<vector>) returns a matrix
+      z <- as.numeric(z)
     } else {
       E <- diag(m)
       D <- diff(E, lag = 1, differences = d)
