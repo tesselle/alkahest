@@ -20,9 +20,9 @@ setMethod(
 setMethod(
   f = "integrate_rectangle",
   signature = signature(x = "ANY", y = "missing"),
-  definition = function(x) {
+  definition = function(x, right = FALSE) {
     xy <- grDevices::xy.coords(x)
-    methods::callGeneric(x = xy$x, y = xy$y)
+    methods::callGeneric(x = xy$x, y = xy$y, right = right)
   }
 )
 

@@ -12,7 +12,7 @@ integrate_rectangle(x, y, ...)
 
 \S4method{integrate_rectangle}{numeric,numeric}(x, y, right = FALSE)
 
-\S4method{integrate_rectangle}{ANY,missing}(x)
+\S4method{integrate_rectangle}{ANY,missing}(x, right = FALSE)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to
