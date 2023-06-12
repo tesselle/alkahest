@@ -46,7 +46,7 @@ integration and peaks detection.
       Frerebeau N (2023). _alkahest: Pre-Processing XY Data from
       Experimental Methods_. Université Bordeaux Montaigne, Pessac, France.
       doi:10.5281/zenodo.7081524 <https://doi.org/10.5281/zenodo.7081524>,
-      R package version 1.1.0, <https://packages.tesselle.org/alkahest/>.
+      R package version 1.1.1, <https://packages.tesselle.org/alkahest/>.
 
     Une entrée BibTeX pour les utilisateurs LaTeX est
 
@@ -56,7 +56,7 @@ integration and peaks detection.
         year = {2023},
         organization = {Université Bordeaux Montaigne},
         address = {Pessac, France},
-        note = {R package version 1.1.0},
+        note = {R package version 1.1.1},
         url = {https://packages.tesselle.org/alkahest/},
         doi = {10.5281/zenodo.7081524},
       }

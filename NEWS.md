@@ -1,4 +1,4 @@
-# alkahest 1.1.0.9000
+# alkahest 1.1.1
 
 ## Bugfixes & changes
 * Follow changes in **Matrix** 1.6-0 (`Matrix::solve(a=<Matrix>, b=<vector>)` returns a vector).

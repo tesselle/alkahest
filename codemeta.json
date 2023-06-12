@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/tesselle/alkahest",
   "issueTracker": "https://github.com/tesselle/alkahest/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.0.9000",
+  "version": "1.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -127,7 +127,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "852.641KB",
+  "fileSize": "853.828KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -142,7 +142,7 @@
       "name": "{alkahest: Pre-Processing XY Data from Experimental Methods}",
       "identifier": "10.5281/zenodo.7081524",
       "url": "https://packages.tesselle.org/alkahest/",
-      "description": "R package version 1.1.0",
+      "description": "R package version 1.1.1",
       "@id": "https://doi.org/10.5281/zenodo.7081524",
       "sameAs": "https://doi.org/10.5281/zenodo.7081524"
     }
