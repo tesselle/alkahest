@@ -8,7 +8,7 @@ message: 'To cite package "alkahest" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'alkahest: Pre-Processing XY Data from Experimental Methods'
-version: 1.1.1
+version: 1.1.1.9000
 doi: 10.5281/zenodo.7081524
 abstract: A lightweight, dependency-free toolbox for pre-processing XY data from experimental
   methods (i.e. any signal that can be measured along a continuous variable). This
@@ -36,7 +36,7 @@ preferred-citation:
   year: '2023'
   location:
     name: Pessac, France
-  notes: R package version 1.1.1
+  notes: R package version 1.1.1.9000
   url: https://packages.tesselle.org/alkahest/
   doi: 10.5281/zenodo.7081524
   institution:
@@ -206,3 +206,6 @@ identifiers:
 - description: The versioned DOI for version 1.1.0.
   type: doi
   value: 10.5281/zenodo.7947723
+- description: The versioned DOI for version 1.1.1.
+  type: doi
+  value: 10.5281/zenodo.8031801
