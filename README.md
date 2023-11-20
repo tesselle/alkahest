@@ -48,7 +48,7 @@ integration and peaks detection.
       doi:10.5281/zenodo.7081524 <https://doi.org/10.5281/zenodo.7081524>,
       R package version 1.1.1, <https://packages.tesselle.org/alkahest/>.
 
-    Une entrée BibTeX pour les utilisateurs LaTeX est
+    A BibTeX entry for LaTeX users is
 
       @Manual{,
         author = {Nicolas Frerebeau},
