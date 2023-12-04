@@ -34,7 +34,7 @@ Imports:
 Suggests: 
     knitr,
     Matrix,
-    rmarkdown,
+    markdown,
     tinytest
 VignetteBuilder: 
     knitr
