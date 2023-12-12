@@ -1,6 +1,34 @@
 # GENERIC METHODS
 
 # Baseline =====================================================================
+#' Asymmetric Least Squares Smoothing
+#'
+#' Baseline estimation with asymmetric least squares smoothing.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param p A length-one [`numeric`] vector giving the asymmetry
+#'  (\eqn{0.001 < p < 0.1} is a good choice for a signal with positive peaks).
+#' @param lambda A length-one [`numeric`] vector giving the smoothing parameter.
+#' @param stop An [`integer`] giving the stopping rule (i.e. maximum number of
+#'  iterations).
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @references
+#'  Eilers, P. H. C. & Boelens, H. F. M. (2005). *Baseline Correction with
+#'  Asymmetric Least Squares Smoothing*.
+#' @seealso [signal_correct()]
+#' @example inst/examples/ex-baseline-asls.R
+#' @author P. H. C. Eilers and H. F. M. Boelens (original Matlab code)
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_asls-method
+setGeneric(
+  name = "baseline_asls",
+  def = function(x, y, ...) standardGeneric("baseline_asls"),
+  valueClass = "list"
+)
+
 #' Linear Baseline Estimation
 #'
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
@@ -189,33 +217,6 @@ setGeneric(
 setGeneric(
   name = "baseline_peakfilling",
   def = function(x, y, ...) standardGeneric("baseline_peakfilling"),
-  valueClass = "list"
-)
-
-#' Asymmetric Least Squares Smoothing
-#'
-#' Baseline estimation with asymmetric least squares smoothing.
-#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
-#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
-#' @param p A length-one [`numeric`] vector giving the asymmetry
-#'  (\eqn{0.001 < p < 0.1} is a good choice for a signal with positive peaks).
-#' @param lambda A length-one [`numeric`] vector giving the smoothness.
-#' @param stop An [`integer`] giving the stopping rule (i.e. maximum number of
-#'  iterations).
-#' @param ... Currently not used.
-#' @return
-#'  Returns a [`list`] with two components `x` and `y`.
-#' @references
-#'  Eilers, P. H. C. & Boelens, H. F. M. (2005). *Baseline Correction with
-#'  Asymmetric Least Squares Smoothing*.
-#' @example inst/examples/ex-baseline-asls.R
-#' @author P. H. C. Eilers and H. F. M. Boelens (original Matlab code)
-#' @docType methods
-#' @family baseline estimation methods
-#' @aliases baseline_asls-method
-setGeneric(
-  name = "baseline_asls",
-  def = function(x, y, ...) standardGeneric("baseline_asls"),
   valueClass = "list"
 )
 
@@ -562,13 +563,17 @@ setGeneric(
 #' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param method A [`character`] string specifying the method for baseline
-#'  estimation. It must be one of "`linear`", "`rubberband`", "`SNIP`" or "`4S`"
-#'  (see details). Any unambiguous substring can be given.
+#'  estimation (see details). Any unambiguous substring can be given.
 #' @param ... Extra arguments to be passed to `baseline_*()` (see details).
 #' @details
 #'  Available methods for baseline estimation:
 #'  \describe{
+#'   \item{`asls`}{Asymmetric Least Squares Smoothing (see [baseline_asls()]).}
 #'   \item{`linear`}{Linear baseline estimation (see [baseline_linear()]).}
+#'   \item{`polynomial`}{Polynomial baseline estimation (see
+#'   [baseline_polynomial()]).}
+#'   \item{`rollingball`}{Rolling ball baseline estimation (see
+#'   [baseline_rollingball()]).}
 #'   \item{`rubberband`}{Rubberband baseline estimation (see
 #'   [baseline_rubberband()]).}
 #'   \item{`SNIP`}{Sensitive Nonlinear Iterative Peak clipping algorithm

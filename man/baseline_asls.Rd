@@ -23,7 +23,7 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \item{p}{A length-one \code{\link{numeric}} vector giving the asymmetry
 (\eqn{0.001 < p < 0.1} is a good choice for a signal with positive peaks).}
 
-\item{lambda}{A length-one \code{\link{numeric}} vector giving the smoothness.}
+\item{lambda}{A length-one \code{\link{numeric}} vector giving the smoothing parameter.}
 
 \item{stop}{An \code{\link{integer}} giving the stopping rule (i.e. maximum number of
 iterations).}
@@ -54,6 +54,8 @@ Eilers, P. H. C. & Boelens, H. F. M. (2005). \emph{Baseline Correction with
 Asymmetric Least Squares Smoothing}.
 }
 \seealso{
+\code{\link[=signal_correct]{signal_correct()}}
+
 Other baseline estimation methods: 
 \code{\link{baseline_linear}()},
 \code{\link{baseline_peakfilling}()},

@@ -30,8 +30,7 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 \item{...}{Extra arguments to be passed to \verb{baseline_*()} (see details).}
 
 \item{method}{A \code{\link{character}} string specifying the method for baseline
-estimation. It must be one of "\code{linear}", "\code{rubberband}", "\code{SNIP}" or "\verb{4S}"
-(see details). Any unambiguous substring can be given.}
+estimation (see details). Any unambiguous substring can be given.}
 }
 \value{
 Returns a \code{\link{list}} with two components \code{x} and \code{y}.
@@ -42,7 +41,12 @@ Baseline Correction
 \details{
 Available methods for baseline estimation:
 \describe{
+\item{\code{asls}}{Asymmetric Least Squares Smoothing (see \code{\link[=baseline_asls]{baseline_asls()}}).}
 \item{\code{linear}}{Linear baseline estimation (see \code{\link[=baseline_linear]{baseline_linear()}}).}
+\item{\code{polynomial}}{Polynomial baseline estimation (see
+\code{\link[=baseline_polynomial]{baseline_polynomial()}}).}
+\item{\code{rollingball}}{Rolling ball baseline estimation (see
+\code{\link[=baseline_rollingball]{baseline_rollingball()}}).}
 \item{\code{rubberband}}{Rubberband baseline estimation (see
 \code{\link[=baseline_rubberband]{baseline_rubberband()}}).}
 \item{\code{SNIP}}{Sensitive Nonlinear Iterative Peak clipping algorithm
