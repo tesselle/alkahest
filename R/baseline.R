@@ -300,6 +300,8 @@ setMethod(
       W <- Matrix::Diagonal(x = w)
       C <- Matrix::chol(W + (lambda * Matrix::t(D) %*% D))
       z <- Matrix::solve(C, Matrix::solve(Matrix::t(C), w * y))
+      ## Prior to v1.6, Matrix::solve(a=<Matrix>, b=<vector>) returns a matrix
+      z <- as.numeric(z)
       w0 <- p * (y > z) + (1 - p) * (y < z)
       if (isTRUE(all.equal(w, w0))) convergence <- TRUE
 
