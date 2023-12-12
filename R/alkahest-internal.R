@@ -11,7 +11,7 @@ which_nearest <- function(x, value) {
   which.min(abs(x - value))
 }
 
-#' Check Data
+#' Check Odd Numbers
 #'
 #' @param x A [`numeric`] vector.
 #' @return
@@ -20,8 +20,26 @@ which_nearest <- function(x, value) {
 #' @noRd
 assert_odd <- function(x) {
   arg <- deparse(substitute(x))
-  if (round(x) %% 2 == 0) {
+  if (any(round(x) %% 2 == 0)) {
     msg <- sprintf("%s must be an odd integer (%g).", sQuote(arg), x)
+    stop(msg, call. = FALSE)
+  }
+  invisible(x)
+}
+
+#' Check Object Length
+#'
+#' @param x An object to be checked.
+#' @param expected An appropriate expected value.
+#' @return
+#'  Throws an error, if any, and returns `x` invisibly otherwise.
+#' @keywords internal
+#' @noRd
+assert_length <- function(x, expected) {
+  arg <- deparse(substitute(x))
+  if (length(x) != expected) {
+    str <- "%s must be of length %d; not %d."
+    msg <- sprintf(str, sQuote(arg), expected, length(x))
     stop(msg, call. = FALSE)
   }
   invisible(x)

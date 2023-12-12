@@ -10,6 +10,8 @@ setMethod(
   f = "replace_threshold",
   signature = signature(x = "numeric", y = "numeric", threshold = "function"),
   definition = function(x, y, threshold, value = 0, ...) {
+    assert_length(y, length(x))
+
     threshold <- threshold(y, ...)
     methods::callGeneric(x, y, threshold = threshold, value = value)
   }
@@ -35,6 +37,8 @@ setMethod(
   f = "replace_threshold",
   signature = signature(x = "numeric", y = "numeric", threshold = "numeric"),
   definition = function(x, y, threshold, value = 0, ...) {
+    assert_length(y, length(x))
+
     i <- y < threshold
     y[i] <- value
 

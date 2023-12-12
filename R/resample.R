@@ -10,6 +10,7 @@ setMethod(
   f = "resample_bin",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, by, f = mean, ...) {
+    assert_length(y, length(x))
 
     k <- length(x) %% by
     if (k != 0) {
@@ -46,6 +47,8 @@ setMethod(
   f = "resample_down",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, by) {
+    assert_length(y, length(x))
+
     i <- seq(from = 1, to = length(x), by = by)
     xy <- list(x = x[i], y = y[i])
     xy
@@ -72,6 +75,8 @@ setMethod(
   f = "resample_interpolate",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, from, to, by, ...) {
+    assert_length(y, length(x))
+
     ## New x scale
     x_scale <- seq(from = from, to = to, by = by)
 

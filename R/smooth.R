@@ -10,6 +10,8 @@ setMethod(
   f = "smooth_rectangular",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3) {
+    assert_length(y, length(x))
+
     ## Windows
     index <- window_sliding(length(x), m)
 
@@ -47,6 +49,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3) {
     # Validation
+    assert_length(y, length(x))
     assert_odd(m)
 
     # Index
@@ -92,6 +95,7 @@ setMethod(
   f = "smooth_loess",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, span = 0.75, ...) {
+    assert_length(y, length(x))
 
     points <- data.frame(x, y)
     fit <- stats::loess(y ~ x, data = points, span = span, ...)
@@ -124,6 +128,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, m = 3, p = 2) {
     ## Validation
+    assert_length(y, length(x))
     assert_odd(m)
 
     k <- (m - 1) / 2
@@ -176,6 +181,7 @@ setMethod(
   f = "smooth_whittaker",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, lambda = 1600, d = 2, sparse = FALSE) {
+    assert_length(y, length(x))
     m <- length(y)
 
     if (sparse) {
@@ -222,11 +228,8 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, lambda, d = 2, SE = FALSE,
                         progress = interactive()) {
-
-    if (!requireNamespace("Matrix", quietly = TRUE)) {
-      msg <- "The Matrix package is required. Please install it."
-      stop(msg, call. = FALSE)
-    }
+    assert_Matrix()
+    assert_length(y, length(x))
 
     m <- length(y)
     n <- length(lambda)

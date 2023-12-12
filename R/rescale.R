@@ -11,6 +11,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, method = c("rectangle", "trapezoid"), ...) {
     ## Validation
+    assert_length(y, length(x))
     method <- match.arg(method, several.ok = FALSE)
 
     ## Get method
@@ -49,6 +50,8 @@ setMethod(
   f = "rescale_total",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, total = 1) {
+    assert_length(y, length(x))
+
     y <- (y * total) / sum(y)
     xy <- list(x = x, y = y)
     xy
@@ -76,6 +79,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, min = 0, max = 1) {
     ## Validation
+    assert_length(y, length(x))
     if (min > max) {
       msg <- sprintf("%s (%g) must be lower than %s (%g).",
                      sQuote("min"), min, sQuote("max"), max)
@@ -154,6 +158,8 @@ setMethod(
   f = "rescale_transform",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, f, ...) {
+    assert_length(y, length(x))
+
     y <- f(y, ...)
     xy <- list(x = x, y = y)
     xy

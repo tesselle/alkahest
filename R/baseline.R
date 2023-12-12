@@ -10,6 +10,7 @@ setMethod(
   f = "baseline_linear",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, points = range(x)) {
+    assert_length(y, length(x))
 
     ## Find the nearest value
     z <- vapply(X = points, FUN = function(i, x) which_nearest(x, i),
@@ -49,6 +50,7 @@ setMethod(
   f = "baseline_polynomial",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, d = 3, tolerance = 0.001, stop = 100) {
+    assert_length(y, length(x))
 
     polynom <- cbind(1 / sqrt(length(x)), stats::poly(x, degree = d))
 
@@ -97,8 +99,10 @@ setMethod(
   f = "baseline_rollingball",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, m, s) {
-    ## Windows
     n <- length(x)
+    assert_length(y, n)
+
+    ## Windows
     win_minmax <- window_sliding(n, m)
     win_smooth <- window_sliding(n, s)
 
@@ -158,6 +162,7 @@ setMethod(
   f = "baseline_rubberband",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, noise = 0, spline = TRUE, ...) {
+    assert_length(y, length(x))
 
     ## (chull returns points in clockwise order)
     pts <- grDevices::chull(x, y)
@@ -215,6 +220,8 @@ setMethod(
   f = "baseline_snip",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, LLS = FALSE, decreasing = FALSE, n = 100) {
+    assert_length(y, length(x))
+
     ## LLS operator
     y <- if (LLS) LLS(y) else y
 
@@ -279,6 +286,7 @@ setMethod(
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, p = 0.01, lambda = 10^4, stop = 100) {
     assert_Matrix()
+    assert_length(y, length(x))
 
     m <- length(y)
     E <- Matrix::Diagonal(m)
@@ -329,6 +337,8 @@ setMethod(
   f = "baseline_peakfilling",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, n, m, by = 10, lambda = 1600, d = 2, sparse = FALSE) {
+    assert_length(y, length(x))
+
     ## Number of bucket intervals
     by <- length(x) / by
 

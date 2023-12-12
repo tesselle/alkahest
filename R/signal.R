@@ -69,6 +69,8 @@ setMethod(
   f = "signal_select",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, from, to) {
+    assert_length(y, length(x))
+
     ## Find the nearest value
     from <- x[which_nearest(x, from)]
     to <- x[which_nearest(x, to)]
@@ -98,6 +100,8 @@ setMethod(
   f = "signal_slice",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, subset) {
+    assert_length(y, length(x))
+
     i <- as.integer(subset)
 
     if (!all(i > 0) & !all(i < 0)) {
@@ -130,6 +134,8 @@ setMethod(
   f = "signal_shift",
   signature = c(x = "numeric", y = "numeric"),
   definition = function(x, y, lag) {
+    assert_length(y, length(x))
+
     x <- x + lag
     xy <- list(x = x, y = y)
     xy
@@ -156,6 +162,8 @@ setMethod(
   f = "signal_drift",
   signature = c(x = "numeric", y = "numeric", lag = "numeric"),
   definition = function(x, y, lag) {
+    assert_length(y, length(x))
+
     y <- y + lag
     xy <- list(x = x, y = y)
     xy

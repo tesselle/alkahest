@@ -9,6 +9,8 @@ setMethod(
   f = "integrate_rectangle",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, right = FALSE) {
+    assert_length(y, length(x))
+
     h <- if (right) utils::tail(y, -1) else utils::head(y, -1)
     sum(h * diff(x))
   }
@@ -33,6 +35,8 @@ setMethod(
   f = "integrate_trapezoid",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y) {
+    assert_length(y, length(x))
+
     sum((utils::head(y, -1) + utils::tail(y, -1)) * diff(x) / 2)
   }
 )

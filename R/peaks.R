@@ -10,6 +10,7 @@ setMethod(
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, method = "MAD", SNR = 2, m = NULL, ...) {
     ## Validation
+    assert_length(y, length(x))
     method <- match.arg(method, several.ok = FALSE)
     if (is.null(m)) {
       m <- as.integer(length(x) * 0.05)
@@ -71,6 +72,8 @@ setMethod(
   f = "peaks_fwhm",
   signature = signature(x = "numeric", y = "numeric"),
   definition = function(x, y, center) {
+    assert_length(y, length(x))
+
     i <- which_nearest(x, center)
     peak_height <- y[i]
     half_max <- peak_height / 2
