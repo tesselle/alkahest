@@ -183,15 +183,19 @@ setMethod(
 setMethod(
   f = "signal_correct",
   signature = c(x = "numeric", y = "numeric"),
-  definition = function(x, y, method = c("linear", "rubberband", "SNIP", "4S"),
-                        ...) {
+  definition = function(x, y, method = c("linear", "polynomial", "asls",
+                                         "rollingball", "rubberband",
+                                         "SNIP", "4S"), ...) {
     ## Validation
     method <- match.arg(method, several.ok = FALSE)
 
     ## Get method
     f <- switch(
       method,
+      asls = baseline_asls,
       linear = baseline_linear,
+      polynomial = baseline_polynomial,
+      rollingball = baseline_rollingball,
       rubberband = baseline_rubberband,
       SNIP = baseline_snip,
       `4S` = baseline_peakfilling
@@ -212,8 +216,9 @@ setMethod(
 setMethod(
   f = "signal_correct",
   signature = c(x = "ANY", y = "missing"),
-  definition = function(x, method = c("linear", "rubberband", "SNIP", "4S"),
-                        ...) {
+  definition = function(x, method = c("linear", "polynomial", "asls",
+                                      "rollingball", "rubberband",
+                                      "SNIP", "4S"), ...) {
     xy <- grDevices::xy.coords(x)
     methods::callGeneric(x = xy$x, y = xy$y, method = method, ...)
   }

@@ -51,6 +51,7 @@ plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 \code{\link[=signal_correct]{signal_correct()}}
 
 Other baseline estimation methods: 
+\code{\link{baseline_asls}()},
 \code{\link{baseline_peakfilling}()},
 \code{\link{baseline_polynomial}()},
 \code{\link{baseline_rollingball}()},

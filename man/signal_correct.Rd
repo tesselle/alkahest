@@ -10,9 +10,18 @@
 \usage{
 signal_correct(x, y, ...)
 
-\S4method{signal_correct}{numeric,numeric}(x, y, method = c("linear", "rubberband", "SNIP", "4S"), ...)
+\S4method{signal_correct}{numeric,numeric}(
+  x,
+  y,
+  method = c("linear", "polynomial", "asls", "rollingball", "rubberband", "SNIP", "4S"),
+  ...
+)
 
-\S4method{signal_correct}{ANY,missing}(x, method = c("linear", "rubberband", "SNIP", "4S"), ...)
+\S4method{signal_correct}{ANY,missing}(
+  x,
+  method = c("linear", "polynomial", "asls", "rollingball", "rubberband", "SNIP", "4S"),
+  ...
+)
 }
 \arguments{
 \item{x, y}{A \code{\link{numeric}} vector. If \code{y} is missing, an attempt is made to

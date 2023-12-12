@@ -65,7 +65,7 @@ setMethod(
       old_y <- new_y
       start <- start + 1
       if (start >= stop) {
-        warning("Convergence not reached (possible infinite loop).", call. = FALSE)
+        warning("Convergence not reached.", call. = FALSE)
         break
       }
     }
@@ -269,6 +269,57 @@ LLS <- function(x) {
 inverseLLS <- function(x) {
   (exp(exp(x) - 1) - 1)^2 - 1
 }
+
+# AsLS =========================================================================
+#' @export
+#' @rdname baseline_asls
+#' @aliases baseline_asls,numeric,numeric-method
+setMethod(
+  f = "baseline_asls",
+  signature = c(x = "numeric", y = "numeric"),
+  definition = function(x, y, p = 0.01, lambda = 10^4, stop = 100) {
+    assert_Matrix()
+
+    m <- length(y)
+    E <- Matrix::Diagonal(m)
+    D <- Matrix::diff(E, lag = 1, differences = 2)
+
+    w <- rep(1, m) # weights
+
+    start <- 0
+    convergence <- FALSE
+    while (!convergence) {
+      W <- Matrix::Diagonal(x = w)
+      C <- Matrix::chol(W + (lambda * Matrix::t(D) %*% D))
+      z <- Matrix::solve(C, Matrix::solve(Matrix::t(C), w * y))
+      w0 <- p * (y > z) + (1 - p) * (y < z)
+      if (isTRUE(all.equal(w, w0))) convergence <- TRUE
+
+      w <- w0
+      start <- start + 1
+      if (start >= stop) {
+        warning("Convergence not reached.", call. = FALSE)
+        break
+      }
+    }
+
+    xy <- list(x = x, y = z)
+    attr(xy, "method") <- "AsLS"
+    xy
+  }
+)
+
+#' @export
+#' @rdname baseline_asls
+#' @aliases baseline_asls,ANY,missing-method
+setMethod(
+  f = "baseline_asls",
+  signature = c(x = "ANY", y = "missing"),
+  definition = function(x, p = 0.01, lambda = 10^4, stop = 100) {
+    xy <- grDevices::xy.coords(x)
+    methods::callGeneric(x = xy$x, y = xy$y, lambda = lambda, p = p, stop = stop)
+  }
+)
 
 # Peak Filling =================================================================
 #' @export

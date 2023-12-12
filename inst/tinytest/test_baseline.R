@@ -63,4 +63,12 @@ if (at_home()) {
   # lines(peak, type = "l", col = "red")
 
   expect_equal_to_reference(peak, file = "_snaps/baseline_peakfilling.rds")
+
+  # AsLS =======================================================================
+  asls <- baseline_asls(XRD, p = 0.005, lambda = 10^7)
+
+  plot(XRD, type = "l", xlab = "", ylab = "")
+  lines(asls, type = "l", col = "red")
+
+  expect_equal_to_reference(asls, file = "_snaps/baseline_asls.rds")
 }

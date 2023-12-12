@@ -26,3 +26,11 @@ assert_odd <- function(x) {
   }
   invisible(x)
 }
+
+assert_Matrix <- function() {
+  if (!requireNamespace("Matrix", quietly = TRUE)) {
+    msg <- "The Matrix package is required. Please install it."
+    stop(msg, call. = FALSE)
+  }
+  invisible()
+}

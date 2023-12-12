@@ -24,7 +24,7 @@ interpret \code{x} in a suitable way (see \code{\link[grDevices:xy.coords]{grDev
 
 \item{m}{An odd \code{\link{integer}} giving the half window size.}
 
-\item{by}{A length-one \code{\link{numeric}} vector givging the umber of buckets to
+\item{by}{A length-one \code{\link{numeric}} vector giving the umber of buckets to
 divide \code{x} into.}
 
 \item{lambda}{An \code{\link{integer}} giving the smoothing parameter. The larger
@@ -35,6 +35,9 @@ divide \code{x} into.}
 
 \item{sparse}{A \code{\link{logical}} scalar: should sparse matrices be used for
 computation (see \code{\link[=smooth_whittaker]{smooth_whittaker()}})? If \code{TRUE}, \pkg{Matrix} is required.}
+}
+\value{
+Returns a \code{\link{list}} with two components \code{x} and \code{y}.
 }
 \description{
 Baseline estimation by iterative mean suppression.
@@ -57,6 +60,7 @@ mean suppression. \emph{MethodsX}, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
 \code{\link[=signal_correct]{signal_correct()}}, \code{\link[=smooth_whittaker]{smooth_whittaker()}}
 
 Other baseline estimation methods: 
+\code{\link{baseline_asls}()},
 \code{\link{baseline_linear}()},
 \code{\link{baseline_polynomial}()},
 \code{\link{baseline_rollingball}()},

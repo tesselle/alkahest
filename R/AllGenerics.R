@@ -166,7 +166,7 @@ setGeneric(
 #'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
 #' @param n An [`integer`] value giving the number of iterations.
 #' @param m An odd [`integer`] giving the half window size.
-#' @param by A length-one [`numeric`] vector givging the umber of buckets to
+#' @param by A length-one [`numeric`] vector giving the umber of buckets to
 #'  divide `x` into.
 #' @param lambda An [`integer`] giving the smoothing parameter. The larger
 #'  `lambda` is, the smoother the curve (see [smooth_whittaker()]).
@@ -175,10 +175,12 @@ setGeneric(
 #' @param sparse A [`logical`] scalar: should sparse matrices be used for
 #'  computation (see [smooth_whittaker()])? If `TRUE`, \pkg{Matrix} is required.
 #' @param ... Currently not used.
-#' @seealso [signal_correct()], [smooth_whittaker()]
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
 #' @references
 #'  Liland, K. H. (2015). 4S Peak Filling - baseline estimation by iterative
 #'  mean suppression. *MethodsX*, 2, 135-140. \doi{10.1016/j.mex.2015.02.009}.
+#' @seealso [signal_correct()], [smooth_whittaker()]
 #' @example inst/examples/ex-baseline-peakfilling.R
 #' @author N. Frerebeau
 #' @docType methods
@@ -187,6 +189,33 @@ setGeneric(
 setGeneric(
   name = "baseline_peakfilling",
   def = function(x, y, ...) standardGeneric("baseline_peakfilling"),
+  valueClass = "list"
+)
+
+#' Asymmetric Least Squares Smoothing
+#'
+#' Baseline estimation with asymmetric least squares smoothing.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param p A length-one [`numeric`] vector giving the asymmetry
+#'  (\eqn{0.001 < p < 0.1} is a good choice for a signal with positive peaks).
+#' @param lambda A length-one [`numeric`] vector giving the smoothness.
+#' @param stop An [`integer`] giving the stopping rule (i.e. maximum number of
+#'  iterations).
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @references
+#'  Eilers, P. H. C. & Boelens, H. F. M. (2005). *Baseline Correction with
+#'  Asymmetric Least Squares Smoothing*.
+#' @example inst/examples/ex-baseline-asls.R
+#' @author P. H. C. Eilers and H. F. M. Boelens (original Matlab code)
+#' @docType methods
+#' @family baseline estimation methods
+#' @aliases baseline_asls-method
+setGeneric(
+  name = "baseline_asls",
+  def = function(x, y, ...) standardGeneric("baseline_asls"),
   valueClass = "list"
 )
 

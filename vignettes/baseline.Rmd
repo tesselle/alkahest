@@ -73,6 +73,25 @@ corrected <- signal_drift(XRD, lag = baseline, subtract = TRUE)
 lines(corrected, col = "blue")
 ```
 
+# Asymmetric Least Squares Smoothing
+
+```{r asls, fig.width=7, fig.height=6, fig.cap="Asymmetric Least Squares Smoothing."}
+## Plot spectrum
+plot(XRD, type = "l", ylim = ylim, xlab = "Energy (keV)", ylab = "Count")
+abline(h = 0, lty = "dashed")
+
+## AsLS baseline
+baseline <- baseline_asls(XRD, p = 0.005, lambda = 10^7)
+
+## Plot the baseline
+lines(baseline, col = "red")
+
+## Correct spectrum
+corrected <- signal_drift(XRD, lag = baseline, subtract = TRUE)
+
+lines(corrected, col = "blue")
+```
+
 # Rolling Ball baseline
 
 ```{r rollingball, fig.width=7, fig.height=6, fig.cap="Rolling Ball baseline."}

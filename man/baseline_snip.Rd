@@ -72,6 +72,7 @@ Beam Interactions with Materials and Atoms}, 34(3), p. 396-402.
 \code{\link[=signal_correct]{signal_correct()}}
 
 Other baseline estimation methods: 
+\code{\link{baseline_asls}()},
 \code{\link{baseline_linear}()},
 \code{\link{baseline_peakfilling}()},
 \code{\link{baseline_polynomial}()},

@@ -179,10 +179,7 @@ setMethod(
     m <- length(y)
 
     if (sparse) {
-      if (!requireNamespace("Matrix", quietly = TRUE)) {
-        msg <- "The Matrix package is required. Please install it."
-        stop(msg, call. = FALSE)
-      }
+      assert_Matrix()
 
       E <- Matrix::Diagonal(m)
       D <- Matrix::diff(E, lag = 1, differences = d)
