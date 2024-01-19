@@ -12,9 +12,9 @@
 \usage{
 replace_threshold(x, y, threshold, ...)
 
-\S4method{replace_threshold}{numeric,numeric,`function`}(x, y, threshold, value = 0, ...)
+\S4method{replace_threshold}{numeric,numeric,function}(x, y, threshold, value = 0, ...)
 
-\S4method{replace_threshold}{ANY,missing,`function`}(x, threshold, value = 0, ...)
+\S4method{replace_threshold}{ANY,missing,function}(x, threshold, value = 0, ...)
 
 \S4method{replace_threshold}{numeric,numeric,numeric}(x, y, threshold, value = 0, ...)
 

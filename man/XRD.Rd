@@ -24,7 +24,8 @@ plot(XRD, type = "l", xlab = expression(2*theta), ylab = "Count")
 \seealso{
 Other datasets: 
 \code{\link{BEGe}},
-\code{\link{LaBr}}
+\code{\link{LaBr}},
+\code{\link{Raman}}
 }
 \concept{datasets}
 \keyword{datasets}

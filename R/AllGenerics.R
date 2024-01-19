@@ -557,6 +557,29 @@ setGeneric(
   valueClass = "list"
 )
 
+#' Standard Normal Variate (SNV) Transformation
+#'
+#' Subtracts the mean and scales to unit variance.
+#' @param x,y A [`numeric`] vector. If `y` is missing, an attempt is made to
+#'  interpret `x` in a suitable way (see [grDevices::xy.coords()]).
+#' @param ... Currently not used.
+#' @return
+#'  Returns a [`list`] with two components `x` and `y`.
+#' @references
+#'  Barnes, R. J., Dhanoa, M. S. & Lister, S. J. (1989). Standard Normal Variate
+#'  Transformation and De-Trending of Near-Infrared Diffuse Reflectance Spectra.
+#'  *Applied Spectroscopy*, 43(5): 772-777. \doi{10.1366/0003702894202201}.
+#' @example inst/examples/ex-normalize.R
+#' @author N. Frerebeau
+#' @docType methods
+#' @family normalization methods
+#' @aliases rescale_snv-method
+setGeneric(
+  name = "rescale_snv",
+  def = function(x, y, ...) standardGeneric("rescale_snv"),
+  valueClass = "list"
+)
+
 # Signal =======================================================================
 #' Baseline Correction
 #'

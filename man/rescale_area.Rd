@@ -57,6 +57,7 @@ plot(BEGe_range, type = "l", xlab = "Energy (keV)", ylab = "Count")
 \seealso{
 Other normalization methods: 
 \code{\link{rescale_range}()},
+\code{\link{rescale_snv}()},
 \code{\link{rescale_total}()},
 \code{\link{rescale_transform}()}
 }

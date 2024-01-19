@@ -26,3 +26,9 @@ expect_equal(max(XRD_range$y), 1)
 # Transform ====================================================================
 XRD_trans <- rescale_transform(XRD, f = sqrt)
 expect_equal(max(XRD_trans$y), sqrt(max(XRD$count)))
+
+# SNV ==========================================================================
+data("Raman")
+Raman_snv <- rescale_snv(Raman)
+expect_equal(mean(Raman_snv$y), 0)
+expect_equal(sd(Raman_snv$y), 1)

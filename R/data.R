@@ -41,3 +41,17 @@
 #' @family datasets
 #' @keywords datasets
 "XRD"
+
+#' Raman Spectroscopy
+#'
+#' @format A [`data.frame`] with 1182 rows and 2 variables.
+#'  \describe{
+#'    \item{shift}{Raman shift.}
+#'    \item{intensity}{}
+#'  }
+#' @examples
+#' data("Raman")
+#' plot(Raman, type = "l", xlab = "Shift", ylab = "Intensity")
+#' @family datasets
+#' @keywords datasets
+"Raman"

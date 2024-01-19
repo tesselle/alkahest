@@ -21,3 +21,10 @@ BEGe <- BEGe[["dataset"]][["Sample title."]][["data_block"]]
 BEGe <- as.data.frame(BEGe)
 colnames(BEGe) <- c("energy", "count")
 usethis::use_data(BEGe, overwrite = FALSE)
+
+# Raman (BDX14722)
+Raman <- read.delim("data-raw/Raman.PRN", header = FALSE)
+Raman <- Raman[-1183, ]
+Raman[] <- lapply(X = Raman, FUN = as.numeric)
+colnames(Raman) <- c("shift", "intensity")
+usethis::use_data(Raman, overwrite = FALSE)

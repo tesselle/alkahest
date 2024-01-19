@@ -1,6 +1,7 @@
 # alkahest 1.1.1.9000
 ## New classes and methods
 * Add baseline estimation with asymmetric least squares smoothing (Eilers and Boelens, 2005).
+* Add Standard Normal Variate (SNV) transformation (Barnes et al., 1989).
 
 # alkahest 1.1.1
 ## Bugfixes & changes

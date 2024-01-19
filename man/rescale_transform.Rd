@@ -51,6 +51,7 @@ plot(BEGe_trans, type = "l", xlab = "Energy (keV)", ylab = "sqrt(Count)")
 Other normalization methods: 
 \code{\link{rescale_area}()},
 \code{\link{rescale_range}()},
+\code{\link{rescale_snv}()},
 \code{\link{rescale_total}()}
 }
 \author{

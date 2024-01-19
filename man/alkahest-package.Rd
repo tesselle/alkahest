@@ -3,7 +3,6 @@
 \docType{package}
 \name{alkahest-package}
 \alias{alkahest-package}
-\alias{_PACKAGE}
 \alias{alkahest}
 \title{alkahest: Pre-Processing XY Data from Experimental Methods}
 \description{
