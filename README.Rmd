@@ -1,5 +1,6 @@
 ---
 output: github_document
+bibliography: vignettes/bibliography.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -38,6 +39,8 @@ Sys.setlocale("LC_MESSAGES", 'en_GB.UTF-8') # Force locale
 
 ```{r citation, echo=FALSE, comment=''}
 utils::citation("alkahest")
+* Baseline estimation methods: Linear, Polynomial [@lieber2003], Asymmetric Least Squares [@eilers2005], Rolling Ball [@kneen1996], Rubberband, SNIP [@morhac1997; @morhac2008; @ryan1988], 4S Peak Filling [@liland2015].
+* Smoothing methods: Rectangular, Triangular, Loess, Savitzky-Golay Filter [@gorry1990; @savitzky1964], Whittaker [@eilers2003], Penalized Likelihood [@derooi2014]
 ```
 
 ## Installation
@@ -106,3 +109,5 @@ lines(x, y, type = "l", lty = 2, col = "red")
 ## Contributing
 
 Please note that the **alkahest** project is released with a [Contributor Code of Conduct](https://www.tesselle.org/conduct.html). By contributing to this project, you agree to abide by its terms.
+
+## References
