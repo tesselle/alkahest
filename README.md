@@ -41,7 +41,6 @@ can be measured along a continuous variable). It provides methods for
 baseline estimation and correction, smoothing, normalization,
 integration and peaks detection.
 
-    To cite alkahest in publications use:
 - Baseline estimation methods: Linear, Polynomial (Lieber and
   Mahadevan-Jansen 2003), Asymmetric Least Squares (Eilers and Boelens
   2005), Rolling Ball (Kneen and Annegarn 1996), Rubberband, SNIP
@@ -51,26 +50,17 @@ integration and peaks detection.
   Filter (Gorry 1990; Savitzky and Golay 1964), Whittaker (Eilers 2003),
   Penalized Likelihood (De Rooi et al. 2014)
 
-      Frerebeau N (2023). _alkahest: Pre-Processing XY Data from
-      Experimental Methods_. Université Bordeaux Montaigne, Pessac, France.
-      doi:10.5281/zenodo.7081524 <https://doi.org/10.5281/zenodo.7081524>,
-      R package version 1.1.1, <https://packages.tesselle.org/alkahest/>.
+------------------------------------------------------------------------
 
-    A BibTeX entry for LaTeX users is
+To cite alkahest in publications use:
 
-      @Manual{,
-        author = {Nicolas Frerebeau},
-        title = {{alkahest: Pre-Processing XY Data from Experimental Methods}},
-        year = {2023},
-        organization = {Université Bordeaux Montaigne},
-        address = {Pessac, France},
-        note = {R package version 1.1.1},
-        url = {https://packages.tesselle.org/alkahest/},
-        doi = {10.5281/zenodo.7081524},
-      }
+Frerebeau N (2024). *alkahest: Pre-Processing XY Data from Experimental
+Methods*. Université Bordeaux Montaigne, Pessac, France.
+<doi:10.5281/zenodo.7081524> <https://doi.org/10.5281/zenodo.7081524>, R
+package version 1.2.0, <https://packages.tesselle.org/alkahest/>.
 
-    This package is a part of the tesselle project
-    <https://www.tesselle.org>.
+This package is a part of the tesselle project
+<https://www.tesselle.org>.
 
 ## Installation
 

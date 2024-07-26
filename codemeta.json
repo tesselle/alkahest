@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/tesselle/alkahest",
   "issueTracker": "https://github.com/tesselle/alkahest/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.1.9000",
+  "version": "1.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.0 (2023-04-21)",
+  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -37,6 +37,16 @@
       "familyName": "Lebrun",
       "email": "brice.lebrun@u-bordeaux-montaigne.fr",
       "@id": "https://orcid.org/0000-0001-7503-8685"
+    }
+  ],
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "Université Bordeaux Montaigne"
+    },
+    {
+      "@type": "Organization",
+      "name": "CNRS"
     }
   ],
   "maintainer": [
@@ -75,15 +85,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "rmarkdown",
-      "name": "rmarkdown",
+      "identifier": "markdown",
+      "name": "markdown",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+      "sameAs": "https://CRAN.R-project.org/package=markdown"
     },
     {
       "@type": "SoftwareApplication",
@@ -127,11 +137,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "853.855KB",
+  "fileSize": "934.96KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2023",
+      "datePublished": "2024",
       "author": [
         {
           "@type": "Person",
@@ -142,7 +152,7 @@
       "name": "{alkahest: Pre-Processing XY Data from Experimental Methods}",
       "identifier": "10.5281/zenodo.7081524",
       "url": "https://packages.tesselle.org/alkahest/",
-      "description": "R package version 1.1.1.9000",
+      "description": "R package version 1.2.0",
       "@id": "https://doi.org/10.5281/zenodo.7081524",
       "sameAs": "https://doi.org/10.5281/zenodo.7081524"
     }

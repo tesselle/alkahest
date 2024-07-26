@@ -1,23 +1,40 @@
-# -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.5.0
+# --------------------------------------------
+# CITATION file created with {cffr} R package
 # See also: https://docs.ropensci.org/cffr/
-# -----------------------------------------------------------
+# --------------------------------------------
  
 cff-version: 1.2.0
 message: 'To cite package "alkahest" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'alkahest: Pre-Processing XY Data from Experimental Methods'
-version: 1.1.1.9000
+version: 1.2.0
 doi: 10.5281/zenodo.7081524
+identifiers:
+- description: The concept DOI.
+  type: doi
+  value: 10.5281/zenodo.7081524
+- description: The versioned DOI for version 1.0.0.
+  type: doi
+  value: 10.5281/zenodo.7081525
+- description: The versioned DOI for version 1.1.0.
+  type: doi
+  value: 10.5281/zenodo.7947723
+- description: The versioned DOI for version 1.1.1.
+  type: doi
+  value: 10.5281/zenodo.8031801
+- description: The Software Heritage identifier for version 1.1.1.
+  type: swh
+  value: swh:1:rel:eb483bf44f6b883ee3c32e51fabd6fce0cb39fce
 abstract: A lightweight, dependency-free toolbox for pre-processing XY data from experimental
   methods (i.e. any signal that can be measured along a continuous variable). This
   package provides methods for baseline estimation and correction, smoothing, normalization,
   integration and peaks detection. Baseline correction methods includes polynomial
-  fitting as described in Lieber and Mahadevan-Jansen (2003) <doi:10.1366/000370203322554518>,
-  Rolling Ball algorithm after Kneen and Annegarn (1996) <doi:10.1016/0168-583X(95)00908-6>,
-  SNIP algorithm after Ryan et al. (1988) <doi:10.1016/0168-583X(88)90063-8>, 4S Peak
-  Filling after Liland (2015) <doi:10.1016/j.mex.2015.02.009> and more.
+  fitting as described in Lieber and Mahadevan-Jansen (2003) <https://doi.org/10.1366/000370203322554518>,
+  Rolling Ball algorithm after Kneen and Annegarn (1996) <https://doi.org/10.1016/0168-583X(95)00908-6>,
+  SNIP algorithm after Ryan et al. (1988) <https://doi.org/10.1016/0168-583X(88)90063-8>,
+  4S Peak Filling after Liland (2015) <https://doi.org/10.1016/j.mex.2015.02.009>
+  and more.
 authors:
 - family-names: Frerebeau
   given-names: Nicolas
@@ -33,14 +50,13 @@ preferred-citation:
     email: nicolas.frerebeau@u-bordeaux-montaigne.fr
     orcid: https://orcid.org/0000-0001-5759-4944
     affiliation: Université Bordeaux Montaigne
-  year: '2023'
-  location:
-    name: Pessac, France
-  notes: R package version 1.1.1.9000
-  url: https://packages.tesselle.org/alkahest/
-  doi: 10.5281/zenodo.7081524
+  year: '2024'
   institution:
     name: Université Bordeaux Montaigne
+    address: Pessac, France
+  notes: R package version 1.2.0
+  url: https://packages.tesselle.org/alkahest/
+  doi: 10.5281/zenodo.7081524
 repository: https://CRAN.R-project.org/package=alkahest
 repository-code: https://github.com/tesselle/alkahest
 url: https://packages.tesselle.org/alkahest/
@@ -61,11 +77,10 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
   version: '>= 3.5.0'
 - type: software
   title: grDevices
@@ -73,44 +88,44 @@ references:
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  doi: 10.32614/CRAN.package.grDevices
 - type: software
   title: methods
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  doi: 10.32614/CRAN.package.methods
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  doi: 10.32614/CRAN.package.stats
 - type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2023'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
+  doi: 10.32614/CRAN.package.utils
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -122,7 +137,8 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2023'
+  year: '2024'
+  doi: 10.32614/CRAN.package.knitr
 - type: software
   title: Matrix
   abstract: 'Matrix: Sparse and Dense Matrix Classes and Methods'
@@ -140,50 +156,25 @@ references:
   - family-names: Jagan
     given-names: Mikael
     orcid: https://orcid.org/0000-0002-3542-2938
-  year: '2023'
+  year: '2024'
+  doi: 10.32614/CRAN.package.Matrix
 - type: software
-  title: rmarkdown
-  abstract: 'rmarkdown: Dynamic Documents for R'
+  title: markdown
+  abstract: 'markdown: Render Markdown with ''commonmark'''
   notes: Suggests
-  url: https://pkgs.rstudio.com/rmarkdown/
-  repository: https://CRAN.R-project.org/package=rmarkdown
+  url: https://github.com/rstudio/markdown
+  repository: https://CRAN.R-project.org/package=markdown
   authors:
-  - family-names: Allaire
-    given-names: JJ
-    email: jj@posit.co
   - family-names: Xie
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  - family-names: Dervieux
-    given-names: Christophe
-    email: cderv@posit.co
-    orcid: https://orcid.org/0000-0003-4474-2498
-  - family-names: McPherson
-    given-names: Jonathan
-    email: jonathan@posit.co
-  - family-names: Luraschi
-    given-names: Javier
-  - family-names: Ushey
-    given-names: Kevin
-    email: kevin@posit.co
-  - family-names: Atkins
-    given-names: Aron
-    email: aron@posit.co
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  - family-names: Cheng
-    given-names: Joe
-    email: joe@posit.co
-  - family-names: Chang
-    given-names: Winston
-    email: winston@posit.co
-  - family-names: Iannone
-    given-names: Richard
-    email: rich@posit.co
-    orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2023'
+  - family-names: Allaire
+    given-names: JJ
+  - family-names: Horner
+    given-names: Jeffrey
+  year: '2024'
+  doi: 10.32614/CRAN.package.markdown
 - type: software
   title: tinytest
   abstract: 'tinytest: Lightweight and Feature Complete Unit Testing Framework'
@@ -191,21 +182,11 @@ references:
   url: https://github.com/markvanderloo/tinytest
   repository: https://CRAN.R-project.org/package=tinytest
   authors:
-  - family-names: van der Loo
+  - family-names: Loo
     given-names: Mark
+    name-particle: van der
     email: mark.vanderloo@gmail.com
     orcid: https://orcid.org/0000-0002-9807-4686
-  year: '2023'
-identifiers:
-- description: The concept DOI.
-  type: doi
-  value: 10.5281/zenodo.7081524
-- description: The versioned DOI for version 1.0.0.
-  type: doi
-  value: 10.5281/zenodo.7081525
-- description: The versioned DOI for version 1.1.0.
-  type: doi
-  value: 10.5281/zenodo.7947723
-- description: The versioned DOI for version 1.1.1.
-  type: doi
-  value: 10.5281/zenodo.8031801
+  year: '2024'
+  doi: 10.32614/CRAN.package.tinytest
+
