@@ -68,7 +68,7 @@ setMethod(
       mu[, i] <- M$mu
       phi[i] <- M$phi
       psi[i] <- M$psi
-      utils::setTxtProgressBar(pb, i)
+      if (progress) utils::setTxtProgressBar(pb, i)
     }
 
     if (progress) close(pb)
