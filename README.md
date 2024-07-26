@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/tesselle/alkahest/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/alkahest/actions)
 [![codecov](https://codecov.io/gh/tesselle/alkahest/branch/main/graph/badge.svg?token=wsIkAQ0XFK)](https://app.codecov.io/gh/tesselle/alkahest)
 [![CodeFactor](https://www.codefactor.io/repository/github/tesselle/alkahest/badge/main)](https://www.codefactor.io/repository/github/tesselle/alkahest/overview/main)
-[![Dependencies](https://tinyverse.netlify.com/badge/alkahest)](https://cran.r-project.org/package=alkahest)
+[![Dependencies](https://tinyverse.netlify.app/badge/alkahest)](https://cran.r-project.org/package=alkahest)
 
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
 src="https://tesselle.r-universe.dev/badges/alkahest"
