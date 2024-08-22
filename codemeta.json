@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/tesselle/alkahest",
   "issueTracker": "https://github.com/tesselle/alkahest/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
+  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -73,18 +73,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "Matrix",
-      "name": "Matrix",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=Matrix"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "markdown",
       "name": "markdown",
       "provider": {
@@ -94,6 +82,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=markdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "Matrix",
+      "name": "Matrix",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Matrix"
     },
     {
       "@type": "SoftwareApplication",
@@ -137,7 +137,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "934.96KB",
+  "fileSize": "934.111KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -152,7 +152,7 @@
       "name": "{alkahest: Pre-Processing XY Data from Experimental Methods}",
       "identifier": "10.5281/zenodo.7081524",
       "url": "https://packages.tesselle.org/alkahest/",
-      "description": "R package version 1.2.0",
+      "description": "R package version 1.2.1",
       "@id": "https://doi.org/10.5281/zenodo.7081524",
       "sameAs": "https://doi.org/10.5281/zenodo.7081524"
     }
