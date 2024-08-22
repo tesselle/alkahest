@@ -15,7 +15,7 @@ src="https://tesselle.r-universe.dev/badges/alkahest"
 alt="r-universe" /></a>
 <a href="https://cran.r-project.org/package=alkahest"
 class="pkgdown-release"><img
-src="http://www.r-pkg.org/badges/version/alkahest"
+src="https://www.r-pkg.org/badges/version/alkahest"
 alt="CRAN Version" /></a> <a
 href="https://cran.r-project.org/web/checks/check_results_alkahest.html"
 class="pkgdown-release"><img
@@ -23,7 +23,7 @@ src="https://badges.cranchecks.info/worst/alkahest.svg"
 alt="CRAN checks" /></a>
 <a href="https://cran.r-project.org/package=alkahest"
 class="pkgdown-release"><img
-src="http://cranlogs.r-pkg.org/badges/alkahest"
+src="https://cranlogs.r-pkg.org/badges/alkahest"
 alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
@@ -57,7 +57,7 @@ To cite alkahest in publications use:
 Frerebeau N (2024). *alkahest: Pre-Processing XY Data from Experimental
 Methods*. Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.7081524> <https://doi.org/10.5281/zenodo.7081524>, R
-package version 1.2.0, <https://packages.tesselle.org/alkahest/>.
+package version 1.2.1, <https://packages.tesselle.org/alkahest/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
@@ -144,6 +144,15 @@ contributing to this project, you agree to abide by its terms.
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">
+
+<div id="ref-barnes1989" class="csl-entry">
+
+Barnes, R. J., M. S. Dhanoa, and Susan J. Lister. 1989. “Standard Normal
+Variate Transformation and De-Trending of Near-Infrared Diffuse
+Reflectance Spectra.” *Applied Spectroscopy* 43 (5): 772–77.
+<https://doi.org/10.1366/0003702894202201>.
+
+</div>
 
 <div id="ref-derooi2014" class="csl-entry">
 
