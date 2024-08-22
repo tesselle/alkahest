@@ -1,4 +1,6 @@
 # alkahest 1.2.0.9000
+## Bugfixes & changes
+* Remove class check on value returned by generic function.
 
 # alkahest 1.2.0
 ## New classes and methods

@@ -25,8 +25,7 @@
 #' @aliases baseline_asls-method
 setGeneric(
   name = "baseline_asls",
-  def = function(x, y, ...) standardGeneric("baseline_asls"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("baseline_asls")
 )
 
 #' Linear Baseline Estimation
@@ -46,8 +45,7 @@ setGeneric(
 #' @aliases baseline_linear-method
 setGeneric(
   name = "baseline_linear",
-  def = function(x, y, ...) standardGeneric("baseline_linear"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("baseline_linear")
 )
 
 #' Polynomial Baseline Estimation
@@ -75,8 +73,7 @@ setGeneric(
 #' @aliases baseline_polynomial-method
 setGeneric(
   name = "baseline_polynomial",
-  def = function(x, y, ...) standardGeneric("baseline_polynomial"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("baseline_polynomial")
 )
 
 #' Rolling Ball Baseline Estimation
@@ -109,8 +106,7 @@ setGeneric(
 #' @aliases baseline_rollingball-method
 setGeneric(
  name = "baseline_rollingball",
- def = function(x, y, ...) standardGeneric("baseline_rollingball"),
- valueClass = "list"
+ def = function(x, y, ...) standardGeneric("baseline_rollingball")
 )
 
 #' Rubberband Baseline Estimation
@@ -141,8 +137,7 @@ setGeneric(
 #' @aliases baseline_rubberband-method
 setGeneric(
   name = "baseline_rubberband",
-  def = function(x, y, ...) standardGeneric("baseline_rubberband"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("baseline_rubberband")
 )
 
 #' SNIP Baseline Estimation
@@ -183,8 +178,7 @@ setGeneric(
 #' @aliases baseline_snip-method
 setGeneric(
   name = "baseline_snip",
-  def = function(x, y, ...) standardGeneric("baseline_snip"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("baseline_snip")
 )
 
 #' 4S Peak Filling
@@ -216,8 +210,7 @@ setGeneric(
 #' @aliases baseline_peakfilling-method
 setGeneric(
   name = "baseline_peakfilling",
-  def = function(x, y, ...) standardGeneric("baseline_peakfilling"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("baseline_peakfilling")
 )
 
 # Integrate ====================================================================
@@ -301,8 +294,7 @@ setGeneric(
 #' @aliases peaks_find-method
 setGeneric(
   name = "peaks_find",
-  def = function(x, y, ...) standardGeneric("peaks_find"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("peaks_find")
 )
 
 #' Half-Width at Half-Maximum
@@ -342,8 +334,7 @@ setGeneric(
 #' @aliases replace_threshold-method
 setGeneric(
   name = "replace_threshold",
-  def = function(x, y, threshold, ...) standardGeneric("replace_threshold"),
-  valueClass = "list"
+  def = function(x, y, threshold, ...) standardGeneric("replace_threshold")
 )
 
 #' Replace Negative Values
@@ -360,8 +351,7 @@ setGeneric(
 #' @aliases replace_negative-method
 setGeneric(
   name = "replace_negative",
-  def = function(x, y, ...) standardGeneric("replace_negative"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("replace_negative")
 )
 
 # Resample =====================================================================
@@ -385,8 +375,7 @@ setGeneric(
 #' @aliases resample_bin-method
 setGeneric(
   name = "resample_bin",
-  def = function(x, y, ...) standardGeneric("resample_bin"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("resample_bin")
 )
 
 #' Downsample
@@ -404,8 +393,7 @@ setGeneric(
 #' @aliases resample_down-method
 setGeneric(
   name = "resample_down",
-  def = function(x, y, ...) standardGeneric("resample_down"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("resample_down")
 )
 
 # Upsample
@@ -425,8 +413,7 @@ setGeneric(
 # @aliases resample_interpolate-method
 # setGeneric(
 #   name = "resample_up",
-#   def = function(x, y, ...) standardGeneric("resample_up"),
-#   valueClass = "list"
+#   def = function(x, y, ...) standardGeneric("resample_up")
 # )
 
 #' Linearly Interpolate
@@ -449,8 +436,7 @@ setGeneric(
 #' @aliases resample_interpolate-method
 setGeneric(
   name = "resample_interpolate",
-  def = function(x, y, ...) standardGeneric("resample_interpolate"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("resample_interpolate")
 )
 
 # Rescale ======================================================================
@@ -472,8 +458,7 @@ setGeneric(
 #' @aliases rescale_area-method
 setGeneric(
   name = "rescale_area",
-  def = function(x, y, ...) standardGeneric("rescale_area"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_area")
 )
 
 #' Rescale intensities to sum to a specified value
@@ -493,8 +478,7 @@ setGeneric(
 #' @aliases rescale_total-method
 setGeneric(
   name = "rescale_total",
-  def = function(x, y, ...) standardGeneric("rescale_total"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_total")
 )
 
 #' Rescales intensities to have specified minimum and maximum
@@ -514,24 +498,21 @@ setGeneric(
 #' @aliases rescale_range-method
 setGeneric(
   name = "rescale_range",
-  def = function(x, y, ...) standardGeneric("rescale_range"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_range")
 )
 
 #' @rdname rescale_range
 #' @aliases rescale_min-method
 setGeneric(
   name = "rescale_min",
-  def = function(x, y, ...) standardGeneric("rescale_min"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_min")
 )
 
 #' @rdname rescale_range
 #' @aliases rescale_max-method
 setGeneric(
   name = "rescale_max",
-  def = function(x, y, ...) standardGeneric("rescale_max"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_max")
 )
 
 #' Transform Intensities
@@ -553,8 +534,7 @@ setGeneric(
 #' @aliases rescale_transform-method
 setGeneric(
   name = "rescale_transform",
-  def = function(x, y, ...) standardGeneric("rescale_transform"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_transform")
 )
 
 #' Standard Normal Variate (SNV) Transformation
@@ -576,8 +556,7 @@ setGeneric(
 #' @aliases rescale_snv-method
 setGeneric(
   name = "rescale_snv",
-  def = function(x, y, ...) standardGeneric("rescale_snv"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("rescale_snv")
 )
 
 # Signal =======================================================================
@@ -612,8 +591,7 @@ setGeneric(
 #' @aliases signal_correct-method
 setGeneric(
   name = "signal_correct",
-  def = function(x, y, ...) standardGeneric("signal_correct"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("signal_correct")
 )
 
 #' Bind
@@ -630,8 +608,7 @@ setGeneric(
 #' @aliases signal_bind-method
 setGeneric(
   name = "signal_bind",
-  def = function(...) standardGeneric("signal_bind"),
-  valueClass = "matrix"
+  def = function(...) standardGeneric("signal_bind")
 )
 
 #' Mean Intensities
@@ -647,8 +624,7 @@ setGeneric(
 #' @aliases signal_mean-method
 setGeneric(
   name = "signal_mean",
-  def = function(...) standardGeneric("signal_mean"),
-  valueClass = "list"
+  def = function(...) standardGeneric("signal_mean")
 )
 
 #' Subset
@@ -678,16 +654,14 @@ NULL
 #' @aliases signal_select-method
 setGeneric(
   name = "signal_select",
-  def = function(x, y, ...) standardGeneric("signal_select"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("signal_select")
 )
 
 #' @rdname subset
 #' @aliases signal_slice-method
 setGeneric(
   name = "signal_slice",
-  def = function(x, y, ...) standardGeneric("signal_slice"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("signal_slice")
 )
 
 #' Shift the X Scale
@@ -706,8 +680,7 @@ setGeneric(
 #' @aliases signal_shift-method
 setGeneric(
   name = "signal_shift",
-  def = function(x, y, lag, ...) standardGeneric("signal_shift"),
-  valueClass = "list"
+  def = function(x, y, lag, ...) standardGeneric("signal_shift")
 )
 
 #' Drift Intensities
@@ -727,8 +700,7 @@ setGeneric(
 #' @aliases signal_drift-method
 setGeneric(
   name = "signal_drift",
-  def = function(x, y, lag, ...) standardGeneric("signal_drift"),
-  valueClass = "list"
+  def = function(x, y, lag, ...) standardGeneric("signal_drift")
 )
 
 # Smooth =======================================================================
@@ -757,8 +729,7 @@ setGeneric(
 #' @aliases smooth_rectangular-method
 setGeneric(
   name = "smooth_rectangular",
-  def = function(x, y, ...) standardGeneric("smooth_rectangular"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("smooth_rectangular")
 )
 
 #' Triangular Smoothing
@@ -786,8 +757,7 @@ setGeneric(
 #' @aliases smooth_triangular-method
 setGeneric(
   name = "smooth_triangular",
-  def = function(x, y, ...) standardGeneric("smooth_triangular"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("smooth_triangular")
 )
 
 #' Loess Smoothing
@@ -807,8 +777,7 @@ setGeneric(
 #' @aliases smooth_loess-method
 setGeneric(
   name = "smooth_loess",
-  def = function(x, y, ...) standardGeneric("smooth_loess"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("smooth_loess")
 )
 
 #' Savitzky-Golay Filter
@@ -844,8 +813,7 @@ setGeneric(
 #' @aliases smooth_savitzky-method
 setGeneric(
   name = "smooth_savitzky",
-  def = function(x, y, ...) standardGeneric("smooth_savitzky"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("smooth_savitzky")
 )
 
 #' Whittaker Smoothing
@@ -870,8 +838,7 @@ setGeneric(
 #' @aliases smooth_whittaker-method
 setGeneric(
   name = "smooth_whittaker",
-  def = function(x, y, ...) standardGeneric("smooth_whittaker"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("smooth_whittaker")
 )
 
 #' Penalized Likelihood Smoothing
@@ -901,8 +868,7 @@ setGeneric(
 #' @aliases smooth_likelihood-method
 setGeneric(
   name = "smooth_likelihood",
-  def = function(x, y, ...) standardGeneric("smooth_likelihood"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("smooth_likelihood")
 )
 
 # Strip ========================================================================
@@ -937,8 +903,7 @@ setGeneric(
 #' @aliases ka2_strip_penalized-method
 setGeneric(
   name = "ka2_strip_penalized",
-  def = function(x, y, ...) standardGeneric("ka2_strip_penalized"),
-  valueClass = "list"
+  def = function(x, y, ...) standardGeneric("ka2_strip_penalized")
 )
 
 # Windows ======================================================================
@@ -968,8 +933,7 @@ setGeneric(
 #' @aliases window_sliding-method
 setGeneric(
   name = "window_sliding",
-  def = function(n, m, ...) standardGeneric("window_sliding"),
-  valueClass = "list"
+  def = function(n, m, ...) standardGeneric("window_sliding")
 )
 
 #' Tumbling Windows
@@ -992,6 +956,5 @@ setGeneric(
 #' @aliases window_tumbling-method
 setGeneric(
   name = "window_tumbling",
-  def = function(n, m, ...) standardGeneric("window_tumbling"),
-  valueClass = "list"
+  def = function(n, m, ...) standardGeneric("window_tumbling")
 )
