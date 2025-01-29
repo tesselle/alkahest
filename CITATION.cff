@@ -64,7 +64,7 @@ preferred-citation:
   url: https://packages.tesselle.org/alkahest/
   doi: 10.5281/zenodo.7081524
 repository: https://CRAN.R-project.org/package=alkahest
-repository-code: https://github.com/tesselle/alkahest
+repository-code: https://codeberg.org/tesselle/alkahest
 url: https://packages.tesselle.org/alkahest/
 contact:
 - family-names: Frerebeau

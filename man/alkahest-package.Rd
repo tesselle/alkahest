@@ -22,9 +22,9 @@ A lightweight, dependency-free toolbox for pre-processing XY data from experimen
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://codeberg.org/tesselle/alkahest}
   \item \url{https://packages.tesselle.org/alkahest/}
-  \item \url{https://github.com/tesselle/alkahest}
-  \item Report bugs at \url{https://github.com/tesselle/alkahest/issues}
+  \item Report bugs at \url{https://codeberg.org/tesselle/alkahest/issues}
 }
 
 }
