@@ -128,7 +128,9 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "934.111KB",
+  "isPartOf": "https://www.tesselle.org",
+  "keywords": ["spectroscopy", "archaeometry", "r-package"],
+  "fileSize": "934.22KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
