@@ -67,7 +67,7 @@ setMethod(
       old_y <- new_y
       start <- start + 1
       if (start >= stop) {
-        warning("Convergence not reached.", call. = FALSE)
+        warning(tr_("Convergence not reached."), call. = FALSE)
         break
       }
     }
@@ -190,9 +190,10 @@ setMethod(
     }
 
     ## Check baseline
-    if (anyNA(tmp))
-      stop("Failed to estimate the baseline, please check your parameters.",
-           call. = FALSE)
+    if (anyNA(tmp)) {
+      msg <- tr_("Failed to estimate the baseline, please check your parameters.")
+      stop(msg, call. = FALSE)
+    }
 
     xy <- list(x = x, y = bsl)
     attr(xy, "method") <- "rubberband baseline"
@@ -242,9 +243,10 @@ setMethod(
     bsl <- if (LLS) inverseLLS(y) else y
 
     ## Check baseline
-    if (anyNA(bsl))
-      stop("Failed to estimate the baseline, please check your parameters.",
-           call. = FALSE)
+    if (anyNA(bsl)) {
+      msg <- tr_("Failed to estimate the baseline, please check your parameters.")
+      stop(msg, call. = FALSE)
+    }
 
     xy <- list(x = x, y = bsl)
     attr(xy, "method") <- "SNIP"
@@ -308,7 +310,7 @@ setMethod(
       w <- w0
       start <- start + 1
       if (start >= stop) {
-        warning("Convergence not reached.", call. = FALSE)
+        warning(tr_("Convergence not reached."), call. = FALSE)
         break
       }
     }

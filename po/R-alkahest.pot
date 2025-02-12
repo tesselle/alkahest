@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: alkahest 1.2.1\n"
+"POT-Creation-Date: 2025-02-12 18:00+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: baseline.R:70 baseline.R:313
+msgid "Convergence not reached."
+msgstr ""
+
+#: baseline.R:194 baseline.R:247
+msgid "Failed to estimate the baseline, please check your parameters."
+msgstr ""
+
+#: rescale.R:84
+msgid "%s (%g) must be lower than %s (%g)."
+msgstr ""
+
+#: signal.R:20 signal.R:52
+msgid "All objects must have the same number of data points."
+msgstr ""
+
+#: signal.R:110
+msgid "A vector of strictly positive or negative integers is expected."
+msgstr ""
+
+#: xrd.R:150 xrd.R:200
+msgid "Left boundary adjusted to %g."
+msgstr ""
+
+#: xrd.R:154 xrd.R:204
+msgid "Right boundary adjusted to %g."
+msgstr ""

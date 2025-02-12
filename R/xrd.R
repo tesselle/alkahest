@@ -147,11 +147,11 @@ bbase <- function(x, lower = min(x), upper = max(x), n = 10, deg = 3) {
   ## Check domain and adjust it if necessary
   if (lower > min(x)) {
     lower <- min(x)
-    warning(sprintf("Left boundary adjusted to %g.", lower), call. = FALSE)
+    warning(sprintf(tr_("Left boundary adjusted to %g."), lower), call. = FALSE)
   }
   if (upper <  max(x)) {
     upper <- max(x)
-    warning(sprintf("Right boundary adjusted to %g.", upper), call. = FALSE)
+    warning(sprintf(tr_("Right boundary adjusted to %g."), upper), call. = FALSE)
   }
 
   ## Function for B-spline basis
@@ -197,11 +197,11 @@ sbase <- function(x, lower = min(x), upper = max(x), n = 10, deg = 3) {
   ## Check domain and adjust it if necessary
   if (lower > min(x)) {
     lower <- min(x)
-    warning(sprintf("Left boundary adjusted to %g.", lower), call. = FALSE)
+    warning(sprintf(tr_("Left boundary adjusted to %g."), lower), call. = FALSE)
   }
   if (upper <  max(x)) {
     upper <- max(x)
-    warning(sprintf("Right boundary adjusted to %g.", upper), call. = FALSE)
+    warning(sprintf(tr_("Right boundary adjusted to %g."), upper), call. = FALSE)
   }
 
   ## Reduce x to first interval between knots

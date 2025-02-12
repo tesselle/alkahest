@@ -81,7 +81,7 @@ setMethod(
     ## Validation
     assert_length(y, length(x))
     if (min > max) {
-      msg <- sprintf("%s (%g) must be lower than %s (%g).",
+      msg <- sprintf(tr_("%s (%g) must be lower than %s (%g)."),
                      sQuote("min"), min, sQuote("max"), max)
       stop(msg, call. = FALSE)
     }

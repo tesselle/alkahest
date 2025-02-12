@@ -17,7 +17,8 @@ setMethod(
     y <- lapply(X = coords, FUN = `[[`, i = "y")
     ny <- lengths(y)
     if (any(ny != mean(ny))) {
-      stop("All objects must have the same number of data points.", call. = FALSE)
+      msg <- tr_("All objects must have the same number of data points.")
+      stop(msg, call. = FALSE)
     }
     y <- do.call(rbind, y)
 
@@ -48,7 +49,8 @@ setMethod(
     ny <- lengths(y)
 
     if (any(nx != mean(nx)) | any(ny != mean(ny))) {
-      stop("All objects must have the same number of data points.", call. = FALSE)
+      msg <- tr_("All objects must have the same number of data points.")
+      stop(msg, call. = FALSE)
     }
 
     x <- do.call(cbind, x)
@@ -105,8 +107,8 @@ setMethod(
     i <- as.integer(subset)
 
     if (!all(i > 0) & !all(i < 0)) {
-      stop("A vector of strictly positive or negative integers is expected.",
-           call. = FALSE)
+      msg <- tr_("A vector of strictly positive or negative integers is expected.")
+      stop(msg, call. = FALSE)
     }
 
     xy <- list(x = x[i], y = y[i])

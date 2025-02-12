@@ -1,4 +1,7 @@
 # alkahest 1.2.1
+## Enhancements
+* Translate into French.
+
 ## Bugfixes & changes
 * Remove class check on value returned by generic function.
 
