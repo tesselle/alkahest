@@ -26,6 +26,9 @@ identifiers:
 - description: The versioned DOI for version 1.2.0.
   type: doi
   value: 10.5281/zenodo.12941057
+- description: The versioned DOI for version 1.3.0.
+  type: doi
+  value: 10.5281/zenodo.14927537
 - description: The CRAN DOI
   type: doi
   value: 10.32614/cran.package.alkahest
