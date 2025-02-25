@@ -14,7 +14,7 @@ A lightweight, dependency-free toolbox for pre-processing XY data from experimen
 \tabular{ll}{
 \strong{Package:} \tab alkahest \cr
 \strong{Type:} \tab Package \cr
-\strong{Version:} \tab 1.2.1 \cr
+\strong{Version:} \tab 1.3.0 \cr
 \strong{License:} \tab GPL-3 \cr
 \strong{Zenodo:} \tab \doi{10.5281/zenodo.7081524} \cr
 }

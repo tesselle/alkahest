@@ -8,7 +8,7 @@ message: 'To cite package "alkahest" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'alkahest: Pre-Processing XY Data from Experimental Methods'
-version: 1.2.1
+version: 1.3.0
 doi: 10.5281/zenodo.7081524
 identifiers:
 - description: The concept DOI.
@@ -51,11 +51,11 @@ preferred-citation:
     given-names: Nicolas
     email: nicolas.frerebeau@u-bordeaux-montaigne.fr
     orcid: https://orcid.org/0000-0001-5759-4944
-  year: '2024'
+  year: '2025'
   institution:
     name: Université Bordeaux Montaigne
     address: Pessac, France
-  notes: R package version 1.2.1
+  notes: R package version 1.3.0
   url: https://packages.tesselle.org/alkahest/
   doi: 10.5281/zenodo.7081524
 repository: https://CRAN.R-project.org/package=alkahest
