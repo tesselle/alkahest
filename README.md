@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Code
+coverage](https://packages.tesselle.org/alkahest/coverage/badge.svg)](https://packages.tesselle.org/alkahest/coverage/)
 [![Dependencies](https://tinyverse.netlify.app/badge/alkahest)](https://cran.r-project.org/package=alkahest)
 
 <a href="https://tesselle.r-universe.dev" class="pkgdown-devel"><img
