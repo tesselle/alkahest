@@ -26,7 +26,7 @@ which_nearest <- function(x, value) {
 assert_odd <- function(x) {
   arg <- deparse(substitute(x))
   if (any(round(x) %% 2 == 0)) {
-    msg <- sprintf("%s must be an odd integer (%g).", sQuote(arg), x)
+    msg <- sprintf(tr_("%s must be an odd integer (%g)."), sQuote(arg), x)
     stop(msg, call. = FALSE)
   }
   invisible(x)
@@ -43,7 +43,7 @@ assert_odd <- function(x) {
 assert_length <- function(x, expected) {
   arg <- deparse(substitute(x))
   if (length(x) != expected) {
-    str <- "%s must be of length %d; not %d."
+    str <- tr_("%s must be of length %d; not %d.")
     msg <- sprintf(str, sQuote(arg), expected, length(x))
     stop(msg, call. = FALSE)
   }
@@ -52,7 +52,7 @@ assert_length <- function(x, expected) {
 
 assert_Matrix <- function() {
   if (!requireNamespace("Matrix", quietly = TRUE)) {
-    msg <- "The Matrix package is required. Please install it."
+    msg <- tr_("The Matrix package is required. Please install it.")
     stop(msg, call. = FALSE)
   }
   invisible()

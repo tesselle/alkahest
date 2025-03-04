@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: alkahest 1.2.1\n"
-"POT-Creation-Date: 2025-02-12 18:00+0100\n"
+"POT-Creation-Date: 2025-03-04 16:46+0100\n"
 "PO-Revision-Date: 2025-02-12 17:12+0000\n"
 "Last-Translator: nfrerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>\n"
 "Language-Team: French <https://translate.codeberg.org/projects/tesselle/"
@@ -12,6 +12,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.9.2\n"
+
+#: alkahest-internal.R:29
+msgid "%s must be an odd integer (%g)."
+msgstr "%s doit être un nombre entier impair (%g)."
+
+#: alkahest-internal.R:46
+msgid "%s must be of length %d; not %d."
+msgstr "%s doit être de longueur %d et non %d."
+
+#: alkahest-internal.R:55
+msgid "The Matrix package is required. Please install it."
+msgstr "Le package Matrix est nécessaire. Veuillez l'installer."
 
 #: baseline.R:70 baseline.R:313
 msgid "Convergence not reached."
