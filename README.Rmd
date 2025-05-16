@@ -19,8 +19,9 @@ Sys.setenv(LANGUAGE = "en") # Force locale
 # alkahest <img width=120px src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
-[![Code coverage](https://packages.tesselle.org/alkahest/coverage/badge.svg)](https://packages.tesselle.org/alkahest/coverage/)
-[![Dependencies](https://tinyverse.netlify.app/badge/alkahest)](https://cran.r-project.org/package=alkahest)
+[![status-badge](https://ci.codeberg.org/api/badges/14686/status.svg)](https://ci.codeberg.org/repos/14686){.pkgdown-devel}
+[![Code coverage](https://packages.tesselle.org/alkahest/coverage/badge.svg)](https://packages.tesselle.org/alkahest/coverage/){.pkgdown-devel}
+[![Dependencies](https://tinyverse.netlify.app/badge/alkahest)](https://cran.r-project.org/package=alkahest){.pkgdown-devel}
 
 [![r-universe](https://tesselle.r-universe.dev/badges/alkahest)](https://tesselle.r-universe.dev){.pkgdown-devel}
 [![CRAN Version](https://www.r-pkg.org/badges/version/alkahest)](https://cran.r-project.org/package=alkahest){.pkgdown-release}
