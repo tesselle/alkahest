@@ -24,6 +24,7 @@ Description: A lightweight, dependency-free toolbox for pre-processing XY
     Filling after Liland (2015) <doi:10.1016/j.mex.2015.02.009> and more.
 License: GPL (>= 3)
 URL: https://codeberg.org/tesselle/alkahest,
+    https://tesselle.r-universe.dev/alkahest,
     https://packages.tesselle.org/alkahest/
 BugReports: https://codeberg.org/tesselle/alkahest/issues
 Depends: 
