@@ -126,7 +126,7 @@ setGeneric(
 #'  (if any) of the spectrum.
 #' @note
 #'  `baseline_rubberband()` is slightly modified from C. Beleites'
-#'  [hyperSpec::spc.rubberband()].
+#'  [hyperSpec::spc_rubberband()].
 #' @return
 #'  Returns a [`list`] with two components `x` and `y`.
 #' @seealso [signal_correct()]

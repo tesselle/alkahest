@@ -41,7 +41,7 @@ spectrum. Note that the rubber band does not enter the concave regions
 }
 \note{
 \code{baseline_rubberband()} is slightly modified from C. Beleites'
-\code{\link[hyperSpec:spc-rubberband]{hyperSpec::spc.rubberband()}}.
+\code{\link[hyperSpec:spc-rubberband]{hyperSpec::spc_rubberband()}}.
 }
 \examples{
 ## gamma-ray spectrometry

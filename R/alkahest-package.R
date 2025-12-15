@@ -31,8 +31,8 @@
 #' @keywords internal
 "_PACKAGE"
 
+#' @import methods
 #' @importFrom grDevices chull xy.coords
-#' @importFrom methods .valueClassTest callGeneric setGeneric setMethod
 #' @importFrom stats approx lm mad poly predict smooth.spline spline
 #' weighted.mean
 #' @importFrom utils head tail
