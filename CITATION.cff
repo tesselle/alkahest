@@ -63,7 +63,7 @@ preferred-citation:
   doi: 10.5281/zenodo.7081524
 repository: https://CRAN.R-project.org/package=alkahest
 repository-code: https://codeberg.org/tesselle/alkahest
-url: https://packages.tesselle.org/alkahest/
+url: https://tesselle.r-universe.dev/alkahest
 contact:
 - family-names: Frerebeau
   given-names: Nicolas
